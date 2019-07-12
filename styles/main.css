@@ -111,7 +111,6 @@ h4 {
 }
 
 .box {
-    border: 1px solid;
 }
 
 .half {
@@ -150,6 +149,11 @@ ul {
 ul li:before {
     content: "+";
     padding-right: 0.95em;
+}
+
+ul.no-mark li:before {
+    content: "" !important;
+    padding-right: 1.5em;
 }
 
 ul li >,
@@ -222,4 +226,20 @@ footer > * {
     30% { opacity: 1; }
     50% { opacity: 1; }
     0% { opacity: 0.5; }
+}
+
+.social-links-prof span {
+    display: block;
+    margin: .25em 0;
+}
+
+.social-links-prof span .fa {
+    margin-right: 1em;
+}
+
+#bio-prof-pic {
+    border-radius: 50%;
+    width: 360px;
+    float: right;
+    margin: -140px 0 20px 40px;
 }
