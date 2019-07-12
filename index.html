@@ -5,33 +5,108 @@
         <title>Daniel Zhao</title>
         <link href="styles/main.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        
-        <!-- HEADER AND NAV -->
         <header>
             <div id="siteTitle">
                 <a href="/">Daniel Zhao</a>
             </div>
             <nav>
-                <a href="/photos/">Photos</a>
                 <a href="/projects/">Projects</a>
                 <a href="/bio/">Bio</a>
-                <a href="/feed/">Feed</a>
+                <a class="soon">Photos coming soon!</a>
             </nav>
         </header>
-
-        <!-- BODY -->
         <main>
-            <div class="section narrow">
+            <div class="section wide">
                 <h1>Hello! I'm Daniel.</h1>
-                <strong>I’m a junior at Yale studying data science and global affairs. During my spare time, I take photos, play music, read about trains and planes, and follow politics.</strong>
-                <p>Below I've highlighted some of my recent work. If you'd like to see more, feel free to check out my photography, explore projects I've worked on, and read more about me.</p>
-                <p>You can get in touch is via <a href="mailto:iamdanzhao@gmail.com">email</a>. My resume is linked <a href="https://drive.google.com/open?id=1EVYQ_hP3c3kRpX8rFneZTyGeV4ofQXok">here</a>.</p>
+                <h3>I’m a junior at Yale studying data science and global affairs. I'm a 2019 Civic Digital Fellow at the Bureau of Labor Statistics, building dashboards and leveraging natural language processing to improve internal reporting processes. I'm passionate about tech policy, modernizing government, smart cities, and urban planning.</h3>
+                <!-- TALK ABOUT WORKING IN BOTH LOCAL/FEDERAL + PRIVATE -->
+                <!-- <p>I'm a technologist at heart, but I care immensely about how policies impact real people. I want to use data to make processes more efficient, make more informed decisions, and benefit society in an equitable way.</p> -->
+                <p>During my spare time, I take photos, play music, read about trains and planes, and follow politics. Check out some photos from a recent trip to Brussels, Berlin, and Norway below!</p>
+                <p>My resume is linked <a href="https://drive.google.com/open?id=1EVYQ_hP3c3kRpX8rFneZTyGeV4ofQXok">here</a>. If you have any questions, don't hesitate to get in touch with me via <a href="mailto:iamdanzhao@gmail.com">email</a>.</p>
             </div>
-            <div class="section medium">
-                <h2 class="narrow">Recent projects</h2>
+            <div class="section wide sep"></div>
+            <div class="section wide">
+                <h4>What I'm working on</h4>
+                <p>I'm currently <strong>interning at the U.S. Bureau of Labor Statistics</strong> as a <strong>Civic Digital Fellow</strong>, part of a program sponsored by <strong>Coding It Forward</strong> designed to bring technical minds into the public sector.</p>
+                <p>This upcoming fall, I'll be working to establish the <strong>Yale Daily News'</strong> inaugural <strong>Data Desk</strong>, a new initiative focused on bringing data-driven journalism to the nation's oldest college daily. I'm also working on a research project with <strong>Yale Tsai CITY and UNICEF</strong> focusing on how to scale open-source technologies to impact childrens' outcomes in developing nations.</p>
+            </div>
+            <div class="section wide sep"></div>
+            <div class="section wide">
+                <h4>Photos from Berlin, Brussels, Norway</h4>
+                <p>Nine flights, four trains, three Ubeers, two taxis, two buses, and a lot of walking. Here's a snapshot of a recent spring break trip to the capitol of the European Union, a reunified Berlin, and a snowy Scandinavia.</p>
+            </div>
+            <div class="section full">
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+                    <!-- Full-width images with number and caption text -->
+                    <div class="slide fade">
+                        <img src="media/DZ_20190316_1648_9249.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="media/DZ_20190317_1709_9384.jpg">
+                    </div>
+                    <!--
+                    <div class="slide fade">
+                        <img src="media/DZ_20190318_1238_9491.jpg">
+                    </div> -->
+                    <div class="slide fade">
+                        <img src="media/DZ_20190318_1857_9719.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="media/DZ_20190318_2152_9786.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="media/DZ_20190319_1328_9910.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="media/DZ_20190319_1506_0028.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="media/DZ_20190320_1802_0684.jpg">
+                    </div>
+                    <div class="slide fade">
+                        <img src="media/DZ_20190322_2022_1311.jpg">
+                    </div>
+                </div>
             </div>
         </main>
+        <footer>
+            <div class="icon-bar">
+                <a href="https://instagram.com/danielzhao.ph" class="fa fa-instagram" target="_blank"></a>
+                <a href="https://twitter.com/iamdanzhao" class="fa fa-twitter" target="_blank"></a>
+                <a href="https://medium.com/@danielzhao" class="fa fa-medium" target="_blank"></a>
+                <a href="https://linkedin.com/in/iamdanzhao" class="fa fa-linkedin" target="_blank"></a>
+                <a href="https://github.com/iamdanzhao" class="fa fa-github" target="_blank"></a>
+            </div>
+            <p><strong>© 2019 Daniel Zhao</strong></p>
+        </footer>
+        <!-- https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+        <script type="text/javascript">
+            var slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("slide");
+                
+                for(i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none"; 
+                    slides[i].style.transition = "all 1s";
+                }
+                
+                slideIndex++;
+                
+                if(slideIndex > slides.length) {
+                    slideIndex = 1
+                }
+                
+                slides[slideIndex - 1].style.display = "block";
+                slides[slideIndex - 1].style.transition = "block";
+                setTimeout(showSlides, 4000);
+            }
+        </script>
     </body>
 </html>

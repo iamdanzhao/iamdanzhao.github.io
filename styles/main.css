@@ -2,7 +2,7 @@ body {
     font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetiva Neue', 'Arial', sans-serif;
     padding: 0;
     margin: 0;
-    line-height: 1.65em;
+    line-height: 1.85em;
 }
 
 main a {
@@ -23,12 +23,15 @@ main a:hover {
 }
 
 header {
+    padding: 0 auto;
     display: flex;
     align-items: center;
     text-transform: uppercase;
     font-weight: 600;
     padding: 3em;
 }
+
+
 
 header a {
     color: black;
@@ -43,7 +46,7 @@ header a:hover {
 
 #siteTitle {
     font-size: 150%;
-    letter-spacing: 0.3em;
+    letter-spacing: .3em;
 }
 
 #siteTitle a {
@@ -60,29 +63,163 @@ nav a {
     margin: 1em;
 }
 
+.soon {
+    color: lightslategrey;
+}
+
 main {
-    padding-top: 4em;
+    padding-top: 8em;
 }
 
 main .section {
-    padding-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .narrow {
     max-width: 480px;
-    margin: 0 auto;
-}
-
-.medium {
-    max-width: 720px;
+    padding: 3em;
     margin: 0 auto;
 }
 
 .wide {
-    max-width: 960px;
-    margin: 0 auto;
+    max-width: 768px;
+    padding: 3em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.full {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1 {
     padding-bottom: 0.5em;
+    font-weight: 600;
+    font-size: 300%;
+}
+
+h4 {
+    text-transform: uppercase;
+    font-size: 100%;
+}
+
+.cols {
+    display: flex;
+}
+
+.box {
+    border: 1px solid;
+}
+
+.half {
+    width: 50%;
+}
+
+.quarter {
+    width: 25%;
+}
+
+.sep:before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 100px;
+    left: -1.5em;
+    height: 1px;
+    border-bottom: 2px solid rgba(42, 69, 106, 0.4);
+}
+
+.sep {
+}
+
+img {
+    width: 100%;
+    border: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    margin-left: -1.5em;
+    list-style: none;
+}
+
+ul li:before {
+    content: "+";
+    padding-right: 0.95em;
+}
+
+ul li >,
+ol li > * {
+    padding: 0;
+    margin: 0;
+}
+
+.fa {
+    padding: 6px;
+    margin-right: 3px;
+    font-size: 75% !important;
+    text-align: center;
+    text-decoration: none;
+    background: black;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.25s ease-in-out;
+    opacity: 1;
+}
+
+.fa:hover {
+    opacity: 0.5;
+    transition: all 0.25s;
+}
+
+.icon-bar {
+    margin-top: -3px;
+    margin-right: 30px;
+}
+
+footer {
+    padding: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 3em;
+}
+
+
+footer > * {
+    display: block;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    margin: auto;
+    margin-top: -1em;
+}
+
+.slide {
+    display: none;
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade 4s linear forwards;
+    animation: fade 4s linear forwards;
+}
+
+@-webkit-keyframes fade {
+    0% { opacity: 0.5; }
+    30% { opacity: 1; }
+    50% { opacity: 1; }
+    0% { opacity: 0.5; }
+}
+
+@keyframes fade {
+    0% { opacity: 0.5; }
+    30% { opacity: 1; }
+    50% { opacity: 1; }
+    0% { opacity: 0.5; }
 }
