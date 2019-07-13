@@ -5,7 +5,7 @@ body {
     line-height: 1.85em;
 }
 
-main a {
+main a:not(.button) {
     padding-left: 2px;
     padding-right: 2px;
     color: black;
@@ -15,8 +15,8 @@ main a {
     transition: color 0.5s ease-in-out;
 }
 
-main a:focus,
-main a:hover {
+main a:not(.button):focus,
+main a:not(.button):hover {
     background: #1f96ff;
     color: #fff;
     transition: all 0.25s;
@@ -107,7 +107,10 @@ h4 {
 }
 
 .cols {
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .box {
@@ -119,6 +122,16 @@ h4 {
 
 .quarter {
     width: 25%;
+}
+
+@media screen and (max-width: 720px) {
+    .half {
+        width: 100%;
+    }
+    
+    .quarter {
+        width: 50%;
+    }
 }
 
 .sep:before {
@@ -140,21 +153,17 @@ img {
 }
 
 ul {
+    margin-bottom: 1.5em;
+    list-style: outside none;
     padding: 0;
-    margin: 0;
-    margin-left: -1.5em;
-    list-style: none;
 }
 
+/*
 ul li:before {
     content: "+";
     padding-right: 0.95em;
 }
-
-ul.no-mark li:before {
-    content: "" !important;
-    padding-right: 1.5em;
-}
+*/
 
 ul li >,
 ol li > * {
@@ -242,4 +251,137 @@ footer > * {
     width: 360px;
     float: right;
     margin: -140px 0 20px 40px;
+}
+
+.project {
+    background-color: #f5f8fc;
+}
+
+.project.half {
+    width: calc(50% - 0.5em); /* 1em padding on each side + .5em padding each side in bewteen */
+    margin-bottom: 12px;
+}
+
+.project.full {
+    width: 100%;
+}
+
+.project > *:not(img){
+    margin-left: 24px;
+    margin-right: 24px;
+    display: block;
+}
+
+.project > *:first-child:not(img) {
+    margin-top: 24px;
+}
+
+.project.full .title {
+    margin-top: 18px;
+}
+
+.project.half img {
+    object-fit: cover;
+    height: 240px;
+}
+
+.project.full img {
+    height: 100%;
+    max-width: 50%;
+    object-fit: cover;
+    float: left;
+    margin-right: 24px;
+}
+
+.project .title {
+    font-size: 120%;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1em;
+    margin-top: 24px !important;
+    margin-bottom: 18px;
+}
+
+.project .subtitle {
+    font-weight: bold;
+    margin-left: 24px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    line-height: 1em;
+}
+
+.project .tool-bar,
+.project .action-bar {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 24px;
+    line-height: 2em;
+}
+
+.project .description {
+    margin-left: 24px;
+    margin-top: 18px;
+    font-size: 85%;
+    line-height: 1.25em;
+}
+
+.project .tool {
+    background-color: salmon;
+    color: white;
+    padding: .25em .5em;
+}
+
+.project .action {
+    background-color: lightslategray;
+    padding: .25em .5em;
+}
+
+.project .button {
+    color: white;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.project .button:hover,
+.project .button:active {
+    opacity: 0.5;
+    transition: all 0.25s;
+}
+
+.project .label {
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.project > *:last-child {
+    margin-bottom: 24px;
+}
+
+.project-container .half:nth-child(odd) {
+    margin-right: 6px;
+}
+
+.project-container .half:nth-child(even) {
+    margin-left: 6px;
+}
+
+@media all and (max-width: 720px) {
+    .project img {
+        width: 100% !important;
+        height: 270px;
+        float: none;
+    }
+    
+    .project.half {
+        width: 100%;
+    }
+    
+    .project-container .half:nth-child(odd) {
+        margin-right: 0;
+    }
+
+    .project-container .half:nth-child(even) {
+        margin-left: 0;
+    }
 }
