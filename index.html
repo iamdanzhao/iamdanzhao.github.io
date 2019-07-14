@@ -3,9 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>Daniel Zhao</title>
-        <link href="styles/main.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles/bootstrap.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link href="/styles/main.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,400i,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
     </head>
     <body>
         <header>
@@ -35,38 +39,64 @@
                 <h4>Photos from Berlin, Brussels, Norway</h4>
                 <p>Nine flights, four trains, three Ubeers, two taxis, two buses, and a lot of walking. Here's a snapshot of a recent spring break trip to the capitol of the European Union, a reunified Berlin, and a snowy Scandinavia.</p>
             </div>
-            <div class="section full">
-                <!-- Slideshow container -->
-                <div class="slideshow-container">
-                    <!-- Full-width images with number and caption text -->
-                    <div class="slide fade">
-                        <img src="media/DZ_20190316_1648_9249.jpg">
+            <div class="bs-carousel-container"> 
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    <li data-target="#myCarousel" data-slide-to="5"></li>
+                    <li data-target="#myCarousel" data-slide-to="6"></li>
+                    <li data-target="#myCarousel" data-slide-to="7"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="media/DZ_20190316_1648_9249.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="media/DZ_20190317_1709_9384.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="media/DZ_20190318_1857_9719.jpg" style="width:100%;">
+                        </div>
+                        
+                        <div class="item">
+                            <img src="media/DZ_20190318_2152_9786.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="media/DZ_20190319_1328_9910.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="media/DZ_20190319_1506_0028.jpg" style="width:100%;">
+                        </div>
+                        
+                        <div class="item">
+                            <img src="media/DZ_20190320_1802_0684.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="media/DZ_20190322_2022_1311.jpg" style="width:100%;">
+                        </div>
                     </div>
-                    <div class="slide fade">
-                        <img src="media/DZ_20190317_1709_9384.jpg">
-                    </div>
-                    <!--
-                    <div class="slide fade">
-                        <img src="media/DZ_20190318_1238_9491.jpg">
-                    </div> -->
-                    <div class="slide fade">
-                        <img src="media/DZ_20190318_1857_9719.jpg">
-                    </div>
-                    <div class="slide fade">
-                        <img src="media/DZ_20190318_2152_9786.jpg">
-                    </div>
-                    <div class="slide fade">
-                        <img src="media/DZ_20190319_1328_9910.jpg">
-                    </div>
-                    <div class="slide fade">
-                        <img src="media/DZ_20190319_1506_0028.jpg">
-                    </div>
-                    <div class="slide fade">
-                        <img src="media/DZ_20190320_1802_0684.jpg">
-                    </div>
-                    <div class="slide fade">
-                        <img src="media/DZ_20190322_2022_1311.jpg">
-                    </div>
+
+                <!-- Left and right controls -->
+                    <a class="left carousel-control arrow" href="#myCarousel" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control arrow" href="#myCarousel" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
         </main>
@@ -81,29 +111,5 @@
             <p><strong>© 2019 Daniel Zhao</strong></p>
         </footer>
         <!-- https://www.w3schools.com/howto/howto_js_slideshow.asp -->
-        <script type="text/javascript">
-            var slideIndex = 0;
-            showSlides();
-            
-            function showSlides() {
-                var i;
-                var slides = document.getElementsByClassName("slide");
-                
-                for(i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none"; 
-                    slides[i].style.transition = "all 1s";
-                }
-                
-                slideIndex++;
-                
-                if(slideIndex > slides.length) {
-                    slideIndex = 1
-                }
-                
-                slides[slideIndex - 1].style.display = "block";
-                slides[slideIndex - 1].style.transition = "block";
-                setTimeout(showSlides, 4000);
-            }
-        </script>
     </body>
 </html>

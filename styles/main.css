@@ -5,7 +5,7 @@ body {
     line-height: 1.85em;
 }
 
-main a:not(.button) {
+main a:not(.button):not(.fa):not(.bs-carousel-container a) {
     padding-left: 2px;
     padding-right: 2px;
     color: black;
@@ -15,8 +15,8 @@ main a:not(.button) {
     transition: color 0.5s ease-in-out;
 }
 
-main a:not(.button):focus,
-main a:not(.button):hover {
+main a:not(.button):not(bs-carousel-container a):focus,
+main a:not(.button):not(bs-carousel-container a):hover {
     background: #1f96ff;
     color: #fff;
     transition: all 0.25s;
@@ -30,8 +30,6 @@ header {
     font-weight: 600;
     padding: 3em;
 }
-
-
 
 header a {
     color: black;
@@ -65,6 +63,20 @@ nav a {
 
 .soon {
     color: lightslategrey;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        display: block;
+    }
+    
+    nav {
+        margin-top: 18px;
+    }
+    
+    nav a:first-child{
+        margin-left: 0;
+    }
 }
 
 main {
@@ -120,12 +132,20 @@ h4 {
     width: 50%;
 }
 
+.third {
+    width: 33.333%;
+}
+
 .quarter {
     width: 25%;
 }
 
 @media screen and (max-width: 720px) {
     .half {
+        width: 100%;
+    }
+    
+    .third {
         width: 100%;
     }
     
@@ -206,36 +226,6 @@ footer > * {
     display: block;
 }
 
-/* Slideshow container */
-.slideshow-container {
-    position: relative;
-    margin: auto;
-    margin-top: -1em;
-}
-
-.slide {
-    display: none;
-}
-
-/* Fading animation */
-.fade {
-    -webkit-animation-name: fade 4s linear forwards;
-    animation: fade 4s linear forwards;
-}
-
-@-webkit-keyframes fade {
-    0% { opacity: 0.5; }
-    30% { opacity: 1; }
-    50% { opacity: 1; }
-    0% { opacity: 0.5; }
-}
-
-@keyframes fade {
-    0% { opacity: 0.5; }
-    30% { opacity: 1; }
-    50% { opacity: 1; }
-    0% { opacity: 0.5; }
-}
 
 .social-links-prof span {
     display: block;
@@ -253,12 +243,27 @@ footer > * {
     margin: -140px 0 20px 40px;
 }
 
+@media screen and (max-width: 768px) {
+    #bio-prof-pic {
+        float: none;
+        margin: 0;
+        margin-bottom: 20px;
+        margin-top: -120px;
+        width: 240px;
+    }
+}
+
 .project {
     background-color: #f5f8fc;
 }
 
 .project.half {
-    width: calc(50% - 0.5em); /* 1em padding on each side + .5em padding each side in bewteen */
+    width: calc(50% - 6px); /* 1em padding on each side + .5em padding each side in bewteen */
+    margin-bottom: 12px;
+}
+
+.project.third {
+    width: calc(33.333% - 9px);
     margin-bottom: 12px;
 }
 
@@ -366,6 +371,24 @@ footer > * {
     margin-left: 6px;
 }
 
+.project-container .third:nth-child(3n+1) {
+    margin-right: 6px;
+}
+
+.project-container .third:nth-child(3n+2) {
+    margin-right: 6px;
+    margin-left: 6px;
+}
+
+.project-container .third:nth-child(3n) {
+    margin-left: 6px;
+}
+
+.project-container .third .subtitle {
+    margin-top: -6px;
+    margin-bottom: 18px;
+}
+
 @media all and (max-width: 720px) {
     .project img {
         width: 100% !important;
@@ -384,4 +407,8 @@ footer > * {
     .project-container .half:nth-child(even) {
         margin-left: 0;
     }
+}
+
+.carousel-control {
+    text-align: center;
 }
