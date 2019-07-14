@@ -5,7 +5,7 @@ body {
     line-height: 1.85em;
 }
 
-main a:not(.button):not(.fa):not(.bs-carousel-container a) {
+main a:not(.button):not(.fa):not(.arrow) {
     padding-left: 2px;
     padding-right: 2px;
     color: black;
@@ -15,8 +15,8 @@ main a:not(.button):not(.fa):not(.bs-carousel-container a) {
     transition: color 0.5s ease-in-out;
 }
 
-main a:not(.button):not(bs-carousel-container a):focus,
-main a:not(.button):not(bs-carousel-container a):hover {
+main a:not(.button):not(.arrow):focus,
+main a:not(.button):not(.arrow):hover {
     background: #1f96ff;
     color: #fff;
     transition: all 0.25s;
