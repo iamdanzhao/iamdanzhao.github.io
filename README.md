@@ -1,3 +1,3 @@
 # Personal website
 
-Check it out at [danielzhao.me](danielzhao.me)!
+Check it out at [danielzhao.com](danielzhao.com)!
