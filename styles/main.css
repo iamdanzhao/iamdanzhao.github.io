@@ -54,6 +54,10 @@ nav {
     margin-left: auto;
 }
 
+a.anchor {
+    padding: 0 !important;
+}
+
 
 nav a {
     font-size: 85%;
@@ -63,6 +67,10 @@ nav a {
 
 .soon {
     color: lightslategrey;
+}
+
+.blue {
+    color: rgb(31, 150, 255);
 }
 
 @media screen and (max-width: 768px) {
@@ -116,6 +124,7 @@ h1 {
 }
 
 h4 {
+    margin-bottom: -3px;
     text-transform: uppercase;
     font-size: 100%;
 }
@@ -261,12 +270,40 @@ footer > * {
     }
 }
 
+h4 a {
+    background: rgba(255,112,167,.4)!important;
+    background: -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(60%,transparent),color-stop(60%,rgba(255,112,167,.4)),to(rgba(255,112,167,.4)))!important;
+    background: linear-gradient(to bottom,transparent 0,transparent 60%,rgba(255,112,167,.4) 60%,rgba(255,112,167,.4) 100%) !important;
+}
+
+h4 a:focus, h4 a:hover {
+    background: #ff70a7 !important;
+    color: #fff !important;
+}
+
+h4 a:focus::after, 
+h4 a:hover::after {
+    content: "→";
+}
+
+.title {
+    font-size: 95%;
+    margin-top: 36px;
+    margin-bottom: ;
+    line-height: 1.25em;
+}
+
+.description {
+    font-size: 95%;
+    line-height: 1.5em;
+}
+
 .project {
     background-color: #f5f8fc;
 }
 
 .project.half {
-    width: calc(50% - 6px); /* 1em padding on each side + .5em padding each side in bewteen */
+    width: calc(50% - 6px - 2px); /* 1em padding on each side + .5em padding each side in bewteen */
     margin-bottom: 12px;
 }
 
@@ -344,17 +381,19 @@ footer > * {
     padding: .25em .5em;
 }
 
-.project .action {
+.action {
     background-color: lightslategray;
     padding: .25em .5em;
 }
 
+.action.button,
 .project .button {
     color: white;
     text-decoration: none;
     transition: all 0.25s ease-in-out;
 }
 
+.action.button:hover,
 .project .button:hover,
 .project .button:active {
     opacity: 0.5;
@@ -395,6 +434,14 @@ footer > * {
 .project-container .third .subtitle {
     margin-top: -6px;
     margin-bottom: 18px;
+}
+
+.arrow-list.bold-items li {
+    font-weight: bold;
+}
+
+.arrow-list li:before {
+    content: "→ ";
 }
 
 @media all and (max-width: 720px) {
