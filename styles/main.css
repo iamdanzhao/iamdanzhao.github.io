@@ -294,7 +294,7 @@ footer > * {
 
 .home-top {
     display: block;
-    height: calc(6vh + 2vw);
+    height: calc(3vh + 1vw);
 }
 
 .home-desc {
@@ -311,6 +311,11 @@ footer > * {
     font-weight: 400;
     font-size: 150%;
     line-height: 150%;
+}
+
+.home-bottom {
+    display: block;
+    height: calc(2vh + 1vw);
 }
 
 /* PAGE STYLES: BIO */
