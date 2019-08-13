@@ -181,6 +181,14 @@ main .section {
     margin-right: auto;
 }
 
+@media screen and (max-width: 640px) {
+    header,
+    .wide,
+    .narrow {
+        padding: 1.5em;
+    }
+}
+
 .cut {
     max-width: 75%;
 }
