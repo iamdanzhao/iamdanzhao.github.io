@@ -20,6 +20,10 @@ img {
     border: none;
 }
 
+code {
+    font-family: 'IBM Plex Mono';
+}
+
 main a:not(.button):not(.fa):not(.arrow) {
     padding-left: 2px;
     padding-right: 2px;
@@ -235,7 +239,8 @@ main .section {
     width: 100px;
     left: -1.5em;
     height: 1px;
-    border-bottom: 2px solid var(--color-slate);
+    /* border-bottom: 2px solid var(--color-slate); */
+    border-bottom: 2px solid rgba(39, 49, 66, 0.5);
 }
 
 /* FOOTER STYLES */
@@ -351,6 +356,10 @@ footer > * {
     margin-bottom: 24px;
 }
 
+.project-container {
+    margin-bottom: 12px;
+}
+
 .project-container .half:nth-child(odd) {
     margin-right: 6px;
 }
@@ -382,7 +391,7 @@ footer > * {
 }
 
 .project.half {
-    width: calc(50% - 6px - 2px); /* 1em padding on each side + .5em padding each side in bewteen */
+    width: calc(50% - 6px);
     margin-bottom: 12px;
 }
 
@@ -488,6 +497,14 @@ footer > * {
     margin-bottom: -6px;
 }
 
+@media screen and (max-width: 720px) {
+    .project.full img {
+        max-width: 100% !important;
+        height: 270px;
+        float: none;
+    }
+}
+
 /* LISTS */
 
 .arrow-list.bold-items li {
@@ -536,4 +553,13 @@ footer > * {
 
 .carousel-control {
     text-align: center;
+}
+
+/* WAZE PAGE */
+
+.img-full-caption {
+    font-size: 85%;
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1.6em;
 }
