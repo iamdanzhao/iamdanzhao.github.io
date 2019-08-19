@@ -447,12 +447,11 @@ main {
     
     .home-desc {
         line-height: 125%;
-        font-size: 175%;
+        font-size: 200%;
     }
     
     .home-subdesc {
-        font-size: 130%;
-        line-height: 130%;
+        font-size: 125%;
     }
 }
 
