@@ -187,8 +187,16 @@ footer > * {
 @media screen and (max-width: 640px) {
     header,
     footer {
-        display: block;
         padding: 1.5em;
+    }
+    
+    header {
+        display: block;
+    }
+    
+    footer p {
+        padding: 0;
+        margin: 0;
     }
     
     nav {
