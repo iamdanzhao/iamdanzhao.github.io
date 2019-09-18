@@ -136,6 +136,11 @@ a.anchor {
     background-color: var(--color-pink);
 }
 
+.small-text {
+    font-size: 70%;
+    display: inline;
+}
+
 /* HEADER and FOOTER STYLES */
 
 header {
