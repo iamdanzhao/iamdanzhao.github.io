@@ -19,6 +19,7 @@ img {
     width: 100%;
     border: none;
     position: relative;
+    display: block;
     z-index: 2000;
 }
 
@@ -201,7 +202,9 @@ footer > * {
     }
     
     header {
+        position: relative;
         display: block;
+        z-index: 2000;
     }
     
     footer p {
@@ -323,10 +326,13 @@ main {
 
 @media screen and (max-width: 640px) {
     .wide,
-    .narrow,
-    .inset {
+    .narrow {
         padding: 0.75em 1.5em;
     } 
+    
+    .inset {
+        padding: 0;
+    }
 
     .wide > *:first-child,
     .narrow > *:first-child,
@@ -682,8 +688,8 @@ main {
 
 @media screen and (max-width: 640px) {
     .photo-overlay {
-        width: calc(100% - 3em);
-        top: 0.75em;
+        width: 100%;
+        top: 0;
     }
 }
 
