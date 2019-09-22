@@ -660,6 +660,7 @@ main {
     left: 0;
     height: 66vh;
     width: 100%;
+    z-index: 2002;
 }
 
 .photo-cover img {
@@ -676,6 +677,7 @@ main {
     top: 1.5em;
     height: 66vh;
     width: calc(100% - 6em);
+    z-index: 2001;
 }
 
 @media screen and (max-width: 640px) {
@@ -691,7 +693,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 2003;
     color: white;
     text-align: center;
 }
