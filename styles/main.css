@@ -18,6 +18,8 @@ body {
 img {
     width: 100%;
     border: none;
+    position: relative;
+    z-index: 2000;
 }
 
 main a:not(.button):not(.fa):not(.arrow) {
@@ -164,11 +166,13 @@ header a:hover {
 }
 
 #siteTitle {
+    z-index: 2000;
     font-size: 150%;
     letter-spacing: .3em;
 }
 
 nav {
+    z-index: 2000;
     margin-left: auto;
 }
 
@@ -187,6 +191,7 @@ footer {
 
 footer > * {
     display: block;
+    z-index: 2000;
 }
 
 @media screen and (max-width: 640px) {
@@ -299,6 +304,13 @@ main {
     margin-right: auto;
 }
 
+.inset {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em 3em;
+}
+
 .bleed {
     max-width: 100%;
     margin-left: auto;
@@ -311,17 +323,20 @@ main {
 
 @media screen and (max-width: 640px) {
     .wide,
-    .narrow {
-        padding: 1.5em;
+    .narrow,
+    .inset {
+        padding: 0.75em 1.5em;
     } 
 
     .wide > *:first-child,
-    .narrow > *:first-child {
+    .narrow > *:first-child,
+    .inset > *:first-child {
         margin-top: 0;
     }
 
     .wide > *:last-child,
-    .narrow > *:last-child {
+    .narrow > *:last-child,
+    .inset > *:last-child {
         margin-bottom: 0;
     }
 }
@@ -630,4 +645,81 @@ main {
 
 .carousel-control {
     text-align: center;
+}
+
+/* PHOTOS COVER PAGE */
+
+.inset.photo-cover {
+    position: relative;
+    height: 66vh;
+}
+
+.photo-cover .photo-link-bg {
+    position: absolute;
+    top: 1.5em;
+    left: 0;
+    height: 66vh;
+    width: 100%;
+}
+
+.photo-cover img {
+    height: 66vh;
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+.photo-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 1.5em;
+    height: 66vh;
+    width: calc(100% - 6em);
+}
+
+@media screen and (max-width: 640px) {
+    .photo-overlay {
+        width: calc(100% - 3em);
+        top: 0.75em;
+    }
+}
+
+.inset.photo-cover .photo-text {
+    position: absolute;
+    max-width: 480px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    color: white;
+    text-align: center;
+}
+
+#gradient-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 1000;
+    position: fixed;
+    display: block;
+    background: -webkit-linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0));
+    background: -o-linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0));
+    background: -moz-linear-gradient(rgba(255,255,250,1), rgba(255,255,255,0));
+    background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+#gradient-bottom {
+    width: 100%;
+    height: 150px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    position: fixed;
+    display: block;
+    background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
+    background: -o-linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
+    background: -moz-linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
 }
