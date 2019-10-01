@@ -19,6 +19,7 @@ img {
     width: 100%;
     border: none;
     position: relative;
+    display: block;
     z-index: 2000;
 }
 
@@ -201,7 +202,9 @@ footer > * {
     }
     
     header {
+        position: relative;
         display: block;
+        z-index: 2000;
     }
     
     footer p {
@@ -323,10 +326,13 @@ main {
 
 @media screen and (max-width: 640px) {
     .wide,
-    .narrow,
-    .inset {
+    .narrow {
         padding: 0.75em 1.5em;
     } 
+    
+    .inset {
+        padding: 0;
+    }
 
     .wide > *:first-child,
     .narrow > *:first-child,
@@ -399,6 +405,12 @@ main {
     border-bottom: 2px solid rgba(39, 49, 66, 0.5);
 }
 
+@media screen and (max-width: 640px) {
+    .sep {
+        display: none;
+    }
+}
+
 /* ELEMENTS: ICONS */
 
 .fa {
@@ -444,11 +456,12 @@ main {
 
 .home-top {
     display: block;
-    height: calc(3vh + 1vw);
+    height: 1em;
 }
 
 .home-desc {
     margin-top: 0.5em;
+    margin-bottom: 1em;
     display: block;
     font-weight: 400;
     font-size: 225%;
@@ -470,7 +483,6 @@ main {
 
 @media screen and (max-width: 640px) {
     .home-top {
-        height: 0;
     }
     
     .home-desc {
@@ -487,9 +499,9 @@ main {
 
 #bio-prof-pic {
     border-radius: 50%;
-    width: 360px;
+    width: 320px;
     float: right;
-    margin: -140px 0 20px 40px;
+    margin: -140px 0 24px 20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -498,7 +510,7 @@ main {
         margin: 0;
         margin-bottom: 20px;
         margin-top: -120px;
-        width: 240px;
+        width: 280px;
     }
 }
 
@@ -660,6 +672,7 @@ main {
     left: 0;
     height: 66vh;
     width: 100%;
+    z-index: 2002;
 }
 
 .photo-cover img {
@@ -676,12 +689,13 @@ main {
     top: 1.5em;
     height: 66vh;
     width: calc(100% - 6em);
+    z-index: 2001;
 }
 
 @media screen and (max-width: 640px) {
     .photo-overlay {
-        width: calc(100% - 3em);
-        top: 0.75em;
+        width: 100%;
+        top: 0;
     }
 }
 
@@ -691,7 +705,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 2003;
     color: white;
     text-align: center;
 }
