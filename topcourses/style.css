@@ -1,24 +1,25 @@
 html {
     background-color: #fefefe;
     font-family: 'Work Sans', sans-serif;
-    padding: 3em;
+    padding: 1.5em;
 }
 
 h1 {
     font-family: 'Work Sans', sans-serif;
-    font-size: 5em;
+    font-size: 4em;
     line-height: 85%;
     margin: 0.5em 0 0.5em 0;
 }
 
 h2 {
     font-family: 'Work Sans', sans-serif;
-    font-size: 4em;
+    font-size: 3em;
+    margin: 0.5em 0 1em 0;
 }
 
 .subtitle {
     font-family: 'Work Sans', sans-serif;
-    font-size: 3em;
+    font-size: 1.75em;
     margin: 0.5em 0 0.5em 0;
 }
 
@@ -34,13 +35,13 @@ h2 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
 }
 
 .article-text {
     display: block;
-    margin-top: 5em;
-    margin-bottom: 5em;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 
 .article-text p {
@@ -60,11 +61,11 @@ div.viz h2 {
 }
 
 svg {
-    margin-top: 4em;
+    margin-top: 2em;
 }
 
 .row.wide {
-    max-width: 1280px;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
