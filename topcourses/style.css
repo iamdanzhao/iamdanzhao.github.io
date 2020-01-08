@@ -62,9 +62,3 @@ div.viz h2 {
 svg {
     margin-top: 4em;
 }
-
-@media only screen and (min-width: 768px) {
-    .viz {
-        width: 33%;
-    }
-}
