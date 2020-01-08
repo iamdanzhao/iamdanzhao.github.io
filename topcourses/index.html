@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Yale's Most Popular Courses | Yale Daily News</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3-time.v1.min.js"></script>
+        <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Work+Sans:400,700&display=swap" rel="stylesheet">
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">-->
+    </head>
+    <body>
+        <script>
+            function responsivefy(svg) {
+                // get container + svg aspect ratio
+                var container = d3.select(svg.node().parentNode),
+                    width = parseInt(svg.style("width")),
+                    height = parseInt(svg.style("height")),
+                    aspect = width / height;
+
+                // add viewBox and preserveAspectRatio properties,
+                // and call resize so that svg resizes on inital page load
+                svg.attr("viewBox", "0 0 " + width + " " + height)
+                    .attr("perserveAspectRatio", "xMinYMid")
+                    .call(resize);
+
+                // to register multiple listeners for same event type, 
+                // you need to add namespace, i.e., 'click.foo'
+                // necessary if you call invoke this function for multiple svgs
+                // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+                d3.select(window).on("resize." + container.attr("id"), resize);
+
+                // get width of container and resize svg to fit it
+                function resize() {
+                    var targetWidth = parseInt(container.style("width"));
+                    svg.attr("width", targetWidth);
+                    svg.attr("height", Math.round(targetWidth / aspect));
+                }
+            }
+        </script>
+        <a href="http://yaledailynews.com"><img src="ydn_logo.gif" class="ydn-logo"></a>
+        <div class="article-info">
+            <h1>Yale's Most Popular Courses</h1>
+            <p class="subtitle">What are students shopping in Spring 2020?</p>
+            <p class="byline">by Maggie Nolan and Daniel Zhao</p>
+        </div>
+        <div class="article-text">
+            <p>Like clockwork, shopping period is upon us once again. Cue the cycle of desperate emails to professors vying for one of the 18 seats in seminars, the furious search for that 2.0-workload class to fulfill a science credit, and the overflowing classrooms in WLH as professors scramble to find a larger classroom.</p>
+            <p>Using data scraped from the Yale Course Demand Statistics website and from CourseTable, we analyzed the classes that are most shopped, trending classes each day, and the departments with the most shoppers.</p>
+            <p>Check back daily, as we'll update this page each night to reflect the latest trends.</p>
+            <p>These are the most popular courses at Yale.</p>
+        </div>
+        <div class="viz most-shopped">
+            <h2>Most shopped today</h2>
+            <p class="description">Courses with the highest enrollment</p>
+            <script>                
+                var mostShopped;
+                
+                svg = d3.select(".viz.most-shopped")
+                    .append("svg")
+                    .attr("width", 360)
+                    .attr("height", 600)
+                    .call(responsivefy);
+                
+                parseDate = d3.timeParse("%Y-%m-%d");
+                
+                parseMostShopped = function(d) {
+                    return {
+                        id: +d.id,
+                        date: parseDate(d.date),
+                        count: +d.count,
+                        name: d.name,
+                        codes: d.codes
+                    }
+                };
+                
+                Promise.all([
+                    d3.csv("most_shopped.csv", parseMostShopped)
+                ]).then(function(files) {
+                    mostShopped = files[0];
+                    
+                    
+                
+                    var scaleWidth = d3.scaleLinear()
+                        .domain([0, d3.max(mostShopped, d => d.count)])
+                        .range([0, 360])
+                    
+                    svg.selectAll(".mostShopped-codes")
+                        .data(mostShopped)
+                        .enter()
+                        .append("text")
+                        .text(d => d.codes)
+                        .attr("class", ".mostShopped-codes")
+                        .attr("x", 90)
+                        .attr("y", (d, i) => i * 60 + 12)
+                        .attr("font-size", "11px")
+                        .attr("font-weight", "bold");
+                    
+                    
+                    svg.selectAll(".mostShopped-name")
+                        .data(mostShopped)
+                        .enter()
+                        .append("text")
+                        .text(d => d.name)
+                        .attr("class", ".mostShopped-name")
+                        .attr("x", 90)
+                        .attr("y", (d, i) => i * 60 + 30)
+                        .attr("font-size", "14px")
+                        .attr("font-weight", "bold");
+                    
+                    svg.selectAll(".mostShopped-bar")
+                        .data(mostShopped)
+                        .enter()
+                        .append("rect")
+                        .attr("x", 0)
+                        .attr("y", (d, i) => i * 60 + 42)
+                        .attr("height", 3)
+                        .attr("width", d => scaleWidth(d.count))
+                        .attr("fill", "rgb(0, 131, 255)");
+                    
+                    svg.selectAll(".mostShopped-count")
+                        .data(mostShopped)
+                        .enter()
+                        .append("text")
+                        .text(d => d.count)
+                        .attr("class", ".mostShopped-count")
+                        .attr("x", 80)
+                        .attr("y", (d, i) => i * 60 + 30)
+                        .attr("fill", "rgba(0, 131, 255)")
+                        .attr("font-size", "40px")
+                        .attr("font-weight", "bold")
+                        .attr("text-anchor", "end");
+                })
+            </script>
+        </div>
+        <div class="viz trending">
+            <h2>Trending today</h2>
+            <p class="description">Courses with the absolute change in enrollment compared to yesterday</p>
+        </div>
+        <div class="viz departments">
+            <h2>Most popular departments</h2>
+            <p class="description">Departments with highest total enrollment</p>
+        </div>
+    </body>
+</html>
