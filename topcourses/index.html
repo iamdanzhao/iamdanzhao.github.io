@@ -78,8 +78,6 @@
                     d3.csv("most_shopped.csv", parseMostShopped)
                 ]).then(function(files) {
                     mostShopped = files[0];
-                    
-                    
                 
                     var scaleWidth = d3.scaleLinear()
                         .domain([0, d3.max(mostShopped, d => d.count)])
@@ -136,6 +134,102 @@
         <div class="viz trending">
             <h2>Trending today</h2>
             <p class="description">Courses with the absolute change in enrollment compared to yesterday</p>
+            <script>                
+                var trending;
+                
+                svgTrending = d3.select(".viz.trending")
+                    .append("svg")
+                    .attr("width", 360)
+                    .attr("height", 600)
+                    .call(responsivefy);
+                
+                parseDate = d3.timeParse("%Y-%m-%d");
+                
+                parseTrending = function(d) {
+                    return {
+                        id: +d.id,
+                        yesterday: +d.yesterday,
+                        today: +d.today,
+                        change: +d.absChange,
+                        name: d.name,
+                        codes: d.codes
+                    }
+                };
+                
+                Promise.all([
+                    d3.csv("trending.csv", parseTrending)
+                ]).then(function(files) {
+                    trending = files[0];
+                
+                    var scaleWidthTrending = d3.scaleLinear()
+                        .domain([0, d3.max(trending, d => d.change)])
+                        .range([0, 360])
+                    
+                    var scaleColorUnit = d3.scaleLinear()
+                        .domain([0, d3.max(trending, d => d.change)])
+                        .range([0, 1])
+                    
+                    var scaleColorTrending = function(val) {
+                        unit = scaleColorUnit(val);
+                        
+                        return d3.interpolateBuGn(unit);
+                    }
+                    
+                    
+                    svgTrending.selectAll(".trending-codes")
+                        .data(trending)
+                        .enter()
+                        .append("text")
+                        .text(d => d.codes)
+                        .attr("class", ".trending-codes")
+                        .attr("x", 90)
+                        .attr("y", (d, i) => i * 60 + 12)
+                        .attr("font-size", "11px")
+                        .attr("font-weight", "bold");
+                    
+                    
+                    svgTrending.selectAll(".trending-name")
+                        .data(trending)
+                        .enter()
+                        .append("text")
+                        .text(d => d.name)
+                        .attr("class", ".trending-name")
+                        .attr("x", 90)
+                        .attr("y", (d, i) => i * 60 + 30)
+                        .attr("font-size", "14px")
+                        .attr("font-weight", "bold");
+                    
+                    svgTrending.selectAll(".trending-bar")
+                        .data(trending)
+                        .enter()
+                        .append("rect")
+                        .attr("x", 0)
+                        .attr("y", (d, i) => i * 60 + 42)
+                        .attr("height", 3)
+                        .attr("width", d => scaleWidthTrending(d.change))
+                        .attr("fill", "rgb(0, 131, 255)");
+                    
+                    svgTrending.selectAll(".trending-count")
+                        .data(trending)
+                        .enter()
+                        .append("text")
+                        .text(d => {
+                            if (d.change > 0) {
+                                return "+" + d.change;
+                            }
+                            else {
+                                return "-" + d.change;
+                            }
+                        })
+                        .attr("class", ".trending-count")
+                        .attr("x", 80)
+                        .attr("y", (d, i) => i * 60 + 30)
+                        .attr("fill", d => scaleColorTrending(d.change))
+                        .attr("font-size", "40px")
+                        .attr("font-weight", "bold")
+                        .attr("text-anchor", "end");
+                })
+            </script>
         </div>
         <div class="viz departments">
             <h2>Most popular departments</h2>
