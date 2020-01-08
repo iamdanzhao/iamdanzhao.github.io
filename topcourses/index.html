@@ -39,24 +39,209 @@
             }
         </script>
         <a href="http://yaledailynews.com"><img src="ydn_logo.gif" class="ydn-logo"></a>
-        <div class="article-info">
-            <h1>Yale's Most Popular Courses</h1>
-            <p class="subtitle">What are students shopping in Spring 2020?</p>
-            <p class="byline">by Maggie Nolan and Daniel Zhao</p>
+        <div class="row narrow">
+            <div class="article-info">
+                <h1>Yale's Most Popular Courses</h1>
+                <p class="subtitle">What are students shopping in Spring 2020?</p>
+                <p class="byline">by Maggie Nolan and Daniel Zhao</p>
+            </div>
+            <div class="article-text">
+                <p>Like clockwork, shopping period is upon us once again. Cue the cycle of desperate emails to professors vying for one of the 18 seats in seminars, the furious search for that 2.0-workload class to fulfill a science credit, and the overflowing classrooms in WLH as professors scramble to find a larger classroom.</p>
+                <p>Using data scraped from the Yale Course Demand Statistics website and from CourseTable, we analyzed the classes that are most shopped, trending classes each day, and the departments with the most shoppers.</p>
+                <p>Check back daily, as we'll update this page each night to reflect the latest trends.</p>
+                <p>These are the most popular courses at Yale.</p>
+            </div>
         </div>
-        <div class="article-text">
-            <p>Like clockwork, shopping period is upon us once again. Cue the cycle of desperate emails to professors vying for one of the 18 seats in seminars, the furious search for that 2.0-workload class to fulfill a science credit, and the overflowing classrooms in WLH as professors scramble to find a larger classroom.</p>
-            <p>Using data scraped from the Yale Course Demand Statistics website and from CourseTable, we analyzed the classes that are most shopped, trending classes each day, and the departments with the most shoppers.</p>
-            <p>Check back daily, as we'll update this page each night to reflect the latest trends.</p>
-            <p>These are the most popular courses at Yale.</p>
-        </div>
-        <div class="viz most-shopped">
-            <h2>Most shopped today</h2>
-            <p class="description">Courses with the highest enrollment</p>
+        <div class="row wide">
+            <div class="cols">
+                <div class="viz most-shopped">
+                    <h2>Most shopped</h2>
+                    <p class="description">The courses with the highest overall enrollment</p>
+                    <script>                
+                        var mostShopped;
+
+                        svg = d3.select(".viz.most-shopped")
+                            .append("svg")
+                            .attr("width", 360)
+                            .attr("height", 600)
+                            .call(responsivefy);
+
+                        parseDate = d3.timeParse("%Y-%m-%d");
+
+                        parseMostShopped = function(d) {
+                            return {
+                                id: +d.id,
+                                date: parseDate(d.date),
+                                count: +d.count,
+                                name: d.name,
+                                codes: d.codes
+                            }
+                        };
+
+                        Promise.all([
+                            d3.csv("most_shopped.csv", parseMostShopped)
+                        ]).then(function(files) {
+                            mostShopped = files[0];
+
+                            var scaleWidth = d3.scaleLinear()
+                                .domain([0, d3.max(mostShopped, d => d.count)])
+                                .range([0, 360])
+
+                            svg.selectAll(".mostShopped-codes")
+                                .data(mostShopped)
+                                .enter()
+                                .append("text")
+                                .text(d => d.codes)
+                                .attr("class", ".mostShopped-codes")
+                                .attr("x", 90)
+                                .attr("y", (d, i) => i * 60 + 12)
+                                .attr("font-size", "11px")
+                                .attr("font-weight", "bold");
+
+
+                            svg.selectAll(".mostShopped-name")
+                                .data(mostShopped)
+                                .enter()
+                                .append("text")
+                                .text(d => d.name)
+                                .attr("class", ".mostShopped-name")
+                                .attr("x", 90)
+                                .attr("y", (d, i) => i * 60 + 30)
+                                .attr("font-size", "14px")
+                                .attr("font-weight", "bold");
+
+                            svg.selectAll(".mostShopped-bar")
+                                .data(mostShopped)
+                                .enter()
+                                .append("rect")
+                                .attr("x", 0)
+                                .attr("y", (d, i) => i * 60 + 42)
+                                .attr("height", 3)
+                                .attr("width", d => scaleWidth(d.count))
+                                .attr("fill", "rgb(0, 131, 255)");
+
+                            svg.selectAll(".mostShopped-count")
+                                .data(mostShopped)
+                                .enter()
+                                .append("text")
+                                .text(d => d.count)
+                                .attr("class", ".mostShopped-count")
+                                .attr("x", 80)
+                                .attr("y", (d, i) => i * 60 + 30)
+                                .attr("fill", "rgba(0, 131, 255)")
+                                .attr("font-size", "40px")
+                                .attr("font-weight", "bold")
+                                .attr("text-anchor", "end");
+                        })
+                    </script>
+</div>
+                <div class="viz trending">
+                    <h2>Trending today</h2>
+                    <p class="description">Greatest change in enrollment compared to yesterday</p>
+                    <script>                
+                        var trending;
+
+                        svgTrending = d3.select(".viz.trending")
+                            .append("svg")
+                            .attr("width", 360)
+                            .attr("height", 600)
+                            .call(responsivefy);
+
+                        parseDate = d3.timeParse("%Y-%m-%d");
+
+                        parseTrending = function(d) {
+                            return {
+                                id: +d.id,
+                                yesterday: +d.yesterday,
+                                today: +d.today,
+                                change: +d.absChange,
+                                name: d.name,
+                                codes: d.codes
+                            }
+                        };
+
+                        Promise.all([
+                            d3.csv("trending.csv", parseTrending)
+                        ]).then(function(files) {
+                            trending = files[0];
+
+                            var scaleWidthTrending = d3.scaleLinear()
+                                .domain([0, d3.max(trending, d => d.change)])
+                                .range([0, 360])
+
+                            var scaleColorUnit = d3.scaleLinear()
+                                .domain([0, d3.max(trending, d => d.change)])
+                                .range([0, 1])
+
+                            var scaleColorTrending = function(val) {
+                                unit = scaleColorUnit(val);
+
+                                return d3.interpolateBuGn(unit);
+                            }
+
+
+                            svgTrending.selectAll(".trending-codes")
+                                .data(trending)
+                                .enter()
+                                .append("text")
+                                .text(d => d.codes)
+                                .attr("class", ".trending-codes")
+                                .attr("x", 90)
+                                .attr("y", (d, i) => i * 60 + 12)
+                                .attr("font-size", "11px")
+                                .attr("font-weight", "bold");
+
+
+                            svgTrending.selectAll(".trending-name")
+                                .data(trending)
+                                .enter()
+                                .append("text")
+                                .text(d => d.name)
+                                .attr("class", ".trending-name")
+                                .attr("x", 90)
+                                .attr("y", (d, i) => i * 60 + 30)
+                                .attr("font-size", "14px")
+                                .attr("font-weight", "bold");
+
+                            svgTrending.selectAll(".trending-bar")
+                                .data(trending)
+                                .enter()
+                                .append("rect")
+                                .attr("x", 0)
+                                .attr("y", (d, i) => i * 60 + 42)
+                                .attr("height", 3)
+                                .attr("width", d => scaleWidthTrending(d.change))
+                                .attr("fill", "rgb(0, 131, 255)");
+
+                            svgTrending.selectAll(".trending-count")
+                                .data(trending)
+                                .enter()
+                                .append("text")
+                                .text(d => {
+                                    if (d.change > 0) {
+                                        return "+" + d.change;
+                                    }
+                                    else {
+                                        return "-" + d.change;
+                                    }
+                                })
+                                .attr("class", ".trending-count")
+                                .attr("x", 80)
+                                .attr("y", (d, i) => i * 60 + 30)
+                                .attr("fill", d => scaleColorTrending(d.change))
+                                .attr("font-size", "40px")
+                                .attr("font-weight", "bold")
+                                .attr("text-anchor", "end");
+                        })
+                    </script>
+                </div>
+                <div class="viz seminars">
+            <h2>Top seminars</h2>
+            <p class="description">Oversubscribed seminars with highest enrollment</p>
             <script>                
-                var mostShopped;
+                var seminars;
                 
-                svg = d3.select(".viz.most-shopped")
+                svgSeminars = d3.select(".viz.seminars")
                     .append("svg")
                     .attr("width", 360)
                     .attr("height", 600)
@@ -64,10 +249,9 @@
                 
                 parseDate = d3.timeParse("%Y-%m-%d");
                 
-                parseMostShopped = function(d) {
+                parseSeminars = function(d) {
                     return {
                         id: +d.id,
-                        date: parseDate(d.date),
                         count: +d.count,
                         name: d.name,
                         codes: d.codes
@@ -75,39 +259,39 @@
                 };
                 
                 Promise.all([
-                    d3.csv("most_shopped.csv", parseMostShopped)
+                    d3.csv("seminars.csv", parseSeminars)
                 ]).then(function(files) {
-                    mostShopped = files[0];
+                    seminars = files[0];
                 
                     var scaleWidth = d3.scaleLinear()
-                        .domain([0, d3.max(mostShopped, d => d.count)])
+                        .domain([0, d3.max(seminars, d => d.count)])
                         .range([0, 360])
                     
-                    svg.selectAll(".mostShopped-codes")
-                        .data(mostShopped)
+                    svgSeminars.selectAll(".seminars-codes")
+                        .data(seminars)
                         .enter()
                         .append("text")
                         .text(d => d.codes)
-                        .attr("class", ".mostShopped-codes")
+                        .attr("class", ".seminars-codes")
                         .attr("x", 90)
                         .attr("y", (d, i) => i * 60 + 12)
                         .attr("font-size", "11px")
                         .attr("font-weight", "bold");
                     
                     
-                    svg.selectAll(".mostShopped-name")
-                        .data(mostShopped)
+                    svgSeminars.selectAll(".seminars-name")
+                        .data(seminars)
                         .enter()
                         .append("text")
                         .text(d => d.name)
-                        .attr("class", ".mostShopped-name")
+                        .attr("class", ".seminars-name")
                         .attr("x", 90)
                         .attr("y", (d, i) => i * 60 + 30)
                         .attr("font-size", "14px")
                         .attr("font-weight", "bold");
                     
-                    svg.selectAll(".mostShopped-bar")
-                        .data(mostShopped)
+                    svgSeminars.selectAll(".mostShopped-bar")
+                        .data(seminars)
                         .enter()
                         .append("rect")
                         .attr("x", 0)
@@ -116,12 +300,12 @@
                         .attr("width", d => scaleWidth(d.count))
                         .attr("fill", "rgb(0, 131, 255)");
                     
-                    svg.selectAll(".mostShopped-count")
-                        .data(mostShopped)
+                    svgSeminars.selectAll(".seminars-count")
+                        .data(seminars)
                         .enter()
                         .append("text")
                         .text(d => d.count)
-                        .attr("class", ".mostShopped-count")
+                        .attr("class", ".seminars-count")
                         .attr("x", 80)
                         .attr("y", (d, i) => i * 60 + 30)
                         .attr("fill", "rgba(0, 131, 255)")
@@ -131,109 +315,7 @@
                 })
             </script>
         </div>
-        <div class="viz trending">
-            <h2>Trending today</h2>
-            <p class="description">Courses with the absolute change in enrollment compared to yesterday</p>
-            <script>                
-                var trending;
-                
-                svgTrending = d3.select(".viz.trending")
-                    .append("svg")
-                    .attr("width", 360)
-                    .attr("height", 600)
-                    .call(responsivefy);
-                
-                parseDate = d3.timeParse("%Y-%m-%d");
-                
-                parseTrending = function(d) {
-                    return {
-                        id: +d.id,
-                        yesterday: +d.yesterday,
-                        today: +d.today,
-                        change: +d.absChange,
-                        name: d.name,
-                        codes: d.codes
-                    }
-                };
-                
-                Promise.all([
-                    d3.csv("trending.csv", parseTrending)
-                ]).then(function(files) {
-                    trending = files[0];
-                
-                    var scaleWidthTrending = d3.scaleLinear()
-                        .domain([0, d3.max(trending, d => d.change)])
-                        .range([0, 360])
-                    
-                    var scaleColorUnit = d3.scaleLinear()
-                        .domain([0, d3.max(trending, d => d.change)])
-                        .range([0, 1])
-                    
-                    var scaleColorTrending = function(val) {
-                        unit = scaleColorUnit(val);
-                        
-                        return d3.interpolateBuGn(unit);
-                    }
-                    
-                    
-                    svgTrending.selectAll(".trending-codes")
-                        .data(trending)
-                        .enter()
-                        .append("text")
-                        .text(d => d.codes)
-                        .attr("class", ".trending-codes")
-                        .attr("x", 90)
-                        .attr("y", (d, i) => i * 60 + 12)
-                        .attr("font-size", "11px")
-                        .attr("font-weight", "bold");
-                    
-                    
-                    svgTrending.selectAll(".trending-name")
-                        .data(trending)
-                        .enter()
-                        .append("text")
-                        .text(d => d.name)
-                        .attr("class", ".trending-name")
-                        .attr("x", 90)
-                        .attr("y", (d, i) => i * 60 + 30)
-                        .attr("font-size", "14px")
-                        .attr("font-weight", "bold");
-                    
-                    svgTrending.selectAll(".trending-bar")
-                        .data(trending)
-                        .enter()
-                        .append("rect")
-                        .attr("x", 0)
-                        .attr("y", (d, i) => i * 60 + 42)
-                        .attr("height", 3)
-                        .attr("width", d => scaleWidthTrending(d.change))
-                        .attr("fill", "rgb(0, 131, 255)");
-                    
-                    svgTrending.selectAll(".trending-count")
-                        .data(trending)
-                        .enter()
-                        .append("text")
-                        .text(d => {
-                            if (d.change > 0) {
-                                return "+" + d.change;
-                            }
-                            else {
-                                return "-" + d.change;
-                            }
-                        })
-                        .attr("class", ".trending-count")
-                        .attr("x", 80)
-                        .attr("y", (d, i) => i * 60 + 30)
-                        .attr("fill", d => scaleColorTrending(d.change))
-                        .attr("font-size", "40px")
-                        .attr("font-weight", "bold")
-                        .attr("text-anchor", "end");
-                })
-            </script>
-        </div>
-        <div class="viz departments">
-            <h2>Most popular departments</h2>
-            <p class="description">Departments with highest total enrollment</p>
+            </div>
         </div>
     </body>
 </html>
