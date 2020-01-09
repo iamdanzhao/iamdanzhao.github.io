@@ -7,7 +7,7 @@
         <script src="https://d3js.org/d3-time.v1.min.js"></script>
         <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
         <link href="style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Work+Sans:400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700|Work+Sans:400,700&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
     </head>
     <body>
@@ -40,24 +40,25 @@
             }
         </script>
         <a href="http://yaledailynews.com"><img src="ydn_logo.gif" class="ydn-logo"></a>
-        <div class="row narrow">
-            <div class="article-info">
-                <h1>Yale's Most Popular Courses</h1>
-                <p class="subtitle">The courses students are shopping in Spring 2020</p>
-                <p class="byline">by Maggie Nolan and Daniel Zhao</p>
-            </div>
-            <div class="article-text">
-                <p>Like clockwork, shopping period is upon us once again. Cue the cycle of desperate emails from students vying for one of the 18 seats in seminars, the furious search for that 2.0-workload science credit, and the overflowing classrooms in WLH on the first day of shopping period.</p>
-                <p>Using data scraped from the Yale Course Demand Statistics website, we analyzed the classes that are most shopped, trending classes, and the most oversubscribed seminars.</p>
-                <p>Be sure to check back daily, since we'll update this page to reflect the latest trends.</p>
-                <p>From <em>Bioethics and Law</em> to <em>Introductory Microeconomics</em>, these are the most popular courses at Yale.</p>
-            </div>
+        <div class="row bleed">
+            <img src="coursetable_ZoeBerg.jpg" class="header-img">
+        </div>
+        <div class="row narrow article-info">
+            <h1>Yale's Most Popular Courses</h1>
+            <p class="subtitle">The top courses students are shopping for Spring 2020</p>
+            <p class="byline">Analysis by Maggie Nolan and Daniel Zhao</p>
+            <p class="byline">Cover photo by Zoe Berg</p>
+        </div>
+        <div class="row narrow article-text">
+            <p>Like clockwork, shopping period is upon us once again. Cue the cycle of desperate emails from students vying for one of the 18 seats in seminars, the furious search for that 2.0-workload science credit, and the overflowing classrooms in WLH on the first day of shopping period.</p>
+            <p>Using data from Yale Course Demand Statistics, we analyzed the classes that are most shopped, trending classes, and the most oversubscribed seminars.</p>
+            <p>We're updating this page daily, so be sure to check back for the latest trends.</p>
+            <p>From <em>Bioethics and Law</em> to <em>Introductory Microeconomics</em>, these are the most popular courses at Yale.</p>
         </div>
         <div class="row wide">
             <div class="cols">
                 <div class="viz most-shopped">
                     <h2>Most shopped</h2>
-                    <p class="description">The courses with the highest overall enrollment</p>
                     <script>                
                         var mostShopped;
 
@@ -135,10 +136,9 @@
                                 .attr("text-anchor", "end");
                         })
                     </script>
-</div>
+                </div>
                 <div class="viz trending">
                     <h2>Trending today</h2>
-                    <p class="description">Greatest change in enrollment compared to yesterday</p>
                     <script>                
                         var trending;
 
@@ -155,7 +155,8 @@
                                 id: +d.id,
                                 yesterday: +d.yesterday,
                                 today: +d.today,
-                                change: +d.absChange,
+                                change: +d.change,
+                                absChange: +d.absChange,
                                 name: d.name,
                                 codes: d.codes
                             }
@@ -220,10 +221,10 @@
                                 .append("text")
                                 .text(d => {
                                     if (d.change > 0) {
-                                        return "+" + d.change;
+                                        return "+" + d.absChange;
                                     }
                                     else {
-                                        return "-" + d.change;
+                                        return "-" + d.absChange;
                                     }
                                 })
                                 .attr("class", ".trending-count")
@@ -238,7 +239,6 @@
                 </div>
                 <div class="viz seminars">
             <h2>Top seminars</h2>
-            <p class="description">Oversubscribed seminars with highest enrollment</p>
             <script>                
                 var seminars;
                 
@@ -274,7 +274,7 @@
                         .append("text")
                         .text(d => d.codes)
                         .attr("class", ".seminars-codes")
-                        .attr("x", 90)
+                        .attr("x", 65)
                         .attr("y", (d, i) => i * 60 + 12)
                         .attr("font-size", "11px")
                         .attr("font-weight", "bold");
@@ -286,7 +286,7 @@
                         .append("text")
                         .text(d => d.name)
                         .attr("class", ".seminars-name")
-                        .attr("x", 90)
+                        .attr("x", 65)
                         .attr("y", (d, i) => i * 60 + 30)
                         .attr("font-size", "14px")
                         .attr("font-weight", "bold");
@@ -307,7 +307,7 @@
                         .append("text")
                         .text(d => d.count)
                         .attr("class", ".seminars-count")
-                        .attr("x", 80)
+                        .attr("x", 55)
                         .attr("y", (d, i) => i * 60 + 30)
                         .attr("fill", "rgba(0, 131, 255)")
                         .attr("font-size", "40px")
