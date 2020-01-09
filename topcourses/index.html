@@ -57,12 +57,12 @@
         </div>
         <div class="row wide">
             <div class="cols">
-                <div class="viz most-shopped">
+                <div class="viz most-shopped" id="most-shopped">
                     <h2>Most shopped</h2>
                     <script>                
                         var mostShopped;
 
-                        svg = d3.select(".viz.most-shopped")
+                        svgMostShopped = d3.select(".viz.most-shopped")
                             .append("svg")
                             .attr("width", 360)
                             .attr("height", 600)
@@ -89,7 +89,7 @@
                                 .domain([0, d3.max(mostShopped, d => d.count)])
                                 .range([0, 360])
 
-                            svg.selectAll(".mostShopped-codes")
+                            svgMostShopped.selectAll(".mostShopped-codes")
                                 .data(mostShopped)
                                 .enter()
                                 .append("text")
@@ -101,7 +101,7 @@
                                 .attr("font-weight", "bold");
 
 
-                            svg.selectAll(".mostShopped-name")
+                            svgMostShopped.selectAll(".mostShopped-name")
                                 .data(mostShopped)
                                 .enter()
                                 .append("text")
@@ -112,7 +112,7 @@
                                 .attr("font-size", "14px")
                                 .attr("font-weight", "bold");
 
-                            svg.selectAll(".mostShopped-bar")
+                            svgMostShopped.selectAll(".mostShopped-bar")
                                 .data(mostShopped)
                                 .enter()
                                 .append("rect")
@@ -122,7 +122,7 @@
                                 .attr("width", d => scaleWidth(d.count))
                                 .attr("fill", "rgb(0, 131, 255)");
 
-                            svg.selectAll(".mostShopped-count")
+                            svgMostShopped.selectAll(".mostShopped-count")
                                 .data(mostShopped)
                                 .enter()
                                 .append("text")
@@ -137,7 +137,7 @@
                         })
                     </script>
                 </div>
-                <div class="viz trending">
+                <div class="viz trending" id="trending">
                     <h2>Trending today</h2>
                     <script>                
                         var trending;
@@ -237,7 +237,7 @@
                         })
                     </script>
                 </div>
-                <div class="viz seminars">
+                <div class="viz seminars" id="seminars">
             <h2>Top seminars</h2>
             <script>                
                 var seminars;
