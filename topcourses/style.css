@@ -7,6 +7,12 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(0, 131, 255)
+}
+
 h1 {
     font-family: 'Work Sans', sans-serif;
     font-size: 4em;
@@ -18,6 +24,12 @@ h2 {
     font-family: 'Work Sans', sans-serif;
     font-size: 3em;
     margin: 0.5em 0 1em 0;
+}
+
+
+h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5em;
 }
 
 .subtitle {
@@ -47,14 +59,15 @@ div.viz h2 {
 
 .description {
     font-family: 'Work Sans', sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 700;
     line-height: 75%;
-    margin: 0;
+    margin: 0.5em 0 1em 0;
 }
 
 svg {
     margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .row.bleed {
@@ -112,4 +125,10 @@ svg {
 .header-img {
     width: 100%;
     object-fit: cover;
+}
+
+.about {
+    background-color: #f2f2f2;
+    padding: 1em 2em;
+    margin-bottom: 2em;
 }
