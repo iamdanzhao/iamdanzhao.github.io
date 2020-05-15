@@ -525,6 +525,7 @@ main {
 .home-image {
     object-fit: cover;
     height: 560px;
+    margin-bottom: 4em;
 }
 
 .home-bio {
@@ -532,14 +533,13 @@ main {
     line-height: 1.5em;
 }
 
-@media screen and (max-width: 640px) {    
-    .home-desc {
-        line-height: 125%;
-        font-size: 200%;
+@media screen and (max-width: 640px) {   
+    .home-title {
+        font-size: 250%;
     }
     
-    .home-subdesc {
-        font-size: 125%;
+    .home-subtitle {
+        font-size: 150%;
     }
 }
 
