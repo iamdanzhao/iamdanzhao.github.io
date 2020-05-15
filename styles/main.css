@@ -388,6 +388,11 @@ main {
     padding-right: 1.5em;
 }
 
+.two-thirds {
+    width: calc(66.66% - 1.5em);
+    padding-right: 1.5em;
+}
+
 .quarter {
     width: calc(25% - 1.5em);
     padding-right: 1.5em;
@@ -400,6 +405,11 @@ main {
     }
     
     .third {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .two-thirds {
         width: 100%;
         padding-right: 0;
     }
@@ -485,16 +495,38 @@ main {
 }
 
 .home-blurb {
-    margin-top: 1.25em;
     display: block;
     font-weight: 400;
     font-size: 125%;
-    line-height: 150%;
+    line-height: 145%;
 }
 
 .home-bottom {
     display: block;
     height: calc(2vh + 1vw);
+}
+
+.home-pills {
+    display: inline-block;
+    margin-top: 1.5em;
+    padding: 0.25em 0.75em;
+    color: white;
+    background-color: var(--color-blue);
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: 700;
+    border-radius: 3px;
+}
+
+
+.home-image {
+    object-fit: cover;
+    height: 560px;
+}
+
+.home-bio {
+    font-size: 95%;
+    line-height: 1.5em;
 }
 
 @media screen and (max-width: 640px) {    
