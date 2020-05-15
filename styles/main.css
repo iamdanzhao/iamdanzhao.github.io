@@ -23,7 +23,8 @@ img {
     z-index: 2000;
 }
 
-main a:not(.button):not(.fa):not(.arrow) {
+main a:not(.button):not(.fa):not(.arrow),
+footer a:not(.button):not(.fa):not(.arrow){
     padding-left: 2px;
     padding-right: 2px;
     color: black;
@@ -34,7 +35,9 @@ main a:not(.button):not(.fa):not(.arrow) {
 }
 
 main a:not(.button):not(.arrow):focus,
-main a:not(.button):not(.arrow):hover {
+main a:not(.button):not(.arrow):hover,
+footer a:not(.button):not(.arrow):focus,
+footer a:not(.button):not(.arrow):hover {
     background: var(--color-blue);
     color: white;
     transition: all 0.25s;
