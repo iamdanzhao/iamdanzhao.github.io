@@ -52,49 +52,25 @@ code {
     border-radius: 4px;
 }
 
-h1 {
+h1,
+h2, 
+h3, 
+h4 {
+    line-height: 1.25em;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
+}
+
+h1 {
     font-weight: 600;
     font-size: 300%;
-    line-height: 1.15em;
 }
 
 h4 {
-    margin-bottom: 0;
-    text-transform: uppercase;
     font-size: 95%;
-    margin-top: 2.5em;
-    margin-bottom: 1.5em;
-    line-height: 1.25em;
-}
-
-h4 + h5 {
-    line-height: 1.5em;
-    margin-top: -1em;
-    margin-bottom: 0;
-    color: gray;
-}
-
-h4 a,
-h5 a {
-    background: rgba(255, 84, 112, 0.4) !important;
-    background: -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(60%,transparent),color-stop(60%,rgba(255, 84, 112,.4)),to(rgba(255, 84, 112, .4)))!important;
-    background: linear-gradient(to bottom,transparent 0,transparent 60%,rgba(255, 84, 112, .4) 60%,rgba(255, 84, 112, .4) 100%) !important;
-}
-
-h4 a:focus, 
-h4 a:hover,
-h5 a:focus,
-h5 a:hover {
-    background: var(--color-pink) !important;
-    color: white !important;
-}
-
-h4 a:focus::after, 
-h4 a:hover::after,
-h5 a:focus::after,
-h5 a:hover::after {
-    content: "→";
+    text-transform: uppercase;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 @media screen and (max-width: 640px) {
@@ -562,20 +538,47 @@ main {
     }
 }
 
+/* PAGE STYLES: WORK */
 
-
-
-
-.inset.photo-cover .photo-text {
-    position: absolute;
-    max-width: 480px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2003;
-    color: white;
-    text-align: center;
+.link-person {
+    color: black !important;
+    background-color: #eee;
 }
+
+.link-github {
+    background-color: #6f42c1;
+}
+
+.link-page {
+    background-color: var(--color-blue);
+}
+
+.link-report {
+    background-color: var(--color-pink);
+}
+
+.link-page,
+.link-github,
+.link-person,
+.link-report {
+    font-size: 90%;
+    color: white;
+    border-radius: 3px;
+    padding: 1px 6px;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.link-page:hover,
+.link-github:hover,
+.link-report:hover {
+    opacity: 0.75;
+    transition: all 0.25s ease-in-out;
+}
+
+/* PAGE STYLES: GRADIENT */
 
 #gradient-top {
     top: 0;
@@ -603,4 +606,17 @@ main {
     background: -o-linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
     background: -moz-linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
     background: linear-gradient(rgba(255,255,255,0), rgba(255,254,250,1));
+}
+
+/* MISC */
+
+.inset.photo-cover .photo-text {
+    position: absolute;
+    max-width: 480px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2003;
+    color: white;
+    text-align: center;
 }
