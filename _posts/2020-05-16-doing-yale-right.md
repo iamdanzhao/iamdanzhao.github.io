@@ -1,7 +1,7 @@
 ---
 title: On "doing Yale right"
 author: Daniel Zhao
-blurb: Discusing the question of whether or not I did Yale right
+blurb: Don't get your hopes up, this is just filler text for now
 layout: blog
 ---
 
