@@ -227,6 +227,8 @@ ol li > * {
 .list-plus,
 .list-arrows {
     padding-left: 40px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .list-plus li,
@@ -554,7 +556,7 @@ main {
     color: white;
     border-radius: 3px;
     padding: 1px 6px;
-    margin-right: 3px;
+    margin-right: 1px;
     margin-left: 3px;
     text-decoration: none;
     transition: all 0.25s ease-in-out;
