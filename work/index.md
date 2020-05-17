@@ -5,6 +5,8 @@ title: Work
 
 # Work
 
+I'm driven by tangible *results*, and where possible, real-world *impact*, and I feel fortunate to have been able to explore a variety of interests while pursuing real-world applicability. Below I've collected some projects I've completed across courses, internships, and my spare time that best capture my academic interests, skills, and passions.
+
 {: .list-arrows .list-bold}
 - [Highlights](#highlights)
 - [Data science](#data-science)
@@ -13,28 +15,33 @@ title: Work
 - [Music & piano](#music)
 - [Other](#other)
 
+<br>
+
 ## Highlights... {#highlights}
 
-- **Built and led the Data Analytics desk within the Yale Daily News**, recruiting 15 members in its first year, setting up a technical stack (`R`, `D3.js`, `Tableau`), preparing documentation and technical guides, coordinating with the YDN's management and content teams, and guiding data reporters as they clean, analyze, visualize, and tell stories about data. More importantly, we're building support for data-driven journalism and interactive multimedia within the YDN. Check out our recent projects on [popular courses at Yale](https://yaledailynews.com/blog/2020/01/10/yales-most-popular-courses/){:target="_blank"} and [shifting demographics of athletic teams](http://features.yaledailynews.com/blog/2020/04/24/analysis-a-shifting-demographic-for-storied-yale-crew-international-athletes-elevate-the-elis/){target="_blank"}.
-- **Prototyped dashboards to unify multiple streams of customer feedback data at the U.S. Bureau of Labor Statistics and automate monthly reporting**, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases. Along the way, I analyzed and visualized web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined dashboard requirements for future development. I used `R Shiny`, with natural language processing applications in `spaCy`, pulled in via `reticulate`. [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
+{:.list-arrows}
+- {% include lbl-now.html %} **Built and led the Data Analytics desk within the Yale Daily News**, recruiting 15 members in its first year, setting up a technical stack (`R`, `D3.js`, `Tableau`), preparing documentation and technical guides, coordinating with the YDN's management and content teams, and guiding data reporters as they clean, analyze, visualize, and tell stories about data. More importantly, we're building support for data-driven journalism and interactive multimedia within the YDN. Check out our recent projects on [**popular courses at Yale**](https://yaledailynews.com/blog/2020/01/10/yales-most-popular-courses/){:target="_blank"} and [**shifting demographics of athletic teams**](http://features.yaledailynews.com/blog/2020/04/24/analysis-a-shifting-demographic-for-storied-yale-crew-international-athletes-elevate-the-elis/){:target="_blank"}.
+- **Prototyped dashboards to unify multiple streams of customer feedback data at the U.S. Bureau of Labor Statistics and automate monthly reporting**, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases. Along the way, I analyzed and visualized web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined dashboard requirements for future development. I used `R Shiny`, with natural language processing applications in `spaCy` integrated via `reticulate`. [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
 - **Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers**. This would save the city tens of thousands of dollars from not having to hire outside engineering firms to conduct the same analysis. I completed this work as part of my summer 2018 internship at Louisville's Office of Civic Innovation, using a combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`. [More details](http://danielzhao.com/work/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
 
-## Crunched some numbers... {#data-science}
+## Statistics & data science {#data-science}
 
 {: .list-plus}
 - **Conducted a randomized field experiment** on whether using photos in text messages increases link click-through rates, with implications for text message marketing. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. Final project for S&DS 315: Measuring Impact, Prof. Josh Kalla. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button inline-label-page"} [Slides](https://docs.google.com/presentation/d/1qjBd1igY0IjrU7NS7eUP02LMKwQGF-yPGUnW_CZ_MUg/edit?usp=sharing){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button inline-label-github"}
 - **Analyzed Yale student body survey results on grading systems during the COVID-19**, comparing student support for Universal Pass versus Optional P/F and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
 - **Applied natural language processing on news articles to track the US-China trade war**. We scraped White House press releases and Chinese state media articles in order to apply sentiment analysis and LDA topic modeling, demonstrating that sentiment often moves in tandem with key developments in the trade war. Used `selenium` and `BeautifulSoup` in Python for scraping, `dplyr` and `ggplot2` in R for analysis and visualization, and `topicmodels` in R for topic modeling. Final project for GLBL 849: Big Data & Global Policy, Prof. Casey King. [GitHub](https://github.com/iamdanzhao/maketradenotwar){:target="_blank" class="button inline-label-github"}
 
+{:.description}
 Along the way, I've gained in-depth experience with `R` and the `tidyverse`, including deep knowledge of `dplyr`, `tidyr`, `ggplot2`, and `purrr`, as well as applications in modeling, natural language processing, and mapping/GIS. On the Python side, I'm proficient in web scraping using whatever tool gets the job done (either `requests`, `selenium`, `BeautifulSoup`, or a combination), working with APIs, and machine learning. I'm also proficient with `D3.js`, Stata, Tableau, `R Shiny`, and `SQL`.
 
+{:.description}
 I've attempted to document all of this by creating reference guides for what I've learned. They're incomplete and I'm constantly adding to them, but perhaps they'll be useful:
 
 {: .list-plus .list-bold}
 - [R Reference](http://danielzhao.com/media/r_reference.html){:target="_bold"}
 - [Statistics Reference](https://drive.google.com/file/d/1CeTKZ32HvNSXsvFgMBpNHLc0B5npiUac/view?usp=sharing){:target="_bold"}
 
-## Researched policy issues and more... {#social-science}
+## Policy & social science {#social-science}
 
 {: .list-plus}
 - Helped write a report on how to **bring young civic technologists into the public sector** by creating a student loan forgiveness program, a proven model in other fields [Report on inspire2serve.gov](https://inspire2serve.gov/_api/files/343){: class="button inline-label-page" target="_blank"} [Website](https://picturegrants.org/){: class="button inline-label-page" target="_blank"}
@@ -58,7 +65,7 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 - [**Approaches to International Development (GLBL 225, Spring 2019)**](https://drive.google.com/file/d/1vTsq0fOixLEUefBCcL8mLy9ej9sBTF5o/view?usp=sharing){: target="_blank"}
 - [**Approaches to International Security (GLBL 275, Fall 2019)**](https://docs.google.com/document/d/1hmdrbq0UDAe_QP4E9ahp-gVzRTDT0UG4XjqLRGrV7MM/edit?usp=sharing){: target="_blank"}
 
-## Snapped a few photos... {#photography}
+## Photography {#photography}
 
 {: .list-plus}
 - {% include lbl-now.html %} **Serve as a [photo editor for the Yale Daily News](https://www.instagram.com/yaledailynews/){:target="_blank"} for two years**, where I coordinated a team of photographers to produce daily content for the paper, facilitated recruitment, expanded our collection of stock photography, and increased year-over-year recruitment
@@ -66,7 +73,7 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 - {% include lbl-now.html %} **Run a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
 - **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends climate policy
 
-## Messed around on the piano... {#music}
+## Music & piano {#music}
 
 #### Piano arrangements
 
@@ -88,7 +95,3 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 **Map of hubs of US Big Three airline companies** [Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1x2s9hTjBWYEQRFqwLvMWxp2eVJENeZsx&ll=30.791630598850965%2C-96.6942578&z=4){:target="_blank" class="inline-label-page button"}
 
 - Current as of December 2018, but Delta has since designated Boston (BOS) as a hub, and established focus city operations Austin (AUS), Nashville (BNA), and San Jose (SJC). Of course, all of this is up in the air because nobody knows what will happen post-coronavirus. 
-
-<br>
-
-This page drew inspiration from [**Nik Marda**](http://nikmarda.com).
