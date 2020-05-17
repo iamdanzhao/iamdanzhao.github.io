@@ -16,15 +16,18 @@ title: Work
 </div>
 <div class="wide sep"></div>
 <div class="wide">
+    
 ### Testing this out
 
 Does this really work?
 
 - Does this really work?
-- What about `a` tags within `li` tags? <a href="">Test</a>
+- What about ```a``` tags within ```li``` tags? <a href="">Test</a>
 - What about the whole <a href="button link-github">thing</a>?
+
 </div>
 <div class="wide">
+    
     ### Testing this out
 
     Does this really work?
@@ -32,6 +35,7 @@ Does this really work?
     - Does this really work?
     - What about `a` tags within `li` tags? <a href="">Test</a>
     - What about the whole <a href="button link-github">thing</a>?
+    
 </div>
 <div class="wide">
     <h2><a id="leadership" class="anchor"></a>Leadership</h2>
