@@ -11,6 +11,18 @@ Does this really work?
 - What about ```a``` tags within ```li``` tags? <a href="">Test</a>
 - What about the whole <a href="button link-github">thing</a>?
 
+### Repeated headers like this
+
+More paragraphs that don't really say anything
+
+## Larger headings, does this work?
+
+More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything
+
+## Larger headings, does this work?
+
+More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything More paragraphs that don't really say anything
+
 <div class="wide">
     <h1>Work</h1>
     <ul class="list-arrows list-bold">
