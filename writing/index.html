@@ -5,19 +5,19 @@ layout: basic
 
 <h1>Writing</h1>
 
-<h3>Blog posts and writing</h3>
+<h2>Blog posts and writing</h2>
 
 {% for post in site.posts %}
 
 <div class="posts-entry">
-    <a class="posts-entry-title">{{ post.title }}</a>
-    <span class="posts-entry-date">{{ post.date | "%B %-d %Y" }}</span>
+    <a class="posts-entry-title" href="{{ post.url }}">{{ post.title }}</a>
+    <span class="posts-entry-date">{{ post.date | date: "%B %-d %Y" }}</span>
     <span class="posts-entry-blurb">{{ post.blurb }}</span>
 </div>
 
 {% endfor %}
 
-<h3>Elsewhere on the internet</h3>
+<h2>Elsewhere on the internet</h2>
 
 <div class="posts-entry">
     <a class="posts-entry-title" href="https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc">It’s Data, Man: OPI², in retrospect</a>
