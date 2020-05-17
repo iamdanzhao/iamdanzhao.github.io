@@ -28,7 +28,15 @@
         <main>
             <div id="gradient-top"></div>
             <div id="gradient-bottom"></div>
-            {{ content }}
+            <div class="wide">
+                <a href=""><strong>← Back to all posts</strong></a>
+                <h1>{{ page.title }}</h1>
+                <div>
+                    <span class="byline-author">{{ page.author }}</span>
+                    <span class="byline-date">{{ page.date }}</span>
+                </div>
+                {{ content }}
+            </div>
         </main>
         <footer>
             <div class="icon-bar">
