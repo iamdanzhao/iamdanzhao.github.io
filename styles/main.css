@@ -43,7 +43,6 @@ footer a:not(.button):not(.arrow):hover {
     transition: all 0.25s;
 }
 
-/*
 code {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     padding: 2px 4px;
@@ -52,7 +51,6 @@ code {
     background-color: #f9f2f4;
     border-radius: 4px;
 }
-*/
 
 h1,
 h2, 
