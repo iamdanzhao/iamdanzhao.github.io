@@ -17,22 +17,39 @@ title: Work
 
 ## Crunched some numbers... {#data-science}
 
-## Figured out Chicago citations... {#social-science}
+{: .list-plus}
+- **Conducted a randomized field experiment** on whether using photos in text messaging campaigns increased click-through rate, with implications for text message marketing. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button inline-label-github"}
+- **Analyzed student body survey results on grading systems during the COVID-19 shutdown**, comparing student support for Universal Pass versus Opational Pass/Fail and assessing barriers that students face at home [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
 
-In addition, I've also used final projects in several courses as an opportunity to learn more about specific issues I'm interested in:
 
-- **How Western technology companies facilitate digital authoritarianism by selling surveillance products**, acquiescing to China and Russia's demands, and letting misinformation go unchecked, as well as key considerations for developing policy moving forward <span class="inline-label-note">PLSC 455 Big Data & Russian Politics</span>
-- **Whether cyberwarfare will require a fundamental reframing of our understanding of national security** (my take: it won't), and breaking down the key components of the "cyber revolution" hypothesis <span class="inline-label-note">GLBL 275 International Security</span>
-- **The potential for algorithmic bias in Sidewalk Labs' proposal for a smart city in Toronto**, how that bias would harm vulnerable populations, and how algorithmic oversight boards can help mitigate these harms <span class="inline-label-note">GLBL 395 Data Governance</span>
-- **The debate over the European Union Copyright Directive**, including an analysis of how key tradeoffs and incentives differ among technology companies, news organizations, and EU regulators. Includes sentiment analysis of tweets from American and European users. <span class="inline-label-note">CPSC 184 Intellectual Property</span>
-- **How the urban built environment can impact residential segregation**, along with a framework, data sources, and methodology that we can use to study this relationship in New York City <span class="inline-label-note">PLSC 211 Social Policy & Inequality</span>
-- **How to increase interoperability of electronic health records (EHRs)** in the United States in order to facilitate big data in drug research, precision medicine and patient-centered care <span class="inline-label-note">MCDB 060 Science & Politics of Cancer</span>
+## Researched policy issues and more... {#social-science}
+
+{: .list-plus}
+- Helped write a report on how to **bring young civic technologists into the public sector** by creating a student loan forgiveness program, a proven model in other fields [Report on inspire2serve.gov](https://inspire2serve.gov/_api/files/343){: class="button inline-label-page" target="_blank"} [Website](https://picturegrants.org/){: class="button inline-label-page" target="_blank"}
+- Wrote a brief for Mikie Sherrill's congressional campaign in NJ-11 regarding reversing decades of environmental mismanagement on the Passaic River, including how to hold chemical polluters accountable and enact more equitable flood insurance policy
+
+In addition, I've also used final projects and essays in several courses as an opportunity to learn more about specific issues I'm interested in, such as:
+
+{: .list-plus}
+- **How Western technology companies facilitate digital authoritarianism by selling surveillance products**, acquiescing to China and Russia's demands, and letting misinformation go unchecked, as well as key considerations for developing policy moving forward
+- **Whether cyberwarfare will require a fundamental reframing of our understanding of national security** (my take: it won't), and breaking down the key components of the "cyber revolution" hypothesis
+- **The potential for algorithmic bias in Sidewalk Labs' proposal for a smart city in Toronto**, how that bias would harm vulnerable populations, and how algorithmic oversight boards can help mitigate these harms
+- **The debate over the European Union Copyright Directive**, including an analysis of how key tradeoffs and incentives differ among technology companies, news organizations, and EU regulators. Includes sentiment analysis of tweets from American and European users. [Full text](https://drive.google.com/file/d/1UWSE7wSQEnma7oBeIj4J29oAlF9WV-Ck/view){: class="button inline-label-page" target="_blank"} [GitHub](https://github.com/iamdanzhao/copyright-directive-tweets){: class="button inline-label-github" target="_blank"}
+- **How the urban built environment can impact residential segregation**, along with a framework, data sources, and methodology that we can use to study this relationship in New York City
+- **How to increase interoperability of electronic health records (EHRs)** in the United States in order to facilitate big data in drug research, precision medicine and patient-centered care
+
+These are notes I've compiled for courses I've taken, as a study and review tool. Feel free to use at your own discretion, although I make no guarantees for the accuracy of the notes or the degree to which they will represent the course as taught in future semesters.
+
+{: .list-arrows}
+- [**Sustainability in the 21st Century (GLBL 217, Fall 2017)**](https://drive.google.com/file/d/1s_e9aooDNapjE3X0FeUKfZDnQ7oTdPsG/view?usp=sharing){: target="_blank"}}
+- [**Approaches to International Development (GLBL 225, Spring 2019)**](https://drive.google.com/file/d/1vTsq0fOixLEUefBCcL8mLy9ej9sBTF5o/view?usp=sharing){: target="_blank"}}
+- [**Approaches to International Security (GLBL 275, Fall 2019)**](https://docs.google.com/document/d/1hmdrbq0UDAe_QP4E9ahp-gVzRTDT0UG4XjqLRGrV7MM/edit?usp=sharing){: target="_blank"}}
 
 ## Snapped a few photos... {#photography}
 
 {: .list-plus}
 - {% include lbl-now.html %} **Serve as a [photo editor for the Yale Daily News](https://www.instagram.com/yaledailynews/){:target="_blank"} for two years**, where I coordinated a team of photographers to produce daily content for the paper, facilitated recruitment, expanded our collection of stock photography, and increased year-over-year recruitment
-- **Had a photo of on-campus protests in response to the Kavanaugh confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} during the 2019 Yale-Harvard football game, [commencement 2018](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
+- **Had a photo of on-campus protests in response to Justice Brett Kavanaugh's confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} in the 2019 Yale-Harvard football game, [commencement 2018](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
 - {% include lbl-now.html %} **Run a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
 - **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for carbon dividends and other common-sense climate policies
 
@@ -55,8 +72,10 @@ In addition, I've also used final projects in several courses as an opportunity 
 
 ## Other {#other}
 
-**Map of hubs of US Big Three airline companies**: Current as of December 2018, but Delta had since grown Boston (BOS) into a hub, and established focus city operations Austin (AUS), Nashville (BNA), and San Jose (SJC). Now, nobody knows what will happen to the majors hubs post-coronavirus. [Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1x2s9hTjBWYEQRFqwLvMWxp2eVJENeZsx&ll=30.791630598850965%2C-96.6942578&z=4){:target="_blank" class=".inline-label-page button"}
+**Map of hubs of US Big Three airline companies**: 
+
+- Current as of December 2018, but Delta has since designated Boston (BOS) as a hub, and established focus city operations Austin (AUS), Nashville (BNA), and San Jose (SJC). Now, nobody knows what will happen to the majors hubs post-coronavirus. [Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1x2s9hTjBWYEQRFqwLvMWxp2eVJENeZsx&ll=30.791630598850965%2C-96.6942578&z=4){:target="_blank" class="inline-label-page button"}
 
 <br>
 
-This page inspired by [**Nik Marda**](nikmarda.com).
+This page drew inspiration from [**Nik Marda**](http://nikmarda.com).

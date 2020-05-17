@@ -545,24 +545,6 @@ main {
 
 /* PAGE STYLES: WORK */
 
-
-.inline-label-now {
-    background-color: var(--color-blue);
-}
-
-.inline-label-note {
-    color: black !important;
-    background-color: #eeeeee;
-}
-
-.inline-label-github {
-    background-color: #6f42c1;
-}
-
-.inline-label-page {
-    background-color: var(--color-pink);
-}
-
 .inline-label-now,
 .inline-label-note,
 .inline-label-github,
@@ -585,9 +567,22 @@ main {
 }
 
 .inline-label-now {
-    margin-right: 5px;
+    margin-right: 4px;
+    background-color: var(--color-blue);
 }
 
+.inline-label-note {
+    color: black !important;
+    background-color: #eeeeee;
+}
+
+.inline-label-github {
+    background-color: #6f42c1;
+}
+
+.inline-label-page {
+    background-color: var(--color-pink);
+}
 
 /* PAGE STYLES: BLOG LIST */
 
