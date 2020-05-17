@@ -66,6 +66,10 @@ h1 {
     font-size: 300%;
 }
 
+h2 {
+    margin-top: 1em;
+}
+
 h4 {
     font-size: 95%;
     text-transform: uppercase;
@@ -564,6 +568,7 @@ main {
 .inline-label-github,
 .inline-label-page {
     font-size: 90%;
+    font-weight: 600;
     color: white;
     border-radius: 3px;
     padding: 1px 6px;
@@ -580,7 +585,48 @@ main {
 }
 
 .inline-label-now {
-    margin-right: 6px;
+    margin-right: 5px;
+}
+
+
+/* PAGE STYLES: BLOG LIST */
+
+.posts-entry {
+    margin-bottom: 1em;
+    line-height: 1.5em;
+}
+
+.posts-entry-title {
+    font-weight: 600;
+    margin-right: 0.5em;    
+}
+
+.posts-entry-date {
+    color: gray;
+    text-transform: uppercase;
+    font-size: 85%;
+}
+
+.posts-entry-blurb {
+    display: block;
+    font-size: 95%;
+    margin-top: 0.5em;
+}
+
+/* PAGE STYLES: BLOG PAGE */
+
+.byline {
+    margin-top: -2em;
+    margin-bottom: 3em;
+}
+
+.byline-author {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.byline-date {
+    color: #666;
 }
 
 /* PAGE STYLES: GRADIENT */

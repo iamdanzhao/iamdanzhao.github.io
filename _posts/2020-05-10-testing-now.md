@@ -1,7 +1,7 @@
 ---
-title: On "doing Yale right"
+title: On "doing Yale right", a rehash
 author: Daniel Zhao
-blurb: Discusing the quintessential question of whether or not I did Yale right.
+blurb: Discusing the rehashed question of whether or not I did Yale right.
 layout: blog
 ---
 
