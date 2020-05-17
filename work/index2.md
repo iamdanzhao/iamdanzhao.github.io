@@ -3,6 +3,14 @@ layout: default
 title: Work
 ---
 
+### Testing this out
+
+Does this really work?
+
+- Does this really work?
+- What about ```a``` tags within ```li``` tags? <a href="">Test</a>
+- What about the whole <a href="button link-github">thing</a>?
+
 <div class="wide">
     <h1>Work</h1>
     <ul class="list-arrows list-bold">
