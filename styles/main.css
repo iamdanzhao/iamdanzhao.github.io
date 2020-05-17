@@ -541,27 +541,28 @@ main {
 
 /* PAGE STYLES: WORK */
 
-.link-person {
-    color: black !important;
-    background-color: #eee;
-}
 
-.link-github {
-    background-color: #6f42c1;
-}
-
-.link-page {
+.inline-label-now {
     background-color: var(--color-blue);
 }
 
-.link-report {
+.inline-label-note {
+    color: black !important;
+    background-color: #eeeeee;
+}
+
+.inline-label-github {
+    background-color: #6f42c1;
+}
+
+.inline-label-page {
     background-color: var(--color-pink);
 }
 
-.link-page,
-.link-github,
-.link-person,
-.link-report {
+.inline-label-now,
+.inline-label-note,
+.inline-label-github,
+.inline-label-page {
     font-size: 90%;
     color: white;
     border-radius: 3px;
@@ -572,11 +573,14 @@ main {
     transition: all 0.25s ease-in-out;
 }
 
-.link-page:hover,
-.link-github:hover,
-.link-report:hover {
+.inline-label-github:hover,
+.inline-label-page:hover {
     opacity: 0.75;
     transition: all 0.25s ease-in-out;
+}
+
+.inline-label-now {
+    margin-right: 6px;
 }
 
 /* PAGE STYLES: GRADIENT */
