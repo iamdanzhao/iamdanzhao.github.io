@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment 6</title>
+        <script src="d3v5.js"></script>
+        <script src="https://d3js.org/d3-time.v1.min.js"></script>
+        <script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+        <link href="style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,400,400i,600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="control-panel">
+            <h1>Yale Course Enrollment Statistics</h1>
+            <h3>Daniel Zhao (daniel.zhao@yale.edu)</h3>
+            <p>This visualization visualizes course demand and evaluations for Fall 2019 courses from a selection of Yale College departments. Use the below tools to filter by department or sort the list of courses by one of four variables. In the heatmap and bar graph, hover over courses to cross-filter.</p>
+            <div>
+                <h5>Key for data table</h5>
+                <ul>
+                    <li>W: workload rating</li>
+                    <li>R: overall rating</li>
+                    <li>N/A: no ratings available</li>
+                </ul>
+            </div>
+            <div class="control">
+                <h5>Select a subject:</h5>
+                <select id="select-subject"></select>
+            </div>
+            <div class="control">
+                <h5>Sort by</h5>
+                <button class="sort number active" value="number">course code</button>
+                <button class="sort enrollment" value="enrollment">enrollment</button>
+                <button class="sort rating" value="rating">rating</button>
+                <button class="sort workload" value="workload">workload</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            
+            // datasets
+            
+            var demand;
+            var enrollment;
+            var subjects;
+            var dates;
+            
+            // layout parameters
+            
+            var margin = {top: 0, right: 25, bottom: 0, left: 25};
+            
+            var width = 1320 - margin.left - margin.right;
+            var height = 2500 - margin.top - margin.bottom;
+            
+            var wColLeft = 50;
+            var wColMiddle = 100;
+            var wColRight = 50;
+            
+            var wDemand = 600;
+            var wEnrollment = width - wDemand - wColLeft - wColMiddle - wColRight;
+            
+            var distTop = 775;
+            
+            var wDemandBox = wDemand / 21;
+            var hDemandBox = 20;
+            
+            // create svg canvas
+            
+            var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            
+            // date formatter
+            
+            parseDate = d3.timeParse("%Y-%m-%d");
+            
+            formatMonth = d3.timeFormat("%b");
+            formatDate = d3.timeFormat("%d");
+            
+            // row formatters
+            
+            var parseDemand = function(d) {
+                return {
+                    code: d.code,
+                    subject: d.subject,
+                    number: +d.number,
+                    name: d.name,
+                    date: parseDate(d.date),
+                    day: +d.day,
+                    group: +d.group,
+                    count: +d.count,
+                    count_prop: parseFloat(d.count_prop),
+                    enrollment: parseFloat(d.enrollment),
+                    rating: parseFloat(d.rating),
+                    workload: parseFloat(d.workload)
+                }
+            };
+            
+            var parseEnrollment = function(d) {
+                return {
+                    code: d.code,
+                    subject: d.subject,
+                    number: +d.number,
+                    name: d.name,
+                    enrollment: +d.enrollment,
+                    // peak_demand: +d.peak_demand,
+                    // peak_demand_day: parseDate(d.peak_demand_day),
+                    rating: parseFloat(d.rating),
+                    workload: parseFloat(d.workload)
+                }
+            };
+            
+            var parseSubjects = function(d) {
+                return {
+                    subject: d.subject,
+                    name: d.name
+                }
+            };
+            
+            var parseDates = function(d) {
+                return {
+                    date: parseDate(d.date),
+                    day: +d.day
+                }
+            };
+            
+            // scales
+            
+            var scaleDemandShade = d3.scaleLinear().range([0, 1]);
+            var scaleEnrollmentWidth = d3.scaleLinear().range([0, wEnrollment]);
+            
+            var scaleRating = d3.scaleLinear()
+                .domain([1, 5])
+                .range([width - wEnrollment, width]);
+            
+            var scaleWorkload = d3.scaleLinear()
+                .domain([1, 5])
+                .range([100 + wEnrollment, 100]);
+            
+            // unit scaler
+            
+            var scaleUnit = d3.scaleLinear()
+                .domain([1, 5])
+                .range([0, 1]);
+            
+            // scale a rating into a color, given asc or desc
+            
+            var scaleColor = function(val, mode) {
+                if (val <= 0) {
+                    return "rgba(0, 0, 0, 0.1)";
+                }
+                
+                unit = scaleUnit(val);
+                
+                if (mode === "a") {
+                    return d3.interpolateRdYlGn(unit);
+                } else {
+                    return d3.interpolateRdYlGn(1 - unit);
+                }
+            }
+            
+            // function to round or give N/A
+                    
+            var roundRating = function(val) {
+                if (val > 0) {
+                    return val.toFixed(1);
+                } else {
+                    return "N/A";
+                }
+            }
+            
+            // function for vertical position
+            
+            var getYPos = function(i, offset) {
+                return distTop + (i + offset) * hDemandBox;
+            }
+            
+            // load in datasets
+            
+            Promise.all([
+                d3.csv("vis_subjects.csv", parseSubjects),
+                d3.csv("vis_demand.csv", parseDemand),
+                d3.csv("vis_enrollment.csv", parseEnrollment),
+                d3.csv("vis_dates.csv", parseDates)
+            ]).then(function(files) {
+                
+                subjects = files[0];
+                demand = files[1];
+                enrollment = files[2];
+                dates = files[3];
+                
+                var drawStaticLabels = function() {
+                    
+                    // Left panel header
+                    
+                    svg.append("text")
+                        .text("Demand heatmap")
+                        .attr("x", 0)
+                        .attr("y", distTop - 100)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 24);
+
+                    // Left panel subheader
+                    
+                    svg.append("text")
+                        .text("Intensity represents demand, normalized relative to enrollment")
+                        .attr("x", 205)
+                        .attr("y", distTop - 100)
+                        .attr("font-size", 14);
+                    
+                    // Left panel scale label
+                    
+                    svg.append("text")
+                        .attr("fill", "black")
+                        .attr("font-size", 12)
+                        .attr("font-weight", "bold")
+                        .attr("x", wDemand - 200)
+                        .attr("text-anchor", "end")
+                        .attr("y", distTop - 70)
+                        .text("Multiple of final enrollment")
+
+                    // Start of semester box
+
+                    svg.append("rect")
+                        .attr("x", 114)
+                        .attr("y", distTop - 83)
+                        .attr("width", 112)
+                        .attr("height", 24)
+                        .attr("fill", "#ff5470");
+
+                    // Start of semester label
+                    
+                    svg.append("text")
+                        .text("Start of classes")
+                        .attr("text-anchor", "middle")
+                        .attr("x", (7 - 1) * wDemandBox - 2)
+                        .attr("y", distTop - 66)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 14)
+                        .attr("fill", "white");
+                    
+                    // Date axis month labels
+                    
+                    svg.selectAll("text.monthLabels")
+                        .data(dates)
+                        .enter()
+                        .append("text")
+                        .attr("x", d => (d.day - 1) * wDemandBox + wDemandBox * 0.5)
+                        .attr("y", distTop - 30)
+                        .attr("font-size", 10)
+                        .attr("text-anchor", "middle")
+                        .text(d => formatMonth(d.date))
+                        .attr("class", "monthLabels");
+                    
+                    // Date axis date labels
+                    
+                    svg.selectAll("text.dateLabels")
+                        .data(dates)
+                        .enter()
+                        .append("text")
+                        .attr("x", d => (d.day - 1) * wDemandBox + wDemandBox * 0.5)
+                        .attr("y", distTop - 15)
+                        .attr("font-size", 11)
+                        .attr("text-anchor", "middle")
+                        .attr("font-weight", "bold")
+                        .text(d => formatDate(d.date))
+                        .attr("class", "dateLabels");
+                    
+                    // Rating label
+                    
+                    svg.append("text")
+                        .text("R")
+                        .attr("x", wDemand + wColLeft / 2)
+                        .attr("y", distTop - 15)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 12)
+                        .attr("text-anchor", "middle")
+                    
+                    // Workload label
+                    
+                    svg.append("text")
+                        .text("W")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight / 2)
+                        .attr("y", distTop - 15)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 12)
+                        .attr("text-anchor", "middle")
+
+                    // Right panel header
+                    
+                    svg.append("text")
+                        .text("Enrollment count")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight)
+                        .attr("y", distTop - 100)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 24);
+                    
+                    // Right panel subheader
+
+                    svg.append("text")
+                        .text("Demand on final day of shopping period")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight + 202)
+                        .attr("y", distTop - 100)
+                        .attr("font-size", 14);
+                    
+                    // Right panel axis label
+
+                    svg.append("text")
+                        .text("Enrollment count")
+                        .attr("text-anchor", "middle")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight + wEnrollment / 2)
+                        .attr("y", distTop - 55)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 14)
+                        .attr("fill", "black");
+                    
+                    // Top right panel header
+                    
+                    svg.append("text")
+                        .text("Course rating versus difficulty")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight)
+                        .attr("y", 60)
+                        .attr("font-weight", "bold")
+                        .attr("font-size", 24);
+                    
+                    // Top right panel subheader
+
+                    svg.append("text")
+                        .text("From Coursetable")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight + 343)
+                        .attr("y", 60)
+                        .attr("font-size", 14);
+                }
+                
+                var fillSelectMenu = function() {
+                    var select = document.getElementById("select-subject");
+                
+                    for(var i = 0; i < subjects.length; i++) {
+                        var elem = document.createElement("option");
+
+                        elem.textContent = subjects[i].name;
+                        elem.value = subjects[i].subject;
+
+                        select.appendChild(elem);
+                    };
+                };
+                
+                var drawDemandVis = function(subj) {
+                    
+                    // remove previous boxes
+                    
+                    d3.select(".start-line").remove();
+                    d3.selectAll(".demandBoxes").remove();
+                    
+                    // filter data for only the one subject
+                    
+                    filtered = demand.filter(d => d.subject === subj);
+                    
+                    // set domain for box transparency
+                    
+                    scaleDemandShade.domain([
+                        d3.min(filtered, d => d.count_prop),
+                        d3.max(filtered, d => d.count_prop)
+                    ]);
+                    
+                    // boxes
+                    
+                    demandBoxes = svg.selectAll("rect.demandBoxes")
+                        .data(filtered)
+                        .enter()
+                        .append("rect")
+                        .attr("x", d => (d.day - 1) * wDemandBox)
+                        .attr("y", d => getYPos(d.group - 1, 0))
+                        .attr("width", wDemandBox)
+                        .attr("height", hDemandBox)
+                        .attr("fill", d => "rgba(0, 131, 255, " + scaleDemandShade(d.count_prop) + ")")
+                        .attr("stroke", "white")
+                        .attr("class", "demandBoxes")
+                        .on("mouseover", d => filterSelection(d.code))
+                        .on("mouseout", d => unfilterSelection(d.code));
+                    
+                    // draw line
+                    
+                    svg.append("rect")
+                        .transition()
+                        .attr("x", (7 - 1) * wDemandBox - 1.5)
+                        .attr("y", distTop - 59)
+                        .attr("width", 3)
+                        .attr("height", filtered.length * hDemandBox / 21 + 4 + 59)
+                        .attr("fill", "#ff5470")
+                        .attr("class", "start-line")
+                    
+                    // color scale: define values
+                    
+                    nIntervals = 5;
+                    wDemandScale = 180;
+                    cutoffs = [];
+
+                    for (var i = 0; i <= 1; i += (1 / nIntervals)) {
+                        cutoffs.push(i * d3.max(filtered, d => d.count_prop));
+                    }
+                    
+                    // color scale: the scaler and axis
+
+                    var key = d3.scaleLinear()
+                        .domain([0, d3.max(filtered, d => d.count_prop)])
+                        .range([wDemand - wDemandScale, wDemand])
+
+                    var keyAxis = d3.axisBottom(key)
+                        .tickSize(12)
+                        .tickValues(cutoffs);
+                    
+                    if (d3.select(".keyAxis").empty()) {
+                        gAxis = svg.append("g")
+                            .attr("class", "keyAxis")
+                            .attr("transform", "translate(0, " + (distTop - 80) + ")")
+                            .call(keyAxis);
+                    } else {
+                        gAxis = svg.select(".keyAxis")
+                            .transition()
+                            .duration(500)
+                            .call(keyAxis);
+                    }
+                    
+                    // color scale: rectangles
+                        
+                    svg.selectAll("rect.demandScaleBox")
+                        .data(cutoffs)
+                        .enter()
+                        .insert("rect")
+                        .attr("height", 8)
+                        .attr("x", d => key(d) - wDemandScale / nIntervals)
+                        .attr("y", distTop - 80)
+                        .attr("width", wDemandScale / nIntervals)
+                        .attr("fill", d => "rgba(0, 131, 255, " + scaleDemandShade(d) + ")")
+                        .attr("class", "demandScaleBox");
+                }
+                
+                var drawEnrollmentVis = function(subj) {
+                    
+                    left = wDemand + wColLeft + wColMiddle + wColRight;
+                    
+                    // remove previous elements
+                    
+                    d3.selectAll(".enrollmentBoxes").remove();
+                    d3.selectAll(".enrollmentLabels").remove();
+                    
+                    // filter data for subject
+                    
+                    filtered = enrollment.filter(d => d.subject === subj);
+
+                    // set domain for x axis
+                    
+                    scaleEnrollmentWidth.domain([0, d3.max(filtered, d => d.enrollment)]);
+
+                    // make x axis
+                    
+                    enrollmentAxis = d3.axisTop(scaleEnrollmentWidth);
+
+                    // draw x axis
+                    
+                    if(d3.select(".enrollmentAxis").empty()) {
+                        svg.append("g")
+                            .attr("transform", "translate(" + left + ", " + (distTop - 10) + ")")
+                            .attr("class", "enrollmentAxis")
+                            .call(enrollmentAxis);
+                    } else {
+                        svg.select(".enrollmentAxis")
+                            .transition()
+                            .duration(500)
+                            .call(enrollmentAxis);
+                    }
+                    
+                    // draw bars in bar graph
+
+                    enrollmentBoxes = svg.selectAll("rect.enrollmentBoxes")
+                        .data(filtered)
+                        .enter()
+                        .append("rect")
+                        .attr("x", left)
+                        .attr("y", (d, i) => getYPos(i, 0))
+                        .attr("width", d => scaleEnrollmentWidth(d.enrollment))
+                        .attr("height", hDemandBox)
+                        .attr("fill", "rgb(0, 131, 255)")
+                        .attr("stroke", "white")
+                        .attr("class", "enrollmentBoxes")
+                        .on("mouseover", d => filterSelection(d.code))
+                        .on("mouseout", d => unfilterSelection(d.code));
+                    
+                    // add text labels for enrollment
+
+                    enrollmentLabels = svg.selectAll("text.enrollmentLabels")
+                        .data(filtered)
+                        .enter()
+                        .append("text")
+                        .transition()
+                        .attr("x", d => left + scaleEnrollmentWidth(d.enrollment) + 8)
+                        .attr("y", (d, i) => getYPos(i, 0.7))
+                        .attr("font-size", "10")
+                        .text(d => d.enrollment)
+                        .attr("class", "enrollmentLabels");
+                }
+                
+                var drawCourseInfo = function(subj) {
+                    
+                    // remove previous elements
+                    
+                    d3.selectAll(".courseLabels").remove();
+                    d3.selectAll(".ratingLabels").remove();
+                    d3.selectAll(".workloadLabels").remove();
+                    d3.selectAll(".ratingBoxes").remove();
+                    d3.selectAll(".workloadBoxes").remove();
+                    d3.selectAll(".hoverBar").remove();
+                    
+                    // filter data to subject
+                    
+                    filtered = enrollment.filter(d => d.subject === subj);
+                    
+                    // add text labels for courses
+
+                    courseLabels = svg.selectAll("text.courseLabels")
+                        .data(filtered)
+                        .enter()
+                        .append("text")
+                        .attr("x", wDemand + wColLeft + wColMiddle / 2)
+                        .attr("y", (d, i) => getYPos(i, 0.75))
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", "12")
+                        .attr("font-weight", "bold")
+                        .text(d => d.code)
+                        .attr("class", "courseLabels");
+                    
+                    // coursetable overall rating: box
+                    
+                    ratingBoxes = svg.selectAll("rect.ratingBoxes")
+                        .data(filtered)
+                        .enter()
+                        .append("rect")
+                        .attr("width", wColLeft)
+                        .attr("height", hDemandBox)
+                        .attr("x", wDemand)
+                        .attr("y", (d, i) => getYPos(i, 0))
+                        .attr("fill", d => scaleColor(d.rating, "a"))
+                        .attr("stroke", "white")
+                        .attr("opacity", 0.7)
+                        .attr("class", "ratingBoxes");
+                    
+                    // coursetable overall rating: label
+                    
+                    ratingLabels = svg.selectAll("text.ratingLabels")
+                        .data(filtered)
+                        .enter()
+                        .append("text")
+                        .attr("x", wDemand + wColLeft / 2)
+                        .attr("y", (d, i) => getYPos(i, 0.75))
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", "12")
+                        .attr("font-weight", "bold")
+                        .text(d => roundRating(d.rating))
+                        .attr("class", "ratingLabels");
+                    
+                    // coursetable workload rating: box
+                    
+                    workloadBoxes = svg.selectAll("rect.workloadBoxes")
+                        .data(filtered)
+                        .enter()
+                        .append("rect")
+                        .attr("width", wColLeft)
+                        .attr("height", hDemandBox)
+                        .attr("x", wDemand + wColLeft + wColMiddle)
+                        .attr("y", (d, i) => getYPos(i, 0))
+                        .attr("fill", d => scaleColor(d.workload, "d"))
+                        .attr("stroke", "white")
+                        .attr("opacity", 0.9)
+                        .attr("class", "workloadBoxes");
+                    
+                    // coursetable workload rating: label
+                    
+                    workloadLabels = svg.selectAll("text.workloadLabels")
+                        .data(filtered)
+                        .enter()
+                        .append("text")
+                        .attr("x", wDemand + wColLeft + wColMiddle + wColRight / 2)
+                        .attr("y", (d, i) => getYPos(i, 0.75))
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", "12")
+                        .attr("font-weight", "bold")
+                        .text(d => roundRating(d.workload))
+                        .attr("class", "workloadLabels");
+                    
+                    // hover bars
+                    
+                    hoverBars = svg.selectAll("rect.hoverBar")
+                        .data(filtered)
+                        .enter()
+                        .append("rect")
+                        .attr("width", wColLeft + wColMiddle + wColRight)
+                        .attr("height", hDemandBox)
+                        .attr("x", wDemand)
+                        .attr("y", (d, i) => getYPos(i, 0))
+                        .attr("fill", "rgba(0, 0, 0, 0)")
+                        .attr("stroke", "none")
+                        .on("mouseover", d => filterSelection(d.code))
+                        .on("mouseout", d => unfilterSelection(d.code))
+                        .attr("class", "hoverBar");
+                }
+                
+                var drawRatingVis = function(subj) {
+                    
+                    // remove previous elements
+                    
+                    d3.selectAll(".scatterdots").remove();
+                    d3.selectAll(".scatterdots2").remove();
+                    
+                    // make axes
+                    
+                    axisRating = d3.axisBottom(scaleRating);
+                    axisWorkload = d3.axisLeft(scaleWorkload);
+                    
+                    // call axes
+                    
+                    svg.append("g")
+                        .attr("transform", "translate(0, " + (100 + wEnrollment) + ")")
+                        .attr("class", "axisRating")
+                        .call(axisRating);
+
+                    svg.append("g")
+                        .attr("transform", "translate(" + (width - wEnrollment) + ", 0)")
+                        .attr("class", "axisWorkload")
+                        .call(axisWorkload);
+                    
+                    // draw points
+                    
+                    scatterdots = svg.selectAll("circle.scatterdots")
+                        .data(enrollment.filter(d => d.rating > 0 && d.subject != subj))
+                        .enter()
+                        .append("circle")
+                        .attr("cx", d => scaleRating(d.rating))
+                        .attr("cy", d => scaleWorkload(d.workload))
+                        .attr("r", 3)
+                        .attr("fill", "rgba(0, 0, 0, 0.5)")
+                        .attr("class", "scatterdots");
+                    
+                    scatterdots2 = svg.selectAll("circle.scatterdots2")
+                        .data(enrollment.filter(d => d.rating > 0 && d.subject === subj))
+                        .enter()
+                        .append("circle")
+                        .transition()
+                        .attr("cx", d => scaleRating(d.rating))
+                        .attr("cy", d => scaleWorkload(d.workload))
+                        .attr("r", 7.5)
+                        .attr("fill", "rgba(0, 131, 255, 0.7)")
+                        .attr("class", "scatterdots2");
+                    
+                    svg.append("text")
+                        .text("Overall course rating")
+                        .attr("x", width - wEnrollment / 2)
+                        .attr("y", 100 + wEnrollment + 40)
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", 14);
+                    
+                    svg.append("text")
+                        .text("Workload rating")
+                        .attr("y", width - wEnrollment - 40)
+                        .attr("x",  - 100 - wEnrollment / 2)
+                        .attr("transform", "rotate(-90)")
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", 14);
+                }
+                
+                var filterSelection = function(code) {
+                    svg.selectAll("rect.demandBoxes")
+                        .filter(d => d.code === code)
+                        .transition()
+                        .attr("fill", d => "rgba(255, 84, 112, " + scaleDemandShade(d.count_prop) + ")");
+
+                    svg.selectAll(".enrollmentBoxes")
+                        .filter(d => d.code === code)
+                        .transition()
+                        .attr("fill", "rgb(255, 84, 112)");
+
+                    svg.selectAll(".scatterdots2")   
+                        .filter(d => d.code === code)
+                        .transition()
+                        .attr("fill", "rgb(255, 84, 112)");
+                }
+
+                var unfilterSelection = function(code) {
+                    svg.selectAll("rect.demandBoxes")
+                        .filter(d => d.code === code)
+                        .transition()
+                        .attr("fill", d => "rgba(0, 131, 255, " + scaleDemandShade(d.count_prop) + ")");
+
+                    svg.selectAll(".enrollmentBoxes")
+                        .filter(d => d.code === code)
+                        .transition()
+                        .attr("fill", "rgb(0, 131, 255)")
+
+                    svg.selectAll(".scatterdots2")   
+                        .filter(d => d.code === code)
+                        .transition()
+                        .attr("fill", "rgb(0, 131, 255)")
+                }
+                
+                var sortCourses = function(varName) {
+                    if (varName === "number") {
+                        d3.selectAll(".hoverBar").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".enrollmentBoxes").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".enrollmentLabels").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.7));
+
+                        d3.selectAll(".courseLabels").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.75));
+
+                        d3.selectAll(".ratingLabels").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.75));
+
+                        d3.selectAll(".workloadLabels").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.75));
+
+                        d3.selectAll(".ratingBoxes").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".workloadBoxes").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".demandBoxes").sort((a, b) => d3.ascending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(Math.floor(i / 21), 0));
+                    } else {
+                        d3.selectAll(".hoverBar").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".enrollmentBoxes").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".enrollmentLabels").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.7));
+
+                        d3.selectAll(".courseLabels").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.75));
+
+                        d3.selectAll(".ratingLabels").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.75));
+
+                        d3.selectAll(".workloadLabels").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0.75));
+
+                        d3.selectAll(".ratingBoxes").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".workloadBoxes").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(i, 0));
+
+                        d3.selectAll(".demandBoxes").sort((a, b) => d3.descending(a[varName], b[varName]))
+                            .transition()
+                            .duration(1000)
+                            .attr("y", (d, i) => getYPos(Math.floor(i / 21), 0));
+                    }
+                }
+                
+                var drawAllVisualizations = function(subj) {
+                    drawDemandVis(subj);
+                    drawCourseInfo(subj);
+                    drawEnrollmentVis(subj);
+                    drawRatingVis(subj);
+                }
+                
+                // do not move these to after, for some reason it doesn't work
+                
+                drawStaticLabels();
+                fillSelectMenu();
+                
+                subj = document.getElementById("select-subject").value;
+                drawAllVisualizations(subj);
+                
+                // handler for dropdown
+                
+                d3.select("#select-subject").on("change", function() {
+                    subj = this.value;
+                    
+                    drawAllVisualizations(subj);
+                    
+                    d3.select(".sort.active").classed("active", false);
+                    d3.select("button[value=number]").classed("active", true);
+                });
+                
+                // handler for sorting buttons
+                
+                d3.selectAll("button.sort").on("click", function() {
+                    d3.select(".sort.active").classed("active", false);
+                    d3.select(this).classed("active", true);
+
+                    mode = d3.select("button.active").node().value;
+                    sortCourses(mode);
+                });
+            });
+        </script>
+    </body>
+</html>

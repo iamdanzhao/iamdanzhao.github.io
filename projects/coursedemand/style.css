@@ -1,0 +1,78 @@
+* {
+    font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: white;
+    padding: 3em 4em;
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h3 {
+    margin: 0.5em 0;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    z-index: -1000;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.control-panel {
+    position: relative;
+    margin-left: 25px;
+    width: 600px;
+}
+
+.control-panel * {
+    z-index: 1000;
+}
+
+p {
+    margin: 2em 0;
+}
+
+h5 {
+    text-transform: uppercase;
+}
+
+.control {
+    margin: 1.5em 0;
+    width: 600px;
+}
+
+select {
+    padding: 1em;
+    color: white;
+    background-color: rgb(0, 131, 255);
+    border: none;
+}
+
+button {
+    color: black;
+    background-color: rgba(0, 131, 255, 0.15);
+    padding: 1em;
+    margin-right: 1em;
+    font-size: 14px;
+    transition: 0.25s all;
+    border: none;
+}
+
+button.active {
+    color: white;
+    background-color: rgba(0, 131, 255, 1);
+}
+
+button:hover:not(.active) {
+    color: white;
+    background-color: #ff5470;
+    transition: 0.25s all;
+    cursor: pointer;
+}
+
+
+
