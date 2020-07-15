@@ -1,5 +1,5 @@
 ---
-title: On "doing Yale right"
+title: Test post
 author: Daniel Zhao
 blurb: Don't get your hopes up, this is just filler text for now
 layout: blog
