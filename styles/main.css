@@ -469,6 +469,7 @@ main {
 .home-title {
     font-size: 300%;
     margin-bottom: 1em;
+    font-weight: bold;
 }
 
 .home-subtitle {
@@ -478,6 +479,8 @@ main {
     font-weight: 400;
     font-size: 175%;
     line-height: 150%;
+    font-weight: bold;
+    letter-spacing: -0.25em;
 }
 
 .home-blurb {
