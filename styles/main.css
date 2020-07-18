@@ -480,7 +480,7 @@ main {
     font-size: 175%;
     line-height: 150%;
     font-weight: bold;
-    letter-spacing: -0.25em;
+    letter-spacing: -0.25px;
 }
 
 .home-blurb {
