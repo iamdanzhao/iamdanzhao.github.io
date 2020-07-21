@@ -233,7 +233,7 @@ ol li > * {
 
 .list-plus li,
 .list-arrows li {
-    text-indent: -2em;
+    text-indent: -1.875em;
 }
 
 .list-plus li:before,

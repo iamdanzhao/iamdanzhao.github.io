@@ -28,14 +28,13 @@ I’m driven by tangible results and real-world impact, and I feel fortunate to 
 
 {: .list-plus}
 - **Conducted a randomized field experiment** on whether using photos in text messages increases link click-through rates, with implications for text message marketing. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. Final project for S&DS 315: Measuring Impact, Prof. Josh Kalla. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button inline-label-page"} [Slides](https://docs.google.com/presentation/d/1qjBd1igY0IjrU7NS7eUP02LMKwQGF-yPGUnW_CZ_MUg/edit?usp=sharing){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button inline-label-github"}
-- **Analyzed Yale student body survey results on grading systems during the COVID-19 pandemic**, comparing student support for Universal Pass versus Optional Pass/Fail and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
 - **Applied natural language processing on news articles to track the US-China trade war**. We scraped White House press releases and Chinese state media articles in order to apply sentiment analysis and LDA topic modeling, demonstrating that sentiment often moves in tandem with key developments in the trade war. Used `selenium` and `BeautifulSoup` in Python for scraping, `dplyr` and `ggplot2` in R for analysis and visualization, and `topicmodels` in R for topic modeling. Final project for GLBL 849: Big Data & Global Policy, Prof. Casey King. [GitHub](https://github.com/iamdanzhao/maketradenotwar){:target="_blank" class="button inline-label-github"}
+- **Analyzed Yale student body survey results on grading systems during the COVID-19 pandemic**, comparing student support for Universal Pass versus Optional Pass/Fail and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
+
+### Reference guides
 
 {:.description}
-Along the way, I've gained in-depth experience with `R` and the `tidyverse`, including deep knowledge of `dplyr`, `tidyr`, `ggplot2`, and `purrr`, as well as applications in modeling, natural language processing, and mapping/GIS. On the Python side, I'm proficient in web scraping using whatever tool gets the job done (either `requests`, `selenium`, `BeautifulSoup`, or a combination), working with APIs, and machine learning. I'm also proficient with `D3.js`, Stata, Tableau, `R Shiny`, and `SQL`.
-
-{:.description}
-I've attempted to document all of this by creating reference guides for what I've learned. They're incomplete and I'm constantly adding to them, but perhaps they'll be useful:
+I've attempted to document my technical learnings over the past few years by creating reference guides. They're incomplete and I'm constantly adding to them, but perhaps they'll be useful:
 
 {: .list-arrows .list-bold}
 - [R Reference](http://danielzhao.com/media/r_reference.html){:target="_bold"}
@@ -48,7 +47,7 @@ I've attempted to document all of this by creating reference guides for what I'v
 - **Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects** in Connecticut and the nation's first of its kind. We focused on the relationship between its investment model and its shift towards equitable access to green energy, and present challenges in the face of Connecticut's budgetary challenges.
 - Wrote a brief for **Mikie Sherrill's congressional campaign in NJ-11** regarding **reversing decades of environmental mismanagement on the Passaic River**, including how to hold chemical polluters accountable and enact more equitable flood insurance policy
 
-In addition, I've also used **final projects and essays** in several courses as an opportunity to learn more about specific issues I'm interested in, such as:
+### Course final projects
 
 {: .list-plus}
 - **How Western technology companies facilitate digital authoritarianism by selling surveillance products**, acquiescing to China and Russia's demands, and letting misinformation go unchecked, as well as key considerations for developing policy moving forward
@@ -58,6 +57,9 @@ In addition, I've also used **final projects and essays** in several courses as 
 - **How the urban built environment can impact residential segregation**, along with a framework, data sources, and methodology that we can use to study this relationship in New York City
 - **How to increase interoperability of electronic health records (EHRs)** in the United States in order to facilitate big data in drug research, precision medicine and patient-centered care
 
+### Course notes
+
+{:.description}
 These are **notes I've compiled for courses I've taken**, as a study and review tool. Feel free to use at your own discretion, although I make no guarantees for the accuracy of the notes or the degree to which they will represent the course as taught in future semesters.
 
 {: .list-arrows}
