@@ -5,10 +5,8 @@ title: Work
 
 # Work
 
-I’m driven by tangible results and real-world impact, and I feel fortunate to have been able to explore a variety of interests along the way. Below I’ve collected some projects I’ve completed across courses, internships, and my spare time that best capture my academic interests, skills, and passions.
-
 {: .list-arrows .list-bold}
-- [Highlights](#highlights)
+- [Key experiences](#experiences)
 - [Data science](#data-science)
 - [Social science & policy](#social-science)
 - [Photography](#photography)
@@ -17,12 +15,12 @@ I’m driven by tangible results and real-world impact, and I feel fortunate to 
 
 <br>
 
-## Highlights {#highlights}
+## Key experiences {#experiences}
 
 {:.list-arrows}
-- {% include lbl-now.html %} **Built and led the Data Analytics desk within the Yale Daily News**, recruiting 15 members in its first year, setting up a technical stack (`R`, `D3.js`, `Tableau`), preparing documentation and technical guides, coordinating with the YDN's management and content teams, and guiding data reporters as they clean, analyze, visualize, and tell stories about data. More importantly, we're building support for data-driven journalism and interactive multimedia within the YDN. Check out projects on **the most popular courses at Yale** [Story](https://yaledailynews.com/blog/2020/01/10/yales-most-popular-courses/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/yale-popular-classes){:target="_blank" class="button inline-label-github"}, **the shifting demographic makeup of athletic teams** [Story](http://features.yaledailynews.com/blog/2020/04/24/analysis-a-shifting-demographic-for-storied-yale-crew-international-athletes-elevate-the-elis/){:target="_blank" class="button inline-label-page"}, and **visualizations of New Haven crime statistics** [Story](https://yaledailynews.com/blog/2019/10/22/analysis-new-haven-sees-drop-in-crime/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/ydn-crime-report-2019){:target="_blank" class="button inline-label-github"}.
+- **Built and led the Data Analytics desk within the Yale Daily News**, recruiting 15 members in its first year, setting up a technical stack (`R`, `D3.js`, `Tableau`), preparing documentation and technical guides, coordinating with the YDN's management and content teams, and guiding data reporters as they clean, analyze, visualize, and tell stories about data. More importantly, we're building support for data-driven journalism and interactive multimedia within the YDN. Check out projects on **the most popular courses at Yale** [Story](https://yaledailynews.com/blog/2020/01/10/yales-most-popular-courses/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/yale-popular-classes){:target="_blank" class="button inline-label-github"}, **the shifting demographic makeup of athletic teams** [Story](http://features.yaledailynews.com/blog/2020/04/24/analysis-a-shifting-demographic-for-storied-yale-crew-international-athletes-elevate-the-elis/){:target="_blank" class="button inline-label-page"}, and **visualizations of New Haven crime statistics** [Story](https://yaledailynews.com/blog/2019/10/22/analysis-new-haven-sees-drop-in-crime/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/ydn-crime-report-2019){:target="_blank" class="button inline-label-github"}.
 - **Prototyped dashboards to unify multiple streams of customer feedback data at the U.S. Bureau of Labor Statistics and automate monthly reporting**, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases. Along the way, I analyzed web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined a roadmap for future development. I used `R Shiny`, with natural language processing applications in `spaCy` integrated via `reticulate`. For summer 2019 internship as a [**Civic Digital Fellow**](https://blog.codingitforward.com/meet-the-2019-fellows-bureau-of-labor-statistics-db727bd7edfc){:target="_blank"}. [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
-- **Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers**. This would save the city tens of thousands of dollars from not having to hire outside engineering firms to conduct the same analysis. I completed this work as part of my summer 2018 internship at Louisville's Office of Civic Innovation, using a combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`. [More details](http://danielzhao.com/work/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
+- **Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers**. This would save the city tens of thousands of dollars from not having to hire outside engineering firms to conduct the same analysis. I completed this work as part of my summer 2018 internship at Louisville's Office of Civic Innovation, using a combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`. [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
 
 ## Statistics & data science {#data-science}
 
@@ -70,16 +68,15 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 ## Photography {#photography}
 
 {: .list-plus}
-- {% include lbl-now.html %} **Serve as a [photo editor for the Yale Daily News](https://www.instagram.com/yaledailynews/){:target="_blank"} for two years**, where I coordinated a team of photographers to produce daily content for the paper, facilitated recruitment, expanded our collection of stock photography, and increased year-over-year recruitment
+- **Serve as a [photo editor for the Yale Daily News](https://www.instagram.com/yaledailynews/){:target="_blank"} for two years**, where I coordinated a team of photographers to produce daily content for the paper, facilitated recruitment, expanded our collection of stock photography, and increased year-over-year recruitment
 - **Had a photo of on-campus protests in response to Justice Kavanaugh's confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} in the 2019 Yale-Harvard football game, [commencement 2018](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
-- {% include lbl-now.html %} **Run a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
+- **Run a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
 - **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends climate policy
 
 ## Music & piano {#music}
 
 #### Piano arrangements
 
-- {% include lbl-now.html %} **Play** by Alan Walker, K-391, Tungevaag, and Mangoo
 - **Photograph** by Ed Sheeran for piano solo ([pdf](https://drive.google.com/file/d/0B0wuRJcMeNcvbkRCZ2hSampQeG8/view?usp=sharing))
 - **Let It Go** from *Frozen* for piano solo ([pdf](https://drive.google.com/file/d/0B0wuRJcMeNcvZUdfUV81Z00xU1k/view?usp=sharing))
 - **For Good** from *Wicked* for piano solo ([pdf in C major](https://drive.google.com/file/d/0B0wuRJcMeNcvMlNjMFF0a1R6M2s/view?usp=sharing), [pdf in Db major](https://drive.google.com/file/d/0B0wuRJcMeNcvLWxvZFNHbllVUUU/view?usp=sharing), [vocal lead](https://drive.google.com/file/d/0B0wuRJcMeNcvR3FfZTlEbWt2VFk/view?usp=sharing))

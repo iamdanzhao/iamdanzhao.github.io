@@ -12,7 +12,8 @@ body {
     font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetiva Neue', 'Arial', sans-serif;
     padding: 0;
     margin: 0;
-    line-height: 1.85em;
+    line-height: 1.5em;
+    background-color: rgba(185, 204, 222, 0.03);
 }
 
 img {
@@ -28,8 +29,8 @@ footer a:not(.button):not(.fa):not(.arrow){
     padding-left: 2px;
     padding-right: 2px;
     color: black;
-    background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(60%, transparent), color-stop(60%, rgba(0, 131, 255, 0.2)), to(rgba(0, 131, 255, 0.2)));
-    background: linear-gradient(to bottom, transparent 0, transparent 60%, rgba(0, 131, 255, 0.2) 60%, rgba(0, 131, 255, 0.2) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(65%, transparent), color-stop(65%, rgba(0, 131, 255, 0.2)), to(rgba(0, 131, 255, 0.2)));
+    background: linear-gradient(to bottom, transparent 0, transparent 65%, rgba(0, 131, 255, 0.2) 65%, rgba(0, 131, 255, 0.2) 100%);
     text-decoration: none;
     transition: color 0.5s ease-in-out;
 }
@@ -68,12 +69,13 @@ h1 {
 
 h2 {
     margin-top: 1em;
+    line-height: 140%;
 }
 
 h4 {
     font-size: 95%;
     text-transform: uppercase;
-    margin-top: 1em;
+    margin-top: 1.5em;
     margin-bottom: 1em;
 }
 
@@ -461,81 +463,30 @@ main {
 
 /* PAGE STYLES: HOME */
 
-.home-top {
-    display: block;
-    height: 4em;
+.intro {
+    padding-bottom: calc(2vh + 1vw);
+    margin-top: 5em;
+    min-height: 65vh;
 }
 
-.home-title {
-    font-size: 300%;
-    margin-bottom: 1em;
-    font-weight: bold;
+.intro * {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-.home-subtitle {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    display: block;
+.intro h1 {
+    font-size: 400%;
+}
+
+.intro h2 {
     font-weight: 400;
-    font-size: 175%;
-    line-height: 150%;
-    font-weight: bold;
-    letter-spacing: -0.25px;
-}
-
-.home-blurb {
-    display: block;
-    font-weight: 400;
-    font-size: 125%;
     line-height: 145%;
 }
-
-.home-bottom {
-    display: block;
-    height: calc(2vh + 1vw);
-}
-
-.home-pills {
-    margin-top: 2.5em;
-    text-transform: uppercase;
-    font-size: 90%;
-    font-weight: 700;
-/*    color: gray;*/
-}
-
-/*
-.home-pills {
-    display: inline-block;
-    margin-top: 1.5em;
-    padding: 0.25em 0.75em;
-    color: white;
-    background-color: var(--color-blue);
-    text-transform: uppercase;
-    font-size: 90%;
-    font-weight: 700;
-    border-radius: 3px;
-}
-*/
 
 .home-image {
     object-fit: cover;
     height: 560px;
     margin-bottom: 4em;
-}
-
-.home-bio {
-    font-size: 95%;
-    line-height: 1.5em;
-}
-
-@media screen and (max-width: 640px) {   
-    .home-title {
-        font-size: 250%;
-    }
-    
-    .home-subtitle {
-        font-size: 150%;
-    }
 }
 
 /* PAGE STYLES: BIO */
