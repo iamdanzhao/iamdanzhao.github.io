@@ -6,7 +6,7 @@ title: Work
 # Work
 
 {: .list-arrows .list-bold}
-- [Key experiences](#experiences)
+- [Key experience](#experience)
 - [Data science](#data-science)
 - [Social science & policy](#social-science)
 - [Photography](#photography)
@@ -15,7 +15,18 @@ title: Work
 
 <br>
 
-## Key experiences {#experiences}
+## Key experience {#experience}
+
+**Tech Talent Project, Research Intern** [Recommendations](https://techtalentproject.org/wp-content/uploads/2020/10/PPO-Top-10-Opportunities_10.27.20_Zhao.pdf){:target="_blank" class="inline-label-page button"}
+
+{:.list-plus}
+- Led an independent research project focused on bringing technology expertise into presidentially-appointed roles in the U.S. federal government
+- Analyzed publications and datasets on presidential appointees, engaged experts on presidential transitions, and communicated recommendations to transition stakeholders
+
+**Yale Department of Statistics and Data Science, Teaching Assistant**
+
+Held office hours, graded student assignments, relayed student feedback to professors, and helped adapt courses to remote learning for 5 courses over 6 semesters. Courses: Causal Inference (S&DS 314), Machine Learning (S&DS 355), Computational Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123).
+ 
 
 {:.list-arrows}
 - **Built and led the Data Analytics desk within the Yale Daily News**, recruiting 15 members in its first year, setting up a technical stack (`R`, `D3.js`, `Tableau`), preparing documentation and technical guides, coordinating with the YDN's management and content teams, and guiding data reporters as they clean, analyze, visualize, and tell stories about data. More importantly, we're building support for data-driven journalism and interactive multimedia within the YDN. Check out projects on **the most popular courses at Yale** [Story](https://yaledailynews.com/blog/2020/01/10/yales-most-popular-courses/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/yale-popular-classes){:target="_blank" class="button inline-label-github"}, **the shifting demographic makeup of athletic teams** [Story](http://features.yaledailynews.com/blog/2020/04/24/analysis-a-shifting-demographic-for-storied-yale-crew-international-athletes-elevate-the-elis/){:target="_blank" class="button inline-label-page"}, and **visualizations of New Haven crime statistics** [Story](https://yaledailynews.com/blog/2019/10/22/analysis-new-haven-sees-drop-in-crime/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/ydn-crime-report-2019){:target="_blank" class="button inline-label-github"}.
@@ -24,7 +35,7 @@ title: Work
 
 ## Statistics & data science {#data-science}
 
-{: .list-plus}
+{:.list-plus}
 - **Conducted a randomized field experiment** on whether using photos in text messages increases link click-through rates, with implications for text message marketing. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. Final project for S&DS 315: Measuring Impact, Prof. Josh Kalla. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button inline-label-page"} [Slides](https://docs.google.com/presentation/d/1qjBd1igY0IjrU7NS7eUP02LMKwQGF-yPGUnW_CZ_MUg/edit?usp=sharing){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button inline-label-github"}
 - **Applied natural language processing on news articles to track the US-China trade war**. We scraped White House press releases and Chinese state media articles in order to apply sentiment analysis and LDA topic modeling, demonstrating that sentiment often moves in tandem with key developments in the trade war. Used `selenium` and `BeautifulSoup` in Python for scraping, `dplyr` and `ggplot2` in R for analysis and visualization, and `topicmodels` in R for topic modeling. Final project for GLBL 849: Big Data & Global Policy, Prof. Casey King. [GitHub](https://github.com/iamdanzhao/maketradenotwar){:target="_blank" class="button inline-label-github"}
 - **Analyzed Yale student body survey results on grading systems during the COVID-19 pandemic**, comparing student support for Universal Pass versus Optional Pass/Fail and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
