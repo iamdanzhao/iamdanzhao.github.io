@@ -22,6 +22,7 @@ img {
     position: relative;
     display: block;
     z-index: 2000;
+    margin-top: 1em;
 }
 
 main a:not(.button):not(.fa):not(.arrow),
@@ -631,4 +632,38 @@ main {
     z-index: 2003;
     color: white;
     text-align: center;
+}
+
+.photo-preview .half {
+    -webkit-filter: brightness(100%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.photo-preview .half:hover {
+    -webkit-filter: brightness(70%);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.photo-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.photo-text {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 10000;
+    color: white;
+    font-size: 150%;
+    font-weight: 600;
 }

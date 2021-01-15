@@ -1,5 +1,5 @@
 ---
-title: Some quick thoughts before the storm
+title: Some quick reflections before the storm
 author: Daniel Zhao
 blurb: Writing out some thoughts the night of the 2020 election
 layout: blog
