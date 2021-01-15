@@ -54,7 +54,7 @@ title: Work
 **Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018
 
 {:.list-plus}
-- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers — saving the city tens of thouands of dollars [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
+- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
 - Used combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`
 
 ## Statistics & data science {#data-science}
