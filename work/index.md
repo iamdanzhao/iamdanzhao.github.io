@@ -6,7 +6,7 @@ title: Work
 # Work
 
 {: .list-arrows .list-bold}
-- [Key experience](#experience)
+- [Work experience](#experience)
 - [Data science](#data-science)
 - [Social science & policy](#social-science)
 - [Photography](#photography)
@@ -15,7 +15,7 @@ title: Work
 
 <br>
 
-## Key experience {#experience}
+## Work experience {#experience}
 
 **Tech Talent Project**, Research Intern, Fall 2020
 
@@ -42,7 +42,7 @@ title: Work
 
 {:.list-plus}
 - Held office hours, graded student assignments, relayed student feedback to professors, and helped adapt courses to remote learning for 5 courses over 6 semesters
-- Courses: Causal Inference (S&DS 314), Machine Learning (S&DS 355), Computational Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
+- Courses: Causal Inference (S&DS 314), Machine Learning (S&DS 355), Comp. Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
 
 **U.S. Bureau of Labor Statistics**, Civic Digital Fellow, Summer 2019
 
@@ -54,9 +54,8 @@ title: Work
 **Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018
 
 {:.list-plus}
-- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers
-- This would save the city tens of thousands of dollars from not having to hire outside engineering firms to conduct the same analysis
-- Used combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`. [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
+- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers — saving the city tens of thouands of dollars [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
+- Used combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`
 
 ## Statistics & data science {#data-science}
 
