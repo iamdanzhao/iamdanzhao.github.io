@@ -679,6 +679,10 @@ main {
     transition: all 0.5s ease;
 }
 
+.photo-preview img {
+    border-radius: 8px;
+}
+
 .photo-container {
     position: relative;
     text-align: center;
