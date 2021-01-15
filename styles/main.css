@@ -484,14 +484,6 @@ main {
     line-height: 145%;
 }
 
-.home-image {
-    object-fit: cover;
-    height: 560px;
-    margin-bottom: 4em;
-}
-
-/* PAGE STYLES: BIO */
-
 #bio-prof-pic {
     border-radius: 50%;
     width: 330px;
@@ -507,6 +499,40 @@ main {
         margin-top: -120px;
         width: 280px;
     }
+}
+
+@media screen and (max-width: 480px) {
+    .intro h1 {
+        margin-bottom: 0.5em;
+    }
+    
+    #bio-prof-pic {
+        width: 240px;
+        margin-top: -160px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .intro h1 {
+        font-size: 325%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .intro h1 {
+        font-size: 300%;
+    }
+    
+    #bio-prof-pic {
+        width: 200px;
+        margin-top: -180px;
+    }
+}
+
+.home-image {
+    object-fit: cover;
+    height: 560px;
+    margin-bottom: 4em;
 }
 
 /* PAGE STYLES: WORK */
