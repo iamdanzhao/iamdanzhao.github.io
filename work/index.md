@@ -23,6 +23,13 @@ title: Work
 - Led an independent research project focused on bringing technology expertise into presidentially-appointed roles in the U.S. federal government
 - Analyzed publications and datasets on presidential appointees, engaged experts on presidential transitions, and communicated recommendations to transition stakeholders
 
+**Facebook**, Data Science/Analytics Intern
+
+{:.list-plus}
+- Analyzed user data to recommend changes to the bookmarks menu, used by 150M daily users
+- Designed and implemented a randomized experiment to drive product adoption for 765K users
+- Communicated analysis results to engineers and product managers to influence team roadmap
+
 **Yale Daily News**, Co-Founder and Co-Editor of the Data Desk
 
 {:.list-plus}
