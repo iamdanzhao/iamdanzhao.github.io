@@ -15,10 +15,10 @@ title: Work
 
 ## Work experience {#experience}
 
-**Tech Talent Project**, Policy Research Intern, Fall 2020
+**Tech Talent Project**, Policy Research Intern, Fall 2020 [View recommendations](https://techtalentproject.org/wp-content/uploads/2020/10/PPO-Top-10-Opportunities_10.27.20_Zhao.pdf){:target="_blank" class="inline-label-page button"}
 
 {:.list-plus}
-- Led an independent research project focused on bringing technology expertise into presidentially-appointed roles in the U.S. federal government [View recommendations](https://techtalentproject.org/wp-content/uploads/2020/10/PPO-Top-10-Opportunities_10.27.20_Zhao.pdf){:target="_blank" class="inline-label-page button"}
+- Led an independent research project focused on bringing technology expertise into presidentially-appointed roles in the U.S. federal government
 - Analyzed publications and datasets on presidential appointees, engaged experts on presidential transitions, and communicated recommendations to transition stakeholders
 
 **Facebook**, Data Science/Analytics Intern, Summer 2020
@@ -28,17 +28,18 @@ title: Work
 - Designed and implemented a randomized experiment to drive product adoption for 765K users
 - Communicated analysis results to engineers and product managers to influence team roadmap
 
-**U.S. Bureau of Labor Statistics**, Civic Digital Fellow, Summer 2019
+**U.S. Bureau of Labor Statistics**, Civic Digital Fellow, Summer 2019 [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
 
 {:.list-plus}
-- Built dashboards to unify multiple streams of customer feedback data and automate monthly reporting, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
+- Built dashboards to unify multiple streams of customer feedback data and automate monthly reporting, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases 
 - Analyzed web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined a roadmap for future development
 - Used `R Shiny`, with natural language processing applications in `spaCy` integrated via `reticulate`
 
-**Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018
+**Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018 [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
 
 {:.list-plus}
-- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
+- Created Microsoft Power BI dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers
+- Evaluated impact of 7 traffic signal retiming projects using the dashboard, replacing the need to hire engineering firms to conduct studies and in turn saving $50,000+ per study
 - Used combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`
 
 ## Leadership {#leadership}
@@ -55,13 +56,19 @@ title: Work
 
 {:.list-plus}
 - Held office hours, graded student assignments, relayed student feedback to professors, and helped adapt courses to remote learning for 5 courses over 6 semesters
-- Courses: Causal Inference (S&DS 314), Machine Learning (S&DS 355), Comp. Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
+- Courses: Causal Inference (S&DS 314), Intro Machine Learning (S&DS 355), Comp. Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
 
 **Yale Roosevelt Institute**, Energy & Environment Center Head, Fall 2018 to Spring 2019
 
-- Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects in Connecticut and the nation's first of its kind. We focused on the relationship between its investment model and its shift towards equitable access to green energy, and present challenges in the face of Connecticut's budgetary challenges.
+- Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects in Connecticut and the nation's first of its kind
+- Analyzed research, conducted interviews with regional stakeholders, and led weekly project meetings
+- Held conversations that led to establishing the Tech Policy research center
 
 **Yale Daily News**, Photography Editor, Fall 2018 to Fall 2020
+
+- Helped lead a team of 10+ photographers to produce daily content for the print and online paper
+- Led expansion of our collection of stock photography, and increased year-over-year recruitment
+
 
 ## Projects {#projects}
 
@@ -72,14 +79,12 @@ title: Work
 - **Applied natural language processing on news articles to track the US-China trade war**. We scraped White House press releases and Chinese state media articles in order to apply sentiment analysis and LDA topic modeling, demonstrating that sentiment often moves in tandem with key developments in the trade war. Used `selenium` and `BeautifulSoup` in Python for scraping, `dplyr` and `ggplot2` in R for analysis and visualization, and `topicmodels` in R for topic modeling. Final project for GLBL 849: Big Data & Global Policy, Prof. Casey King. [GitHub](https://github.com/iamdanzhao/maketradenotwar){:target="_blank" class="button inline-label-github"}
 - **Analyzed Yale student body survey results on grading systems during the COVID-19 pandemic**, comparing student support for Universal Pass versus Optional Pass/Fail and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
 
-#### Reference guides
+#### Skills
 
-{:.description}
-I've attempted to document my technical learnings over the past few years by creating reference guides. They're incomplete and I'm constantly adding to them, but perhaps they'll be useful:
-
-{: .list-arrows .list-bold}
-- [R Reference](http://danielzhao.com/media/r_reference.html){:target="_bold"}
-- [Statistics Reference](https://drive.google.com/file/d/1CeTKZ32HvNSXsvFgMBpNHLc0B5npiUac/view?usp=sharing){:target="_bold"}
+- **Data analysis**: `R`, `Python`, Stata
+- **Data visualization**: `ggplot2`, `R Shiny`, `seaborn` + `altair`, Microsoft Power BI, Tableau, `D3.js`
+- **Web scraping** (`selenium`, `BeautifulSoup`, `rvest`), **machine learning** (`scikit-learn`, `gensim`), **natural language processing** (`NLTK`, `spaCy`, `tidytext`), **GIS** (in R, QGIS)
+- **Other languages**: `Java`, `C`, `HTML/CSS`, `JavaScript`
 
 ### Policy & social science
 
@@ -97,6 +102,26 @@ I've attempted to document my technical learnings over the past few years by cre
 - **How the urban built environment can impact residential segregation**, along with a framework, data sources, and methodology that we can use to study this relationship in New York City
 - **How to increase interoperability of electronic health records (EHRs)** in the United States in order to facilitate big data in drug research, precision medicine and patient-centered care
 
+## Other {#other}
+
+### Photography
+
+{: .list-plus}
+- **Had a photo of on-campus protests in response to Justice Kavanaugh's confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} in the 2019 Yale-Harvard football game, [commencement 2018](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
+- **Ran a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
+- **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends climate policy
+
+### Reference
+
+#### Data science
+
+{:.description}
+I've attempted to document my technical learnings over the past few years by creating reference guides. They're incomplete and I'm constantly adding to them, but perhaps they'll be useful:
+
+{: .list-arrows .list-bold}
+- [R Reference](http://danielzhao.com/media/r_reference.html){:target="_bold"}
+- [Statistics Reference](https://drive.google.com/file/d/1CeTKZ32HvNSXsvFgMBpNHLc0B5npiUac/view?usp=sharing){:target="_bold"}
+
 #### Course notes
 
 {:.description}
@@ -106,16 +131,6 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 - [**Sustainability in the 21st Century (GLBL 217, Fall 2017)**](https://drive.google.com/file/d/1s_e9aooDNapjE3X0FeUKfZDnQ7oTdPsG/view?usp=sharing){: target="_blank"}
 - [**Approaches to International Development (GLBL 225, Spring 2019)**](https://drive.google.com/file/d/1vTsq0fOixLEUefBCcL8mLy9ej9sBTF5o/view?usp=sharing){: target="_blank"}
 - [**Approaches to International Security (GLBL 275, Fall 2019)**](https://docs.google.com/document/d/1hmdrbq0UDAe_QP4E9ahp-gVzRTDT0UG4XjqLRGrV7MM/edit?usp=sharing){: target="_blank"}
-
-## Other {#other}
-
-### Photography
-
-{: .list-plus}
-- **Serve as a [photo editor for the Yale Daily News](https://www.instagram.com/yaledailynews/){:target="_blank"} for two years**, where I coordinated a team of photographers to produce daily content for the paper, facilitated recruitment, expanded our collection of stock photography, and increased year-over-year recruitment
-- **Had a photo of on-campus protests in response to Justice Kavanaugh's confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} in the 2019 Yale-Harvard football game, [commencement 2018](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
-- **Run a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
-- **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends climate policy
 
 ### Music & piano
 
