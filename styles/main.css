@@ -438,21 +438,25 @@ main {
 .half {
     width: calc(50% - 1.5em);
     padding-right: 1.5em;
+    font-size: 95%;
 }
 
 .third {
     width: calc(33.33% - 1.5em);
     padding-right: 1.5em;
+    font-size: 95%;
 }
 
 .two-thirds {
     width: calc(66.66% - 1.5em);
     padding-right: 1.5em;
+    font-size: 95%;
 }
 
 .quarter {
     width: calc(25% - 1.5em);
     padding-right: 1.5em;
+    font-size: 95%;
 }
 
 @media screen and (max-width: 720px) {
