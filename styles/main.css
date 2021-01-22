@@ -66,13 +66,13 @@ h4 {
 h1 {
     font-weight: 600;
     font-size: 400%;
-    border-bottom: 1px dotted var(--color-slate);
 }
 
 h2 {
     margin-top: 1em;
     line-height: 190%;
     font-size: 200%;
+    border-bottom: 1px dotted var(--color-slate);
 }
 
 h3 {
