@@ -15,7 +15,7 @@ title: Work
 
 ## Work experience {#experience}
 
-**Tech Talent Project**, Research Intern, Fall 2020
+**Tech Talent Project**, Policy Research Intern, Fall 2020
 
 {:.list-plus}
 - Led an independent research project focused on bringing technology expertise into presidentially-appointed roles in the U.S. federal government [View recommendations](https://techtalentproject.org/wp-content/uploads/2020/10/PPO-Top-10-Opportunities_10.27.20_Zhao.pdf){:target="_blank" class="inline-label-page button"}
@@ -51,7 +51,7 @@ title: Work
 - Set up a technical stack (`R`, `D3.js`, Tableau), built buy-in from management, editors, and reporters
 - See projects on the most popular courses at Yale [Story](https://yaledailynews.com/blog/2020/01/10/yales-most-popular-courses/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/yale-popular-classes){:target="_blank" class="button inline-label-github"}, the shifting demographic makeup of athletic teams [Story](http://features.yaledailynews.com/blog/2020/04/24/analysis-a-shifting-demographic-for-storied-yale-crew-international-athletes-elevate-the-elis/){:target="_blank" class="button inline-label-page"}, and visualizations of New Haven crime statistics [Story](https://yaledailynews.com/blog/2019/10/22/analysis-new-haven-sees-drop-in-crime/){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/ydn-crime-report-2019){:target="_blank" class="button inline-label-github"}.
 
-**Yale Department of Statistics and Data Science**, Teaching Assistant, Fall 2018 to present
+**Yale Department of Statistics & Data Science**, Teaching Assistant, Fall 2018 to present
 
 {:.list-plus}
 - Held office hours, graded student assignments, relayed student feedback to professors, and helped adapt courses to remote learning for 5 courses over 6 semesters
