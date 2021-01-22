@@ -5,13 +5,12 @@ title: Work
 
 # Work
 
-{: .list-arrows .list-bold}
+{: .list-bar .list-bold #sticky-bar}
+- Jump to
 - [Work experience](#experience)
 - [Leadership](#leadership)
 - [Projects](#projects)
 - [Other](#other)
-
-<br>
 
 ## Work experience {#experience}
 

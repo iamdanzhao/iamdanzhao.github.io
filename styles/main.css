@@ -4,6 +4,7 @@
     --color-blue: #0083ff;
     --color-pink: #ff5470;
     --color-slate: #415869;
+    --color-offwhite: #fbfbfc;
 }
 
 /* MAIN STYLES */
@@ -13,7 +14,7 @@ body {
     padding: 0;
     margin: 0;
     line-height: 1.5em;
-    background-color: #FBFBFC;
+    background-color: var(--color-offwhite);
 }
 
 img {
@@ -90,13 +91,15 @@ h4 {
         font-size: 95%;
     }
     
-    h1 {
-        padding-bottom: 0;
-    }
-    
     .quarter > h4:first-child,
     .half > h4:first-child {
         margin-top: 1.5em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1, h2 {
+        padding-bottom: 0;
     }
 }
 
@@ -288,8 +291,13 @@ ol li > * {
 .list-bar li {
     display: inline;
     padding: .25em .5em;
-    color: white;
     text-indent: -1.3125em;
+}
+
+.list-bar li:first-child {
+    margin-left: -0.25em;
+    font-weight: 400;
+    font-style: italic;
 }
 
 @media screen and (max-width: 360px) {
@@ -299,11 +307,45 @@ ol li > * {
     }
 }
 
+@media screen and (min-width: 640px) {
+    .stuck {
+        position: fixed;
+        transition: all 0.5s;
+    }
+
+    #sticky-bar.stuck {
+        top: 1.5em;
+        right: 2em;
+        padding: 12px;
+        padding-left: 16px;
+        background-color: rgba(48, 66, 92, 0.9);
+        border-radius: 4px;
+        transition: all 0.5s;
+        color: white;
+    }
+
+    #sticky-bar.stuck a {
+        color: white;
+    }
+
+    .stuck + * {
+        padding-top: 54px;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    #sticky-bar.stuck {
+        right: calc(2em + (100vw - 960px) / 2);
+    }
+}
+
 .list-bar.actions li {
+    color: white;
     background-color: var(--color-slate);
 }
 
 .list-bar.tools li {
+    color: white;
     background-color: var(--color-pink);
 }
 
@@ -320,6 +362,8 @@ ol li > * {
     color: white;
     text-decoration: none;  
 }
+
+
 
 /* LAYOUT: CONTAINERS*/
 
