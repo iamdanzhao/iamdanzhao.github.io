@@ -7,10 +7,8 @@ title: Work
 
 {: .list-arrows .list-bold}
 - [Work experience](#experience)
-- [Data science](#data-science)
-- [Social science & policy](#social-science)
-- [Photography](#photography)
-- [Music & piano](#music)
+- [Leadership](#leadership)
+- [Projects](#projects)
 - [Other](#other)
 
 <br>
@@ -30,6 +28,21 @@ title: Work
 - Designed and implemented a randomized experiment to drive product adoption for 765K users
 - Communicated analysis results to engineers and product managers to influence team roadmap
 
+**U.S. Bureau of Labor Statistics**, Civic Digital Fellow, Summer 2019
+
+{:.list-plus}
+- Built dashboards to unify multiple streams of customer feedback data and automate monthly reporting, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
+- Analyzed web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined a roadmap for future development
+- Used `R Shiny`, with natural language processing applications in `spaCy` integrated via `reticulate`
+
+**Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018
+
+{:.list-plus}
+- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
+- Used combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`
+
+## Leadership {#leadership}
+
 **Yale Daily News**, Co-Founder and Co-Editor of the Data Desk, Fall 2019 to present
 
 {:.list-plus}
@@ -44,27 +57,22 @@ title: Work
 - Held office hours, graded student assignments, relayed student feedback to professors, and helped adapt courses to remote learning for 5 courses over 6 semesters
 - Courses: Causal Inference (S&DS 314), Machine Learning (S&DS 355), Comp. Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
 
-**U.S. Bureau of Labor Statistics**, Civic Digital Fellow, Summer 2019
+**Yale Roosevelt Institute**, Energy & Environment Center Head, Fall 2018 to Spring 2019
 
-{:.list-plus}
-- Built dashboards to unify multiple streams of customer feedback data and automate monthly reporting, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases [Slides](https://github.com/codingitforward/cdfdemoday2019/blob/master/Integrating_Multiple_Sources_of_Customer_Feedback_Data.pdf){:target="_blank" class="button inline-label-page"}
-- Analyzed web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined a roadmap for future development
-- Used `R Shiny`, with natural language processing applications in `spaCy` integrated via `reticulate`
+- Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects in Connecticut and the nation's first of its kind. We focused on the relationship between its investment model and its shift towards equitable access to green energy, and present challenges in the face of Connecticut's budgetary challenges.
 
-**Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018
+**Yale Daily News**, Photography Editor, Fall 2018 to Fall 2020
 
-{:.list-plus}
-- Created dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers [More details](http://danielzhao.com/projects/louisville/){:class="button inline-label-page"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button inline-label-page"}
-- Used combination of `AWS`, `SQL`, `R`, and `Microsoft Power BI`
+## Projects {#projects}
 
-## Statistics & data science {#data-science}
+### Statistics & data science
 
 {:.list-plus}
 - **Conducted a randomized field experiment** on whether using photos in text messages increases link click-through rates, with implications for text message marketing. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. Final project for S&DS 315: Measuring Impact, Prof. Josh Kalla. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button inline-label-page"} [Slides](https://docs.google.com/presentation/d/1qjBd1igY0IjrU7NS7eUP02LMKwQGF-yPGUnW_CZ_MUg/edit?usp=sharing){:target="_blank" class="button inline-label-page"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button inline-label-github"}
 - **Applied natural language processing on news articles to track the US-China trade war**. We scraped White House press releases and Chinese state media articles in order to apply sentiment analysis and LDA topic modeling, demonstrating that sentiment often moves in tandem with key developments in the trade war. Used `selenium` and `BeautifulSoup` in Python for scraping, `dplyr` and `ggplot2` in R for analysis and visualization, and `topicmodels` in R for topic modeling. Final project for GLBL 849: Big Data & Global Policy, Prof. Casey King. [GitHub](https://github.com/iamdanzhao/maketradenotwar){:target="_blank" class="button inline-label-github"}
 - **Analyzed Yale student body survey results on grading systems during the COVID-19 pandemic**, comparing student support for Universal Pass versus Optional Pass/Fail and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button inline-label-page"}
 
-### Reference guides
+#### Reference guides
 
 {:.description}
 I've attempted to document my technical learnings over the past few years by creating reference guides. They're incomplete and I'm constantly adding to them, but perhaps they'll be useful:
@@ -73,14 +81,13 @@ I've attempted to document my technical learnings over the past few years by cre
 - [R Reference](http://danielzhao.com/media/r_reference.html){:target="_bold"}
 - [Statistics Reference](https://drive.google.com/file/d/1CeTKZ32HvNSXsvFgMBpNHLc0B5npiUac/view?usp=sharing){:target="_bold"}
 
-## Policy & social science {#social-science}
+### Policy & social science
 
 {: .list-plus}
 - Helped write a report on how to **bring young civic technologists into the public sector** by creating a student loan forgiveness program, a proven model in other fields [Report on inspire2serve.gov](https://inspire2serve.gov/_api/files/343){: class="button inline-label-page" target="_blank"} [Website](https://picturegrants.org/){: class="button inline-label-page" target="_blank"}
-- **Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects** in Connecticut and the nation's first of its kind. We focused on the relationship between its investment model and its shift towards equitable access to green energy, and present challenges in the face of Connecticut's budgetary challenges.
 - Wrote a brief for **Mikie Sherrill's congressional campaign in NJ-11** regarding **reversing decades of environmental mismanagement on the Passaic River**, including how to hold chemical polluters accountable and enact more equitable flood insurance policy
 
-### Course final projects
+#### Course final projects
 
 {: .list-plus}
 - **How Western technology companies facilitate digital authoritarianism by selling surveillance products**, acquiescing to China and Russia's demands, and letting misinformation go unchecked, as well as key considerations for developing policy moving forward
@@ -90,7 +97,7 @@ I've attempted to document my technical learnings over the past few years by cre
 - **How the urban built environment can impact residential segregation**, along with a framework, data sources, and methodology that we can use to study this relationship in New York City
 - **How to increase interoperability of electronic health records (EHRs)** in the United States in order to facilitate big data in drug research, precision medicine and patient-centered care
 
-### Course notes
+#### Course notes
 
 {:.description}
 These are **notes I've compiled for courses I've taken**, as a study and review tool. Feel free to use at your own discretion, although I make no guarantees for the accuracy of the notes or the degree to which they will represent the course as taught in future semesters.
@@ -100,7 +107,9 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 - [**Approaches to International Development (GLBL 225, Spring 2019)**](https://drive.google.com/file/d/1vTsq0fOixLEUefBCcL8mLy9ej9sBTF5o/view?usp=sharing){: target="_blank"}
 - [**Approaches to International Security (GLBL 275, Fall 2019)**](https://docs.google.com/document/d/1hmdrbq0UDAe_QP4E9ahp-gVzRTDT0UG4XjqLRGrV7MM/edit?usp=sharing){: target="_blank"}
 
-## Photography {#photography}
+## Other {#other}
+
+### Photography
 
 {: .list-plus}
 - **Serve as a [photo editor for the Yale Daily News](https://www.instagram.com/yaledailynews/){:target="_blank"} for two years**, where I coordinated a team of photographers to produce daily content for the paper, facilitated recruitment, expanded our collection of stock photography, and increased year-over-year recruitment
@@ -108,7 +117,7 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 - **Run a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
 - **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends climate policy
 
-## Music & piano {#music}
+### Music & piano
 
 #### Piano arrangements
 
@@ -124,8 +133,8 @@ These are **notes I've compiled for courses I've taken**, as a study and review 
 - **Kawaranai Mono** from *The Girl Who Leapt Through Time* for piano solo ([pdf](https://drive.google.com/file/d/0B0wuRJcMeNcvYzNlR1ZsbGJEcnc/view?usp=sharing))
 - **For River** from *To The Moon* for piano solo ([pdf](https://drive.google.com/file/d/0B0wuRJcMeNcvUVVsUVE5Z3FSNzg/view?usp=sharing))
 
-## Other {#other}
+### Aviation
 
 **Map of hubs of US Big Three airline companies** [Google Maps](https://www.google.com/maps/d/u/0/edit?mid=1x2s9hTjBWYEQRFqwLvMWxp2eVJENeZsx&ll=30.791630598850965%2C-96.6942578&z=4){:target="_blank" class="inline-label-page button"}
 
-- Current as of December 2018, but Delta has since designated Boston (BOS) as a hub, and established focus city operations Austin (AUS), Nashville (BNA), and San Jose (SJC). Of course, all of this is up in the air because nobody knows what will happen post-coronavirus. 
+- Current as of December 2018, but Delta has since designated Boston (BOS) as a hub, and established focus city operations Austin (AUS), Nashville (BNA), and San Jose (SJC). Of course, all of this is up in the air because nobody knows what will happen post-coronavirus.
