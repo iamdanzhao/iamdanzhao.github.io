@@ -12,7 +12,9 @@
         <title>{{ page.title }} / Daniel Zhao</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link href="/styles/main.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,300,400,400i,500,600&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:200,300,400,400i,500,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -30,13 +32,9 @@
             </nav>
         </header>
         <main>
-<!--
-            <div id="gradient-top"></div>
-            <div id="gradient-bottom"></div>
--->
             <div class="wide">
                 <a href="/writing/"><strong>← Back to all posts</strong></a>
-                <h1>{{ page.title }}</h1>
+                <h1 style="font-size: 300% !important">{{ page.title }}</h1>
                 <div class="byline">
                     <span class="byline-author">{{ page.author }}</span>
                     <span class="byline-date">{{ page.date | date: "%B %-d, %Y"}}</span>
