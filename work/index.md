@@ -60,12 +60,14 @@ title: Work
 
 **Yale Roosevelt Institute**, Energy & Environment Center Head, Fall 2018 to Spring 2019
 
+{:.list-plus}
 - Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects in Connecticut and the nation's first of its kind
 - Analyzed research, conducted interviews with regional stakeholders, and led weekly project meetings
 - Held conversations that led to establishing the Tech Policy research center
 
 **Yale Daily News**, Photography Editor, Fall 2018 to Fall 2020
 
+{:.list-plus}
 - Helped lead a team of 10+ photographers to produce daily content for the print and online paper
 - Led expansion of our collection of stock photography, and increased year-over-year recruitment
 
@@ -81,6 +83,7 @@ title: Work
 
 #### Skills
 
+{:.list-plus}
 - **Data analysis**: `R`, `Python`, Stata
 - **Data visualization**: `ggplot2`, `R Shiny`, `seaborn` + `altair`, Microsoft Power BI, Tableau, `D3.js`
 - **Web scraping** (`selenium`, `BeautifulSoup`, `rvest`), **machine learning** (`scikit-learn`, `gensim`), **natural language processing** (`NLTK`, `spaCy`, `tidytext`), **GIS** (in R, QGIS)
