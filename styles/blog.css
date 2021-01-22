@@ -1,0 +1,18 @@
+ol,
+ul {
+    margin-top: 1.75em;
+    margin-bottom: 1.75em;
+}
+
+ul {
+    padding-left: 40px;
+}
+
+ul li {
+    text-indent: -1.875em;
+}
+
+ul li:before {
+    content: "+";
+    padding-right: 1.35em;
+}
