@@ -701,7 +701,7 @@ main {
     }
 
     .stuck + * {
-        padding-top: 54px;
+        padding-top: 60px;
     }
 }
 
