@@ -259,6 +259,19 @@ footer > * {
 
 /* LISTS */
 
+ol {
+    font-size: 95%;
+    padding: 0;
+}
+
+ol {
+    padding-left: 1.875em;
+}
+
+ol li {
+    padding-left: 0.875em;
+}
+
 ul {
     list-style: outside none;
     margin: 0;
