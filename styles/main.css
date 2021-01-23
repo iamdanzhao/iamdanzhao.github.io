@@ -28,10 +28,15 @@ body {
 code {
     font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
     padding: 2px 4px;
-    font-size: 90%;
+    font-size: 100%;
     color: #c7254e;
     background-color: #f9f2f4;
     border-radius: 4px;
+}
+
+p {
+    font-size: 110%;
+    line-height: 150%;
 }
 
 /***** Links */
@@ -78,11 +83,11 @@ h2 {
 }
 
 h3 {
-    font-size: 145%;
+    font-size: 150%;
 }
 
 h4 {
-    font-size: 95%;
+    font-size: 100%;
     text-transform: uppercase;
     margin-top: 1.5em;
     margin-bottom: 1em;
@@ -260,7 +265,6 @@ footer > * {
 /* LISTS */
 
 ol {
-    font-size: 95%;
     padding: 0;
 }
 
@@ -276,7 +280,6 @@ ul {
     list-style: outside none;
     margin: 0;
     padding: 0;
-    font-size: 95%;
 }
 
 li {
@@ -432,25 +435,25 @@ main {
 .half {
     width: calc(50% - 1.5em);
     padding-right: 1.5em;
-    font-size: 95%;
+    font-size: 100%;
 }
 
 .third {
     width: calc(33.33% - 1.5em);
     padding-right: 1.5em;
-    font-size: 95%;
+    font-size: 100%;
 }
 
 .two-thirds {
     width: calc(66.66% - 1.5em);
     padding-right: 1.5em;
-    font-size: 95%;
+    font-size: 100%;
 }
 
 .quarter {
     width: calc(25% - 1.5em);
     padding-right: 1.5em;
-    font-size: 95%;
+    font-size: 100%;
 }
 
 @media screen and (max-width: 720px) {
@@ -711,7 +714,7 @@ main {
 /***** Labels */
 
 .ilabel {
-    font-size: 90%;
+    font-size: 95%;
     border-radius: 3px;
     padding: 1px 6px;
     margin-right: 4px;
@@ -745,12 +748,12 @@ a.ilabel:hover {
 .posts-entry-date {
     color: gray;
     text-transform: uppercase;
-    font-size: 85%;
+    font-size: 90%;
 }
 
 .posts-entry-blurb {
     display: block;
-    font-size: 95%;
+    font-size: 100%;
     margin-top: 0.5em;
 }
 

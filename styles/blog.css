@@ -17,3 +17,21 @@ ul li:before {
     content: "+";
     padding-right: 1.35em;
 }
+
+main p {
+    font-size: 120%;
+    line-height: 175%;
+}
+
+main li {
+    font-size: 115%;
+    line-height: 150%;
+}
+
+h2 {
+    color: var(--color-blue);
+}
+
+h3 {
+    color: var(--color-slate);
+}
