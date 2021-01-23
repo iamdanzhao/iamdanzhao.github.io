@@ -9,7 +9,7 @@ In the past two months, as I write the closing chapters of my college career, I�
 
 This post will articulate a set of considerations for when I make decisions in the future, as well as the values that underpin those considerations. I’m sharing this as a tool to hold myself accountable.
 
-### Decisionmaking principles
+## Decisionmaking principles
 
 What follows is eight principles that should guide all decisions I make. They’re not intended to serve as a checklist or hard rubric for making decisions, although it may be useful in some scenarios to use these guidelines has to compare two alternatives. More importantly, the principles below are meant to serve as a framework and, in some cases, a starting point for evaluating options presented to me.
 
@@ -26,7 +26,7 @@ These principles are very roughly ordered by importance. (Generally speaking: ad
 
 When I’ve made a decision using the **best available information** to me at that time and **in accordance with these principles**, I don’t have to regret any of my past decisions.
 
-### Driving values and beliefs
+## Driving values and beliefs
 
 These five ideas underpin my worldview, in turn shaping my actions and beliefs. A few are based on my experiences and training; others are more deep-rooted beliefs I hold, for which I’m still in the process of reflecting and identifying their origins.
 
@@ -36,7 +36,7 @@ These five ideas underpin my worldview, in turn shaping my actions and beliefs. 
 - **Public institutions**: **Strong, accountable public institutions are most prepared** and able to enact change on society’s most systemic problems and right the most deep-rooted injustices. Private enterprises have their place, but there must ultimately exist a balance of power between private and public institutions.
 - **“Empirical humanism”**: **Numbers rarely tell the entire story**, and straightforward explanations and solutions for problems are often difficult to come by. Listening to people and listening to data are equally important.
 
-### Lessons I’ve learned along the way
+## Lessons I’ve learned along the way
 
 In reviewing my journal entries (primarily those from the past four years of college), here are a few things I’ve learned about myself that I need to keep in mind moving forward.
 

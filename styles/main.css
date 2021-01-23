@@ -39,6 +39,10 @@ p {
     line-height: 150%;
 }
 
+.half p {
+    font-size: 100%;
+}
+
 /***** Links */
 
 main a:not(.button):not(.fa),
@@ -284,7 +288,7 @@ ul {
 
 li {
     margin-bottom: 0.6em;
-    line-height: 1.2em;
+    line-height: 1.25em;
 }
 
 ul li >,
@@ -435,25 +439,21 @@ main {
 .half {
     width: calc(50% - 1.5em);
     padding-right: 1.5em;
-    font-size: 100%;
 }
 
 .third {
     width: calc(33.33% - 1.5em);
     padding-right: 1.5em;
-    font-size: 100%;
 }
 
 .two-thirds {
     width: calc(66.66% - 1.5em);
     padding-right: 1.5em;
-    font-size: 100%;
 }
 
 .quarter {
     width: calc(25% - 1.5em);
     padding-right: 1.5em;
-    font-size: 100%;
 }
 
 @media screen and (max-width: 720px) {

@@ -32,9 +32,9 @@ title: Work
 {:.list-plus}
 - Built dashboards to unify multiple streams of customer feedback data and automate monthly reporting, using a modular framework that ties in data from Twitter, Google Analytics, web feedback systems, and internal databases 
 - Analyzed web traffic data from Google Analytics, built stakeholder support for unified reporting processes, and defined a roadmap for future development
-- Used `R Shiny`, with natural language processing applications in `spaCy` integrated via `reticulate`
+- Used `R Shiny`, with NLP applications in `spaCy` integrated via `reticulate`
 
-**Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018 [More details](http://danielzhao.com/projects/louisville/){:class="button ilabel pink-block"} [Medium reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button ilabel pink-block"}
+**Louisville Office of Civic Innovation**, Innovation Intern, Summer 2018 [Slides](http://danielzhao.com/projects/louisville/){:class="button ilabel pink-block"} [Reflection](https://medium.com/louisville-metro-opi2/data-driven-governance-reflecting-on-opi2-bdd324aefbdc){:target="_blank" class="button ilabel pink-block"}
 
 {:.list-plus}
 - Created Microsoft Power BI dashboards using crowdsourced Waze data to help Louisville visualize traffic patterns, pinpoint congestion points, target signaling changes, measure the impact of those changes, and make recommendations to policymakers
@@ -55,13 +55,13 @@ title: Work
 
 {:.list-plus}
 - Held office hours, graded student assignments, relayed student feedback to professors, and helped adapt courses to remote learning for 5 courses over 6 semesters
-- Courses: Causal Inference (S&DS 314), Intro Machine Learning (S&DS 355), Comp. Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
+- Courses: Causal Inference (S&DS 314), Intro Machine Learning (S&DS 355), Computational Tools for Data Science (S&DS 262), Intro Stats for Political Science (S&DS 102/3), and YData: Intro to Data Science (S&DS 123) 
 
 **Yale Roosevelt Institute**, Energy & Environment Center Head, Fall 2018 to Spring 2019
 
 {:.list-plus}
 - Led a team of 10 to research the Connecticut Green Bank, a public-private investment bank that funds renewable energy projects in Connecticut and the nation's first of its kind
-- Analyzed research, conducted interviews with regional stakeholders, and led weekly project meetings
+- Analyzed research, interviewed regional stakeholders, and led weekly project meetings
 - Held conversations that led to establishing the Tech Policy research center
 
 **Yale Daily News**, Photography Editor, Fall 2018 to Fall 2020
@@ -76,7 +76,7 @@ title: Work
 ### Statistics & data science
 
 {:.list-plus}
-- **Conducted a randomized field experiment** on whether using photos in text messages increases link click-through rates, with implications for text message marketing. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. Final project for S&DS 315: Measuring Impact, Prof. Josh Kalla. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button ilabel pink-block"} [Slides](https://docs.google.com/presentation/d/1qjBd1igY0IjrU7NS7eUP02LMKwQGF-yPGUnW_CZ_MUg/edit?usp=sharing){:target="_blank" class="button ilabel pink-block"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button ilabel ghpurple-block"}
+- **Conducted a randomized field experiment** on whether using photos in text messages increases link click-through rates. We found no significant effect of including a picture versus not including one. We used `Twilio` (via Python API) to send SMS messages, `Rebrandly` (via Python API) to generate unique trackable links, and `R` for analysis and visualization. Final project for S&DS 315: Measuring Impact, Prof. Josh Kalla. [Report](https://drive.google.com/file/d/1zMFYqGpCuJ-gEAoDZafG6VLL2PQxQe_b/view?usp=sharing){:target="_blank" class="button ilabel pink-block"} [Slides](https://docs.google.com/presentation/d/1qjBd1igY0IjrU7NS7eUP02LMKwQGF-yPGUnW_CZ_MUg/edit?usp=sharing){:target="_blank" class="button ilabel pink-block"} [GitHub](https://github.com/iamdanzhao/teatexts){:target="_blank" class="button ilabel ghpurple-block"}
 - **Applied natural language processing on news articles to track the US-China trade war**. We scraped White House press releases and Chinese state media articles in order to apply sentiment analysis and LDA topic modeling, demonstrating that sentiment often moves in tandem with key developments in the trade war. Used `selenium` and `BeautifulSoup` in Python for scraping, `dplyr` and `ggplot2` in R for analysis and visualization, and `topicmodels` in R for topic modeling. Final project for GLBL 849: Big Data & Global Policy, Prof. Casey King. [GitHub](https://github.com/iamdanzhao/maketradenotwar){:target="_blank" class="button ilabel ghpurple-block"}
 - **Analyzed Yale student body survey results on grading systems during the COVID-19 pandemic**, comparing student support for Universal Pass versus Optional Pass/Fail and assessing barriers that students face at home. For Yale College Council. [Report](https://drive.google.com/file/d/1ltuBAJO32H4yhcteUkkrn4tuyvTjW2lu/view?usp=sharing){:target="_blank" class="button ilabel pink-block"}
 
@@ -84,23 +84,23 @@ title: Work
 
 {:.list-plus}
 - **Data analysis**: `R`, `Python`, Stata
-- **Data visualization**: `ggplot2`, `R Shiny`, `seaborn` + `altair`, Microsoft Power BI, Tableau, `D3.js`
+- **Data visualization**: `ggplot2`, `R Shiny`, `seaborn` + `altair`, Power BI, Tableau, `D3.js`
 - **Web scraping** (`selenium`, `BeautifulSoup`, `rvest`), **machine learning** (`scikit-learn`, `gensim`), **natural language processing** (`NLTK`, `spaCy`, `tidytext`), **GIS** (in R, QGIS)
 - **Other languages**: `Java`, `C`, `HTML/CSS`, `JavaScript`
 
 ### Policy & social science
 
 {: .list-plus}
-- Helped write a report on how to **bring young civic technologists into the public sector** by creating a student loan forgiveness program, a proven model in other fields [Report on inspire2serve.gov](https://inspire2serve.gov/_api/files/343){: class="button ilabel pink-block" target="_blank"} [Website](https://picturegrants.org/){: class="button ilabel pink-block" target="_blank"}
+- Helped write a report on how to **bring young civic technologists into the public sector** by creating a student loan forgiveness program, [Report on inspire2serve.gov](https://inspire2serve.gov/_api/files/343){: class="button ilabel pink-block" target="_blank"} [Website](https://picturegrants.org/){: class="button ilabel pink-block" target="_blank"}
 - Wrote a brief for **Mikie Sherrill's congressional campaign in NJ-11** regarding **reversing decades of environmental mismanagement on the Passaic River**, including how to hold chemical polluters accountable and enact more equitable flood insurance policy
 
 #### Course final projects
 
 {: .list-plus}
 - **How Western technology companies facilitate digital authoritarianism by selling surveillance products**, acquiescing to China and Russia's demands, and letting misinformation go unchecked, as well as key considerations for developing policy moving forward
-- **Whether cyberwarfare will require a fundamental reframing of our understanding of national security** (my take: it won't), and breaking down the key components of the "cyber revolution" hypothesis
-- **The potential for algorithmic bias in Sidewalk Labs' proposal for a smart city in Toronto**, how that bias would harm vulnerable populations, and how algorithmic oversight boards can help mitigate these harms
-- **The debate over the European Union Copyright Directive**, including an analysis of how key tradeoffs and incentives differ among technology companies, news organizations, and EU regulators. Includes sentiment analysis of tweets from American and European users. [Full text](https://drive.google.com/file/d/1UWSE7wSQEnma7oBeIj4J29oAlF9WV-Ck/view){: class="button ilabel pink-block" target="_blank"} [GitHub](https://github.com/iamdanzhao/copyright-directive-tweets){: class="button ilabel ghpurple-block" target="_blank"}
+- **Whether cyberwarfare will require a fundamental reframing of our understanding of national security** (my take: it won't), and breaking down the "cyber revolution" hypothesis
+- **The potential for algorithmic bias in Sidewalk Labs' smart city proposal**, how that bias would harm vulnerable populations, and how algorithmic oversight boards can help mitigate these harms
+- **The debate over the European Union Copyright gDirective**, including an analysis of how key tradeoffs and incentives differ among technology companies, news organizations, and EU regulators. Includes sentiment analysis of tweets from American and European users. [Full text](https://drive.google.com/file/d/1UWSE7wSQEnma7oBeIj4J29oAlF9WV-Ck/view){: class="button ilabel pink-block" target="_blank"} [GitHub](https://github.com/iamdanzhao/copyright-directive-tweets){: class="button ilabel ghpurple-block" target="_blank"}
 - **How the urban built environment can impact residential segregation**, along with a framework, data sources, and methodology that we can use to study this relationship in New York City
 - **How to increase interoperability of electronic health records (EHRs)** in the United States in order to facilitate big data in drug research, precision medicine and patient-centered care
 
@@ -109,9 +109,9 @@ title: Work
 ### Photography
 
 {: .list-plus}
-- **Had a photo of on-campus protests in response to Justice Kavanaugh's confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} in the 2019 Yale-Harvard football game, [commencement 2018](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
+- **Had a photo of on-campus protests in response to Justice Kavanaugh's confirmation hearings appear in [The New York Times](https://www.nytimes.com/2018/09/25/us/politics/deborah-ramirez-brett-kavanaugh-allegations.html){:target="_blank"}**, as well as photos of late-night study spots appear in [The Atlantic](https://www.theatlantic.com/education/archive/2018/11/college-24-hour-hangouts/576841/){:target="_blank"}. Also documented a [historic comeback](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"} in the 2019 Yale-Harvard football game, [Yale's 2018 commencement](https://yaledailynews.com/blog/2018/05/21/yale-confers-3728-degrees-at-commencement/){:target="_blank"}, and more.
 - **Ran a freelance photography business** to photograph conferences, hackathons, speaker events, formals, theater performances, concerts, and headshots
-- **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends climate policy
+- **Attended the 2018 United Nations COP 24 climate change conference** as part of a photography project for [Students for Carbon Dividends](https://www.s4cd.org/){:target="_blank"}, a student group advocating for a carbon dividends scheme
 
 ### Reference
 
