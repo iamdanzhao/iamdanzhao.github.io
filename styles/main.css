@@ -764,6 +764,12 @@ a.ilabel:hover {
     margin-bottom: 3em;
 }
 
+@media screen and (max-width: 768px) {
+    .byline {
+        margin-top: -0.5em;
+    }
+}
+
 .byline-author {
     text-transform: uppercase;
     font-weight: 600;
