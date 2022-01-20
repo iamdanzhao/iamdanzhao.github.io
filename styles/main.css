@@ -17,6 +17,7 @@ body {
     margin: 0;
     line-height: 1.5em;
     background-color: var(--color-offwhite);
+    letter-spacing: -0.01em;
 }
 
 @media screen and (max-width: 640px) {
@@ -96,6 +97,37 @@ h4 {
     margin-top: 1.5em;
     margin-bottom: 1em;
     color: var(--color-slate);
+}
+
+.intro-header {
+    display: inline;
+}
+
+.intro-header a {
+    font-size: 125%;
+    margin-left: 1em;
+    font-family: 'IBM Plex Sans';
+}
+
+.intro-header h4 {
+    font-size: 175%;
+    text-transform: none;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    font-family: 'IBM Plex Sans Condensed';
+    letter-spacing: -0.04rem;
+    color: black;
+    display: inline-block;
+}
+
+.intro-text h5:first-child {
+    margin-top: 0;
+}
+
+.intro-text h5 {
+    font-size: 110%;
+    font-family: 'IBM Plex Sans Condensed';
+    color: gray;
 }
 
 @media screen and (max-width: 768px) {
@@ -364,7 +396,7 @@ ol li > * {
 /* LAYOUT: CONTAINERS*/
 
 main {
-    padding-top: 8em;
+    padding-top: 4em;
 }
 
 .narrow {
@@ -567,7 +599,10 @@ main {
 }
 
 .intro h1 {
-    font-size: 400%;
+    font-size: 500%;
+    font-family: 'IBM Plex Sans Condensed';
+    letter-spacing: -0.1rem;
+    margin-bottom: 0.5em;
 }
 
 .intro h2 {
@@ -575,6 +610,7 @@ main {
     line-height: 145%;
     font-size: 150%;
     border: none;
+    letter-spacing: -0.02rem;
 }
 
 @media screen and (max-width: 480px) {
@@ -618,6 +654,7 @@ main {
     #bio-prof-pic {
         width: 240px;
         margin-top: -160px;
+        display: none;
     }
 }
 
@@ -654,7 +691,7 @@ main {
 }
 
 .photo-container img {
-    border-radius: 8px;
+    border-radius: 6px;
     margin-top: 0;
 }
 
