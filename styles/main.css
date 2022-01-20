@@ -120,6 +120,10 @@ h4 {
     display: inline-block;
 }
 
+.intro-text p:first-child {
+    margin-top: 0;
+}
+
 .intro-text h5:first-child {
     margin-top: 0;
 }
@@ -599,7 +603,7 @@ main {
 }
 
 .intro h1 {
-    font-size: 500%;
+    font-size: 475%;
     font-family: 'IBM Plex Sans Condensed';
     letter-spacing: -0.1rem;
     margin-bottom: 0.5em;
