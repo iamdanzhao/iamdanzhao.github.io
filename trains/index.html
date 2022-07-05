@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TransitScreen</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Condensed';
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .line-OR {
+            background-color: #ED8B00;
+            color: white;
+        }
+
+        .line-BL {
+            background-color: #009CDE;
+            color: white;
+        }
+
+        .line-SV {
+            background-color: #919D9D;
+            color: white;
+        }
+
+        .line-RD {
+            background-color: #BF0D3E;
+            color: white;
+        }
+
+        .train-node {
+            display: inline-block;
+            padding: 6px 10px;
+            margin: 3px;
+            border-radius: 4px;
+            width: 26%;
+        }
+
+        .train-node-time {
+            font-size: 250%;
+            font-weight: bold;
+            line-height: 100%;
+        }
+
+        .train-node-label {
+            text-transform: uppercase;
+        }
+
+        .train-node-dest {
+            font-size: 125%;
+            display: block;
+        }
+
+        #container-metrorail h4 {
+            font-size: 150%;
+            margin: 6px 0;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <h1>Get moving, you're probably late!</h1>
+    <div class="row">
+        <div class="column" id="container-metrorail">
+            <h2>Metrorail</h2>
+            <h3>Foggy Bottom-GWU</h3>
+            <h4>Eastbound</h4>
+            <div class="train-node-wrapper" id="foggy-eastbound">
+            </div>
+            <h4>Westbound</h4>
+            <div class="train-node-wrapper" id="foggy-westbound">
+            </div>
+            <h3>Farragut North</h3>
+            <h4>Eastbound</h4>
+            <div class="train-node-wrapper" id="farragut-eastbound">
+            </div>
+            <h4>Westbound</h4>
+            <div class="train-node-wrapper" id="farragut-westbound">
+            </div>
+        </div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+    
+    <script type="text/javascript">
+        $(function() {
+            var params = {
+                "api_key": "e13626d03d8e4c03ac07f95541b3091b",
+                // Request parameters
+            };
+        
+            $.ajax({
+                url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/C04?" + $.param(params),
+                type: "GET",
+            })
+            .done(function(data) {
+                // alert("success");
+                trains = data.Trains;
+
+                for (let i = 0; i < trains.length; i++) {
+                    d = trains[i].DestinationCode;
+
+                    if (d.substr(0, 1) === "G" ||
+                        d.substr(0, 1) === "D" ||
+                        d === "C01" || d === "C02" || d === "C03") {
+                        container = document.getElementById("foggy-eastbound");
+                    }
+                    else {
+                        container = document.getElementById("foggy-westbound");
+                    }
+
+                    status = trains[i].Min;
+                    labelText = "";
+
+                    if (status === "ARR" || status === "BRD") {
+                        break;
+                    }
+                    else {
+                        labelText = "min";
+                    }
+
+                    container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
+                }
+            })
+            .fail(function() {
+                alert("error");
+            });
+        });
+
+        $(function() {
+            var params = {
+                "api_key": "e13626d03d8e4c03ac07f95541b3091b",
+                // Request parameters
+            };
+        
+            $.ajax({
+                url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/A02?" + $.param(params),
+                type: "GET",
+            })
+            .done(function(data) {
+                // alert("success");
+                trains = data.Trains;
+
+                for (let i = 0; i < trains.length; i++) {
+                    d = trains[i].DestinationCode;
+
+                    if (d.substr(0, 1) === "B" || d === "A01") {
+                        container = document.getElementById("farragut-eastbound");
+                    }
+                    else {
+                        container = document.getElementById("farragut-westbound");
+                    }
+
+                    status = trains[i].Min;
+                    labelText = "";
+
+                    if (status === "ARR" || status === "BRD") {
+                        break;
+                    }
+                    else {
+                        labelText = "min";
+                    }
+
+                    container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
+                }
+            })
+            .fail(function() {
+                alert("error");
+            });
+        });
+
+        //// cabi 23/E 126, virginia 482
+    </script>
+</body>
+</html>
