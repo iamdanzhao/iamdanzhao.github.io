@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>TransitScreen</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@200;400;600&display=swap" rel="stylesheet">
@@ -78,15 +78,14 @@
     <h1>Get moving, you're probably late!</h1>
     <div class="row">
         <div class="column" id="container-metrorail">
-            <h2>Metrorail</h2>
-            <h3>Foggy Bottom-GWU</h3>
+            <h2>Foggy Bottom-GWU</h2>
             <h4>Eastbound</h4>
             <div class="train-node-wrapper" id="foggy-eastbound">
             </div>
             <h4>Westbound</h4>
             <div class="train-node-wrapper" id="foggy-westbound">
             </div>
-            <h3>Farragut North</h3>
+            <h2>Farragut North</h2>
             <h4>Eastbound</h4>
             <div class="train-node-wrapper" id="farragut-eastbound">
             </div>
@@ -129,7 +128,7 @@
                     labelText = "";
 
                     if (status === "ARR" || status === "BRD") {
-                        break;
+                        labelText = "";
                     }
                     else {
                         labelText = "min";
@@ -171,7 +170,7 @@
                     labelText = "";
 
                     if (status === "ARR" || status === "BRD") {
-                        break;
+                        labelText = "";
                     }
                     else {
                         labelText = "min";
