@@ -121,22 +121,22 @@
         .train-node {
             display: inline-block;
             padding: 6px 10px;
-            margin: 0 4px;
+            margin: 4px;
             border-radius: 4px;
             height: 84px;
             width: calc(33.3% - 30px);
         }
 
-        .train-node:first-child {
+        .train-node:nth-child(3n+1) {
             margin-left: 0;
         }
 
-        .train-node:last-child {
+        .train-node:nth-child(3n+3) {
             margin-right: 0;
         }
 
         .train-node-wrapper {
-            margin: 12px 0 24px 0;
+            margin: 8px 0 16px 0;
         }
 
         .train-node-wrapper:last-child {
@@ -156,6 +156,10 @@
         .train-node-dest {
             font-size: 150%;
             display: block;
+        }
+
+        .bus-node {
+            background-color: #ededed;
         }
 
         .info-panel-time {
@@ -227,11 +231,21 @@
                     <span>4 min</span>
                 </span>
             </div>
-            <h4>→ Eastbound Penn Ave</h4>
+            <h4>→ 32 & 36 Eastbound Penn Ave</h4>
             <div class="train-node-wrapper" id="penn-eastbound">
             </div>
-            <h4>← Northbound Wisconsin Ave</h4>
+            <h4>← 31 Northbound Wisconsin Ave</h4>
             <div class="train-node-wrapper" id="wisconsin-northbound">
+            </div>
+            <div class="section-header">
+                <h2>F & 22 St NW</h2>
+                <span class="section-header-times">
+                    <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png">
+                    <span>4 min</span>
+                </span>
+            </div>
+            <h4>→ 42 & 43 Northbound Mt. Pleasant</h4>
+            <div class="train-node-wrapper" id="mt-pleasant-northbound">
             </div>
         </div>
         <div class="column">
@@ -247,6 +261,9 @@
     </div>
     
     <script type="text/javascript">
+        const wmata_api = 'c95cc07e054c4a0aa4410440992b0bbd';
+        const refresh_rate = 30000; // 30 seconds
+
         // Header
         var curDate = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         document.getElementById("current-time-header").innerHTML = "It's <span style=\"color: #009CDE;\">" + curDate + "</span> and you're probably running late.";
@@ -254,166 +271,232 @@
         // Right panel
 
         // Foggy Bottom-GWU
-        $(function() {
-            var params = {
-                "api_key": "e13626d03d8e4c03ac07f95541b3091b",
-                // Request parameters
-            };
-        
-            $.ajax({
-                url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/C04?" + $.param(params),
-                type: "GET",
-            })
-            .done(function(data) {
-                var trains = data.Trains;
-
-                for (let i = 0; i < trains.length; i++) {
-                    var container;
-
-                    if (trains[i].Group === '1')
-                        container = document.getElementById("foggy-eastbound");
-                    else
-                        container = document.getElementById("foggy-westbound");
-
-                    var status = trains[i].Min;
-                    var labelText = "min";
-
-                    if (status === "ARR" || status === "BRD")
-                        labelText = "";
-
-                    container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
-                }
-
-                if (document.getElementById("foggy-eastbound").innerHTML === "")
-                    document.getElementById("foggy-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+        function LoadFoggyBottom () {
+            $(function() {
+                var params = {
+                    "api_key": wmata_api,
+                };
             
-                if (document.getElementById("foggy-westbound").innerHTML === "")
-                    document.getElementById("foggy-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
-            
-            })
-            .fail(function() {
-                document.getElementById("foggy-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                document.getElementById("foggy-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                $.ajax({
+                    url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/C04?" + $.param(params),
+                    type: "GET",
+                })
+                .done(function(data) {
+                    var trains = data.Trains;
+
+                    document.getElementById("foggy-eastbound").innerHTML = "";
+                    document.getElementById("foggy-westbound").innerHTML = "";
+
+                    for (let i = 0; i < trains.length; i++) {
+                        var container;
+
+                        if (trains[i].Group === '1')
+                            container = document.getElementById("foggy-eastbound");
+                        else
+                            container = document.getElementById("foggy-westbound");
+
+                        var status = trains[i].Min;
+                        var labelText = "min";
+
+                        if (status === "ARR" || status === "BRD")
+                            labelText = "";
+
+                        container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
+                    }
+
+                    if (document.getElementById("foggy-eastbound").innerHTML === "")
+                        document.getElementById("foggy-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+                
+                    if (document.getElementById("foggy-westbound").innerHTML === "")
+                        document.getElementById("foggy-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+                
+                })
+                .fail(function() {
+                    document.getElementById("foggy-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("foggy-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                });
             });
-        });
+        }
 
         // Farragut North
-        $(function() {
-            var params = {
-                "api_key": "e13626d03d8e4c03ac07f95541b3091b",
-                // Request parameters
-            };
-        
-            $.ajax({
-                url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/A02?" + $.param(params),
-                type: "GET",
-            })
-            .done(function(data) {
-                var trains = data.Trains;
-
-                for (let i = 0; i < trains.length; i++) {
-                    var container;
-
-                    if (trains[i].Group === '1')
-                        container = document.getElementById("farragut-eastbound");
-                    else
-                        container = document.getElementById("farragut-westbound");
-
-                    var status = trains[i].Min;
-                    var labelText = "min";
-
-                    if (status === "ARR" || status === "BRD")
-                        labelText = "";
-
-                    container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
-                }
-
-                if (document.getElementById("farragut-eastbound").innerHTML === "")
-                    document.getElementById("farragut-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+        function LoadFarragutNorth() {
+            $(function() {
+                var params = {
+                    "api_key": wmata_api,
+                };
             
-                if (document.getElementById("farragut-westbound").innerHTML === "")
-                    document.getElementById("farragut-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
-            })
-            .fail(function() {
-                document.getElementById("farragut-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                document.getElementById("farragut-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                $.ajax({
+                    url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/A02?" + $.param(params),
+                    type: "GET",
+                })
+                .done(function(data) {
+                    var trains = data.Trains;
+
+                    document.getElementById("farragut-eastbound").innerHTML = "";
+                    document.getElementById("farragut-westbound").innerHTML = "";
+
+                    for (let i = 0; i < trains.length; i++) {
+                        var container;
+
+                        if (trains[i].Group === '1')
+                            container = document.getElementById("farragut-eastbound");
+                        else
+                            container = document.getElementById("farragut-westbound");
+
+                        var status = trains[i].Min;
+                        var labelText = "min";
+
+                        if (status === "ARR" || status === "BRD")
+                            labelText = "";
+
+                        container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
+                    }
+
+                    if (document.getElementById("farragut-eastbound").innerHTML === "")
+                        document.getElementById("farragut-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+                
+                    if (document.getElementById("farragut-westbound").innerHTML === "")
+                        document.getElementById("farragut-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+                })
+                .fail(function() {
+                    document.getElementById("farragut-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("farragut-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                });
             });
-        });
+        }
 
         // Bus
-        $(function() {
-            var params = {
-                "api_key": "e13626d03d8e4c03ac07f95541b3091b",
-                "StopID": "1001082",
-            };
-        
-            $.ajax({
-                url: "https://api.wmata.com/NextBusService.svc/json/jPredictions?" + $.param(params),
-                type: "GET",
-            })
-            .done(function(data) {
-                var buses = data.Predictions;
-
-                alert("success");
-                console.log(data);
-                for (let i = 0; i < buses.length; i++) {
-                    var dest = ""
-
-                    if (buses[i].RouteID === '32') {
-                        container = document.getElementById("penn-eastbound");
-                        dest = "32 Southern Ave";
-                    }
-                    else if (buses[i].RouteID === '36') {
-                        container = document.getElementById("penn-eastbound");
-                        dest = "36 Naylor Rd";
-                    }
-                    else {
-                        container = document.getElementById("wisconsin-northbound");
-                        dest = "31 Frndshp Hts";
-                    }
-
-                    container.innerHTML += "<div class=\"train-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
-                }
-
-                if (document.getElementById("penn-eastbound").innerHTML === "")
-                    document.getElementById("penn-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
+        function LoadBus3X() {
+            $(function() {
+                var params = {
+                    "api_key": wmata_api,
+                    "StopID": "1001082",
+                };
             
-                if (document.getElementById("wisconsin-northbound").innerHTML === "")
-                    document.getElementById("wisconsin-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
+                $.ajax({
+                    url: "https://api.wmata.com/NextBusService.svc/json/jPredictions?" + $.param(params),
+                    type: "GET",
+                })
+                .done(function(data) {
+                    var buses = data.Predictions;
 
-            })
-            .fail(function() {
-                document.getElementById("penn-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                document.getElementById("wisconsin-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("penn-eastbound").innerHTML = "";
+                    document.getElementById("wisconsin-northbound").innerHTML = "";
+                    
+                    for (let i = 0; i < buses.length; i++) {
+                        var dest = ""
 
+                        if (buses[i].RouteID === '32') {
+                            container = document.getElementById("penn-eastbound");
+                            dest = "32 Southern";
+                        }
+                        else if (buses[i].RouteID === '36') {
+                            container = document.getElementById("penn-eastbound");
+                            dest = "36 Naylor";
+                        }
+                        else {
+                            container = document.getElementById("wisconsin-northbound");
+                            dest = "31 Frndshp";
+                        }
+
+                        container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
+                    }
+
+                    if (document.getElementById("penn-eastbound").innerHTML === "")
+                        document.getElementById("penn-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
+                
+                    if (document.getElementById("wisconsin-northbound").innerHTML === "")
+                        document.getElementById("wisconsin-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
+
+                })
+                .fail(function() {
+                    document.getElementById("penn-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("wisconsin-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+
+                });
             });
-        });
+        }
 
-        // Bike
-
-        $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
-            stations = [126, 482, 609];
-            names = ['23 & E St', 'Va. & 25 St', '22 & H St']
-            className = "bike-available"
-
-            for (var i = 0; i < stations.length; i++) {
-                const available = data.filter(d => d.number === stations[i])[0].bikes;
-                const freeDocks = data.filter(d => d.number === stations[i])[0].free;
-                const total = available + freeDocks;
-
-                if (available == 0) {
-                    className = "bike-none"
-                }
-                else if (available <= 2) {
-                    className = "bike-low"
-                }
-
-                document.getElementById("cabi-all").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + available + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
-            }
+        function LoadBus4X() {
+            $(function() {
+                var params = {
+                    "api_key": wmata_api,
+                    "StopID": "1001044",
+                };
             
-        });
+                $.ajax({
+                    url: "https://api.wmata.com/NextBusService.svc/json/jPredictions?" + $.param(params),
+                    type: "GET",
+                })
+                .done(function(data) {
+                    var buses = data.Predictions;
+
+                    document.getElementById("mt-pleasant-northbound").innerHTML = "";
+                    
+                    for (let i = 0; i < buses.length; i++) {
+                        var container = document.getElementById("mt-pleasant-northbound");
+                        var dest = "";
+
+                        if (buses[i].RouteID === '42') {
+                            dest = "42 Mt. Plsnt";
+                        }
+                        else if (buses[i].RouteID === '43') {
+                            dest = "43 Mt. Plsnt";
+                        }
+                        else {
+                            continue;
+                        }
+
+                        container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
+                    }
+
+                    if (document.getElementById("mt-pleasant-northbound").innerHTML === "")
+                        document.getElementById("mt-pleasant-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
+                })
+                .fail(function() {
+                    document.getElementById("penn-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("wisconsin-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+
+                });
+            });
+        }
         
-        //// cabi 23/E 126, virginia 482
+        // Bike
+        function LoadCaBi() {
+            $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
+                stations = [126, 482, 609];
+                names = ['23 & E St', 'Va. & 25 St', '22 & H St'];
+                className = "bike-available";
+
+                document.getElementById("cabi-all").innerHTML = "";
+
+                for (var i = 0; i < stations.length; i++) {
+                    const available = data.filter(d => d.number === stations[i])[0].bikes;
+                    const freeDocks = data.filter(d => d.number === stations[i])[0].free;
+                    const total = available + freeDocks;
+
+                    if (available == 0) {
+                        className = "bike-none"
+                    }
+                    else if (available <= 2) {
+                        className = "bike-low"
+                    }
+
+                    document.getElementById("cabi-all").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + available + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
+                }
+            });
+        }
+    
+        function LoadAll() {
+            LoadFoggyBottom();
+            LoadFarragutNorth();
+            LoadBus3X();
+            LoadBus4X();
+            LoadCaBi();
+        }
+        
+        LoadAll();
+        setInterval(LoadAll, refresh_rate);
     </script>
 </body>
 </html>
