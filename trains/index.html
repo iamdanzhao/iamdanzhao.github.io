@@ -167,7 +167,7 @@
         }
 
         .info-panel-weather {
-            display-block;
+            display: block;
         }
 
         @media screen and (min-width: 1700px) {
@@ -265,10 +265,10 @@
         const refresh_rate = 30000; // 30 seconds
 
         // Header
-        var curDate = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        document.getElementById("current-time-header").innerHTML = "It's <span style=\"color: #009CDE;\">" + curDate + "</span> and you're probably running late.";
-        
-        // Right panel
+        function LoadBasics() {
+            var curDate = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById("current-time-header").innerHTML = "It's <span style=\"color: #009CDE;\">" + curDate + "</span> and you're probably running late.";
+        }
 
         // Foggy Bottom-GWU
         function LoadFoggyBottom () {
@@ -416,7 +416,6 @@
                 });
             });
         }
-
         function LoadBus4X() {
             $(function() {
                 var params = {
@@ -487,6 +486,7 @@
             });
         }
     
+        // Load everything
         function LoadAll() {
             LoadFoggyBottom();
             LoadFarragutNorth();
@@ -497,6 +497,9 @@
         
         LoadAll();
         setInterval(LoadAll, refresh_rate);
+
+        LoadBasics();
+        setInterval(LoadBasics, 5000);
     </script>
 </body>
 </html>
