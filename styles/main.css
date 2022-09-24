@@ -318,12 +318,12 @@ ol li {
 
 ul {
     list-style: outside none;
-    list-style-type: none !important;
     margin: 0;
     padding: 0;
 }
 
 li {
+    list-style: outside none;
     margin-bottom: 0.6em;
     line-height: 1.25em;
 }
