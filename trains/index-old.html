@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
+
         body {
             font-family: 'Overpass';
             background-color: #EEEEEE;
@@ -20,7 +21,7 @@
 
         h1 {
             margin-left: 24px;
-            font-size: 300%;
+            font-size: 450%;
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: -1px;
@@ -116,7 +117,7 @@
         }
 
         .train-node.line-empty {
-            height: 120px;
+            height: 84px;
             background-color: white;
             color: darkgray;
             border: 1px solid #eee;
@@ -244,7 +245,7 @@
                 <div class="train-node-wrapper" id="conn-northbound">
                 </div>
                 <div class="section-header">
-                    <h2>18 & Calif. Ave NW</h2>
+                    <h2>18th & Calif. Ave NW</h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>11 min</span>
@@ -448,7 +449,7 @@
         function LoadCaBi() {
             $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
                 stations = [425, 421, 482];
-                names = ['Conn. & R St', '20 & Fla. Av', '20 & Col. Rd'];
+                names = ['Conn. & R St', '20th & Fla. Av', '20th & Col. Rd'];
                 className = "bike-available";
 
                 document.getElementById("cabi-all").innerHTML = "";
