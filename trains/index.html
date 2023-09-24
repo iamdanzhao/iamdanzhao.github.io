@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Overpass';
-            background-color: #131313;
+            background-color: #000;
             margin: 24px;
             color: #fff;
         }
@@ -200,7 +200,7 @@
             }
         }
 
-        @media screen and (max-width: 1400px) {
+        @media screen and (max-width: 1200px) {
             .column {
                 width: 100% !important;
             }
@@ -214,7 +214,7 @@
         <div class="column">
             <div class="transit-unit" id="container-metrorail">
                 <div class="section-header">
-                    <h2>Dupont Circle <span class="section-header-direction">East to Glenmont</span></h2>
+                    <h2>Dupont Circle <span class="section-header-direction">Glenmont</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>9 min</span>
@@ -222,7 +222,7 @@
                 </div>
                 <div class="train-node-wrapper" id="dupont-eastbound"></div>
                 <div class="section-header">
-                    <h2>Dupont Circle <span class="section-header-direction">West to Shady Grove</span></h2>
+                    <h2>Dupont Circle <span class="section-header-direction">Shady Grove</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>9 min</span>
@@ -258,7 +258,7 @@
                 <div class="train-node-wrapper" id="conn-northbound">
                 </div>
                 <div class="section-header">
-                    <h2>18th & Calif. Ave NW <span class="section-header-direction">East</span></h2>
+                    <h2>18th & Calif. Av NW <span class="section-header-direction">East</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>11 min</span>
@@ -461,7 +461,7 @@
         function LoadCaBi() {
             $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
                 stations = [425, 421, 482];
-                names = ['Conn. & R', '20th & Fla.', '20 & Colmb.'];
+                names = ['Conn. & R St', '20th & Fla. Av', '20 & Col. Rd'];
                 className = "bike-available";
 
                 document.getElementById("cabi-all").innerHTML = "";
