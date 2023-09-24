@@ -9,8 +9,9 @@
     <style>
         body {
             font-family: 'Overpass';
-            background-color: #EEEEEE;
+            background-color: #131313;
             margin: 24px;
+            color: #fff;
         }
 
         .intro-text {
@@ -28,7 +29,7 @@
         }
 
         h2 {
-            font-size: 225%;
+            font-size: 200%;
         }
 
         .column {
@@ -37,16 +38,17 @@
         }
 
         .transit-unit {
-            background-color: white;
-            margin: 12px;
-            margin-bottom: 24px;
-            border-radius: 12px;
-            padding: 16px;
+            background-color: rgb(31, 31, 31);
+            margin: 8px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            padding: 12px 18px;
         }
 
         .section-header {
             border-bottom: 1px dotted gray;
-            margin-bottom: 18px;
+            margin-bottom: 6px;
+            margin-top: 6px;
             padding-bottom: 6px;
         }
 
@@ -66,12 +68,19 @@
             margin: 0 2px;
             text-transform: uppercase;
             font-weight: bold;
+            font-size: 75%;
+        }
+
+        .section-header-direction {
+            font-weight: 200;
+            /* text-transform: uppercase; */
+            /* font-size: 60%; */
         }
 
         h4 {
             font-size: 150%;
             text-transform: uppercase;
-            margin: 6px 0;
+            margin: 12px 0 6px 0;
         }
 
         /* Clear floats after the columns */
@@ -112,15 +121,15 @@
         }
 
         .bike-none {
-            background-color: rgb(63, 59, 54);
+            background-color: rgb(85, 83, 80);
             color: white;
         }
 
         .train-node.line-empty {
-            height: 120px;
-            background-color: white;
+            height: 108px;
+            background-color: rgb(61, 61, 61);
             color: darkgray;
-            border: 1px solid #eee;
+            border: 1px solid #626262;
         }
 
         .train-node {
@@ -128,7 +137,7 @@
             padding: 16px 20px;
             margin: 8px;
             border-radius: 8px;
-            height: 116px;
+            height: 108px;
             width: calc(33.3% - 54px);
         }
 
@@ -141,7 +150,7 @@
         }
 
         .train-node-wrapper {
-            margin: 8px 0 16px 0;
+            margin: 0;
         }
 
         .train-node-wrapper:last-child {
@@ -161,12 +170,12 @@
 
         .train-node-dest {
             font-size: 175%;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
             display: block;
         }
 
         .bus-node {
-            background-color: #ededed;
+            background-color: rgb(61, 61, 61);
         }
 
         .info-panel-time {
@@ -187,13 +196,13 @@
             }
 
             .train-node, .train-node.line-empty {
-                height: 132px;
+                height: 120px;
             }
         }
 
         @media screen and (max-width: 1400px) {
-            .transit-unit {
-                width: calc(100% - 56px) !important;
+            .column {
+                width: 100% !important;
             }
         }
 
@@ -205,15 +214,20 @@
         <div class="column">
             <div class="transit-unit" id="container-metrorail">
                 <div class="section-header">
-                    <h2>Farragut North</h2>
+                    <h2>Dupont Circle <span class="section-header-direction">East to Glenmont</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>9 min</span>
                     </span>  
                 </div>
-                <h4>→ East to Glenmont</h4>
                 <div class="train-node-wrapper" id="dupont-eastbound"></div>
-                <h4>← West to Shady Grove</h4>
+                <div class="section-header">
+                    <h2>Dupont Circle <span class="section-header-direction">West to Shady Grove</span></h2>
+                    <span class="section-header-times">
+                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
+                        <span>9 min</span>
+                    </span>  
+                </div>
                 <div class="train-node-wrapper" id="dupont-westbound"></div>
             </div>
             <div class="transit-unit">
@@ -226,33 +240,30 @@
         <div class="column">
             <div class="transit-unit">
                 <div class="section-header">
-                    <h2>Conn. Av & Leroy Pl NW</h2>
+                    <h2>Conn. Av & Leroy Pl NW <span class="section-header-direction">South</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>3 min</span>
                     </span>
                 </div>
-                <h4>→ South</h4>
                 <div class="train-node-wrapper" id="conn-southbound">
                 </div>
                 <div class="section-header">
-                    <h2>Conn. Av & Fla. Av NW</h2>
+                    <h2>Conn. Av & Fla. Av NW <span class="section-header-direction">North</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>4 min</span>
                     </span>
                 </div>
-                <h4>← North</h4>
                 <div class="train-node-wrapper" id="conn-northbound">
                 </div>
                 <div class="section-header">
-                    <h2>18th & Calif. Ave NW</h2>
+                    <h2>18th & Calif. Ave NW <span class="section-header-direction">East</span></h2>
                     <span class="section-header-times">
                         <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>11 min</span>
                     </span>
                 </div>
-                <h4>→ East</h4>
                 <div class="train-node-wrapper" id="florida-eastbound">
                 </div>
             </div>
@@ -389,7 +400,7 @@
                         }
                         else {
                             container = document.getElementById("conn-northbound");
-                            dest = "L2 Chvy Chs";
+                            dest = "L2 Chv Chs";
                         }
 
                         container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
@@ -450,7 +461,7 @@
         function LoadCaBi() {
             $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
                 stations = [425, 421, 482];
-                names = ['Conn. & R St', '20 & Fla. Av', '20 & Col. Rd'];
+                names = ['Conn. & R', '20th & Fla.', '20 & Colmb.'];
                 className = "bike-available";
 
                 document.getElementById("cabi-all").innerHTML = "";
