@@ -14,24 +14,29 @@
             color: #fff;
         }
 
-        .intro-text {
-            text-align: right;
-            font-size: 300%;
-        }
-
         h1 {
             margin-left: 24px;
-            font-size: 300%;
-            margin-bottom: 6px;
+            margin-bottom: 0;
             text-transform: uppercase;
-            letter-spacing: -1px;
-            font-weight: 600;
+            letter-spacing: -2px;
+        }
+
+        .current-time {
+            color: #16b9ff;
+            font-size: 275%;
+            margin-right: 12px;
+            font-weight: 800;
+        }
+
+        .current-date {
+            color: #fff;
+            font-size: 175%;
         }
 
         h2 {
             font-size: 200%;
         }
-
+        
         .column {
             float: left;
             width: 50%;
@@ -69,6 +74,10 @@
             text-transform: uppercase;
             font-weight: bold;
             font-size: 75%;
+        }
+
+        .section-header-times img {
+            margin-bottom: 4px;
         }
 
         .section-header-direction {
@@ -129,7 +138,7 @@
             height: 108px;
             background-color: rgb(61, 61, 61);
             color: darkgray;
-            border: 1px solid #626262;
+            /* border: 1px solid #626262; */
         }
 
         .train-node {
@@ -170,12 +179,13 @@
 
         .train-node-dest {
             font-size: 175%;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
             display: block;
+            margin-top: -4px;
         }
 
         .bus-node {
-            background-color: rgb(61, 61, 61);
+            background-color: rgb(82, 91, 99);
         }
 
         .info-panel-time {
@@ -216,7 +226,7 @@
                 <div class="section-header">
                     <h2>Dupont Circle <span class="section-header-direction">Glenmont</span></h2>
                     <span class="section-header-times">
-                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
+                        <img src="pedestrian.png">
                         <span>9 min</span>
                     </span>  
                 </div>
@@ -224,7 +234,7 @@
                 <div class="section-header">
                     <h2>Dupont Circle <span class="section-header-direction">Shady Grove</span></h2>
                     <span class="section-header-times">
-                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
+                        <img src="pedestrian.png">
                         <span>9 min</span>
                     </span>  
                 </div>
@@ -242,7 +252,7 @@
                 <div class="section-header">
                     <h2>Conn. Av & Leroy Pl NW <span class="section-header-direction">South</span></h2>
                     <span class="section-header-times">
-                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
+                        <img src="pedestrian.png">
                         <span>3 min</span>
                     </span>
                 </div>
@@ -251,7 +261,7 @@
                 <div class="section-header">
                     <h2>Conn. Av & Fla. Av NW <span class="section-header-direction">North</span></h2>
                     <span class="section-header-times">
-                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
+                        <img src="pedestrian.png">
                         <span>4 min</span>
                     </span>
                 </div>
@@ -260,7 +270,7 @@
                 <div class="section-header">
                     <h2>18th & Calif. Av NW <span class="section-header-direction">East</span></h2>
                     <span class="section-header-times">
-                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
+                        <img src="pedestrian.png">
                         <span>11 min</span>
                     </span>
                 </div>
@@ -276,8 +286,12 @@
 
         // Header
         function LoadBasics() {
-            var curDate = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            document.getElementById("current-time-header").innerHTML = "It's <span style=\"color: #009CDE;\">" + curDate + "</span> and you're probably running late.";
+            d = new Date();
+
+            var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
+            var curDate = d.toLocaleDateString("en-US", {weekday: "long", day: "numeric", month: "long"});
+
+            document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate;
         }
 
         // Farragut North
@@ -400,7 +414,7 @@
                         }
                         else {
                             container = document.getElementById("conn-northbound");
-                            dest = "L2 Chv Chs";
+                            dest = "L2 Chvy Chs";
                         }
 
                         container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
@@ -461,7 +475,7 @@
         function LoadCaBi() {
             $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
                 stations = [425, 421, 482];
-                names = ['Conn. & R St', '20th & Fla. Av', '20 & Col. Rd'];
+                names = ['Conn. & R St', '20th & Fla. Av', '20th & Col. Rd'];
                 className = "bike-available";
 
                 document.getElementById("cabi-all").innerHTML = "";
