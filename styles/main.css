@@ -4,7 +4,7 @@
     --color-blue: #0083ff;
     --color-pink: #ff5470;
     --color-slate: #415869;
-    --color-offwhite: #fbfbfc;
+    --color-offwhite: #faf9f7;
     --color-ghpurple: #6f42c1;
     --color-lightgray: #ededed;
 }
@@ -12,7 +12,7 @@
 /* MAIN STYLES */
 
 body {
-    font-family: 'IBM Plex Sans', 'Segoe UI', 'Helvetiva Neue', 'Arial', sans-serif;
+    font-family: 'Public Sans', 'SF Pro' 'Segoe UI', 'Helvetiva Neue', 'Arial', sans-serif;
     padding: 0;
     margin: 0;
     line-height: 1.5em;
@@ -27,7 +27,7 @@ body {
 }
 
 code {
-    font-family: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+    font-family: Consolas, 'Courier New', monospace;
     padding: 2px 4px;
     font-size: 100%;
     color: #c7254e;
@@ -114,7 +114,6 @@ h4 {
     text-transform: none;
     margin-top: 1.5em;
     margin-bottom: 1em;
-    font-family: 'IBM Plex Sans Condensed';
     letter-spacing: -0.04rem;
     color: black;
     display: inline-block;
@@ -130,7 +129,6 @@ h4 {
 
 .intro-text h5 {
     font-size: 110%;
-    font-family: 'IBM Plex Sans Condensed';
     color: gray;
 }
 
@@ -605,9 +603,9 @@ main {
 
 .intro h1 {
     font-size: 475%;
-    font-family: 'IBM Plex Sans Condensed';
     letter-spacing: -0.1rem;
     margin-bottom: 0.5em;
+    font-weight: 700;;
 }
 
 .intro h2 {
@@ -707,7 +705,6 @@ main {
     z-index: 10000;
     color: white;
     font-size: 175%;
-    font-family: 'IBM Plex Sans Condensed';
     font-weight: 600;
 }
 
