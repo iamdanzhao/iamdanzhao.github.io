@@ -640,7 +640,7 @@ main {
     border-radius: 50%;
     width: 270px;
     float: right;
-    margin: -140px 0 24px 20px;
+    margin: -140px -40px 24px 20px;
 }
 
 @media screen and (max-width: 768px) {
