@@ -605,7 +605,7 @@ main {
     font-size: 475%;
     letter-spacing: -0.1rem;
     margin-bottom: 0.5em;
-    font-weight: 700;;
+    font-weight: 600;
 }
 
 .intro h2 {
@@ -613,7 +613,7 @@ main {
     line-height: 145%;
     font-size: 150%;
     border: none;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.01rem;
 }
 
 @media screen and (max-width: 480px) {
