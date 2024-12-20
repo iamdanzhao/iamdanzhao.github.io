@@ -11,6 +11,10 @@
 
 /* MAIN STYLES */
 
+html {
+    background-color: var(--color-offwhite);
+}
+
 body {
     font-family: 'neue-haas-unica', 'SF Pro', 'Segoe UI', 'Helvetiva Neue', 'Arial', sans-serif;
     padding: 0;
