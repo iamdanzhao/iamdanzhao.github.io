@@ -599,6 +599,7 @@ main {
 .intro {
     padding-bottom: calc(2vh + 1vw);
     margin-top: 3em;
+    margin-bottom: 3em;
     min-height: 65vh;
 }
 
