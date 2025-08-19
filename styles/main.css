@@ -598,8 +598,8 @@ main {
 
 .intro {
     padding-bottom: calc(2vh + 1vw);
-    margin-top: 3em;
-    margin-bottom: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     min-height: 65vh;
 }
 
