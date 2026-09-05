@@ -39,6 +39,7 @@ a:focus,
 a:hover {
     color: var(--color-blue);
     transition: all 0.25s ease-in-out;
+    text-decoration-color: rgba(0, 131, 255, 0.5)
 }
 
 p, li {
@@ -189,22 +190,22 @@ ul.socials li:not(:first-child) {
     border-radius: 50%;
     width: 270px;
     float: right;
-    margin: -100px -40px 24px 20px;
+    margin: -100px -20px 24px 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 640px) {
     #bio-prof-pic {
-        float: none;
+        /* float: none; */
         margin: 0;
         margin-bottom: 20px;
         margin-top: -120px;
-        width: 280px;
+        width: 220px;
     }
 }
 
 @media screen and (max-width: 480px) {
     #bio-prof-pic {
-        width: 240px;
+        width: 180px;
         margin-top: -160px;
         display: none;
     }
