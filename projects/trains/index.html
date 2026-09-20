@@ -270,6 +270,8 @@
             $(function() {
                 var params = {
                     "api_key": mbta_api,
+                    "include": "trip",
+                    "fields[trip]": "headsign",
                 };
 
                 // central - inbound
@@ -291,7 +293,14 @@
                         var diff = Math.floor((arrival - now) / 1000 / 60);
                         if (diff < 0) diff = 0;
 
-                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + "Inbound" + "</span></div>"
+                        // Use a changed destination first, then the trip's usual destination.
+                        var tripId = trains[i].relationships.trip.data?.id;
+                        var trip = (data.included || []).find(t => t.type === "trip" && t.id === tripId);
+                        var destination = trains[i].attributes.trip_headsign || trip?.attributes.headsign || "Inbound";
+                        // Escape API text before adding it to HTML.
+                        destination = $("<span>").text(destination).html();
+
+                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + destination + "</span></div>"
                     }
 
                     if (document.getElementById("trains-container-1").innerHTML === "")
@@ -320,7 +329,14 @@
                         var diff = Math.floor((arrival - now) / 1000 / 60);
                         if (diff < 0) diff = 0;
 
-                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + "Outbound" + "</span></div>"
+                        // Use a changed destination first, then the trip's usual destination.
+                        var tripId = trains[i].relationships.trip.data?.id;
+                        var trip = (data.included || []).find(t => t.type === "trip" && t.id === tripId);
+                        var destination = trains[i].attributes.trip_headsign || trip?.attributes.headsign || "Outbound";
+                        // Escape API text before adding it to HTML.
+                        destination = $("<span>").text(destination).html();
+
+                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + destination + "</span></div>"
                     }
 
                     if (document.getElementById("trains-container-2").innerHTML === "")
