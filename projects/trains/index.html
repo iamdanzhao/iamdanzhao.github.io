@@ -18,29 +18,41 @@
 
         h1 {
             margin: 0 0 18px;
+            padding-bottom: 12px;
+            padding-left: 8px;
+            /* Clock size; AM/PM and the date use 32% of this. */
+            font-size: clamp(53px, 7.7vw, 114px);
+            border-bottom: 1px solid #26343a;
             display: flex;
-            white-space: nowrap;
             align-items: baseline;
-            gap: 13px;
+            gap: 0.2em;
+            white-space: nowrap;
         }
 
         .current-time {
             color: #77c4e4;
-            font-size: clamp(53px, 7.7vw, 114px);
+            font-size: inherit;
             font-weight: 700;
-            display: inline-block;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            /* A shared baseline lines up the bottoms of the text. */
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.12em;
             white-space: nowrap;
         }
 
         .current-time-period {
-            font-size: 50%;
+            font-size: 32%;
+            letter-spacing: 0.04em;
         }
 
         .current-date {
-            color: #fff;
-            font-weight: 700;
-            font-size: clamp(26px, 4.4vw, 62px);
-            display: inline-block;
+            color: #d5e0e5;
+            font-size: 32%;
+            font-weight: 500;
+            line-height: 1.15;
         }
 
         h2 {
@@ -167,16 +179,8 @@
             }
 
             h1 {
-                gap: 2vw;
-            }
-
-            /* Scale both parts with phone width to keep the header on one line. */
-            .current-time {
+                /* The clock, AM/PM, and date scale together on phones. */
                 font-size: min(8vw, 53px);
-            }
-
-            .current-date {
-                font-size: min(4vw, 26px);
             }
 
             h2 {
@@ -251,7 +255,7 @@
 
             var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
             // Wrap AM/PM so it can be smaller than the clock numbers.
-            curTime = curTime.replace(/(AM|PM)/i, '<span class="current-time-period">$1</span>');
+            curTime = curTime.replace(/\s*(AM|PM)/i, '<span class="current-time-period">$1</span>');
             var curDate = d.toLocaleDateString("en-US", {weekday: "short", day: "numeric", month: "short"});
 
             document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate + "</span>";
