@@ -18,14 +18,22 @@
 
         h1 {
             margin: 0 0 18px;
+            display: flex;
+            white-space: nowrap;
+            align-items: baseline;
+            gap: 13px;
         }
 
         .current-time {
             color: #77c4e4;
             font-size: clamp(53px, 7.7vw, 114px);
             font-weight: 700;
-            margin-right: 13px;
             display: inline-block;
+            white-space: nowrap;
+        }
+
+        .current-time-period {
+            font-size: 50%;
         }
 
         .current-date {
@@ -158,6 +166,19 @@
                 margin: 8px;
             }
 
+            h1 {
+                gap: 2vw;
+            }
+
+            /* Scale both parts with phone width to keep the header on one line. */
+            .current-time {
+                font-size: min(8vw, 53px);
+            }
+
+            .current-date {
+                font-size: min(4vw, 26px);
+            }
+
             h2 {
                 font-size: clamp(18px, 4vw, 24px);
             }
@@ -229,9 +250,11 @@
             d = new Date();
 
             var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
+            // Wrap AM/PM so it can be smaller than the clock numbers.
+            curTime = curTime.replace(/(AM|PM)/i, '<span class="current-time-period">$1</span>');
             var curDate = d.toLocaleDateString("en-US", {weekday: "short", day: "numeric", month: "short"});
 
-            document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate;
+            document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate + "</span>";
         }
 
         function LoadTrains() {
