@@ -214,7 +214,7 @@
             d = new Date();
 
             var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
-            var curDate = d.toLocaleDateString("en-US", {weekday: "short", day: "numeric", month: "short", year: "numeric"});
+            var curDate = d.toLocaleDateString("en-US", {weekday: "short", day: "numeric", month: "short"});
 
             document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate;
         }
@@ -273,7 +273,7 @@
                         var diff = Math.floor((arrival - now) / 1000 / 60);
                         if (diff < 0) diff = 0;
 
-                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + "Inbound" + "</span></div>"
+                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + "Outbound" + "</span></div>"
                     }
 
                     if (document.getElementById("trains-container-2").innerHTML === "")
