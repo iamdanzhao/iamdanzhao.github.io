@@ -34,7 +34,7 @@
         }
 
         h2 {
-            font-size: 200%;
+            font-size: 225%;
         }
         
         .column {
@@ -109,7 +109,7 @@
             padding: 16px 20px;
             margin: 8px;
             border-radius: 8px;
-            height: 96px;
+            min-height: 96px;
             width: calc(33.3% - 54px);
         }
 
@@ -130,7 +130,7 @@
         }
 
         .train-node-time {
-            font-size: 475%;
+            font-size: 450%;
             font-weight: bold;
             line-height: 100%;
         }
@@ -141,7 +141,7 @@
         }
 
         .train-node-dest {
-            font-size: 175%;
+            font-size: 185%;
             font-weight: 600;
             display: block;
             margin-top: -4px;
@@ -159,20 +159,6 @@
             display: block;
         }
 
-        @media screen and (min-width: 1700px) {
-            body {
-                font-size: 115%;
-            }
-
-            h1 {
-                font-size: 300%;
-            }
-
-            .train-node, .train-node.line-empty {
-                height: 120px;
-            }
-        }
-
         @media screen and (max-width: 1200px) {
             .column {
                 width: 100% !important;
@@ -187,9 +173,13 @@
         <div class="column">
             <div class="transit-unit">
                 <div class="section-header">
-                    <h2>BlueBikes</h2>
+                    <h2>BlueBikes <span class="section-header-direction">Available bikes</span></h2>
                 </div>
-                <div class="train-node-wrapper" id="bikes-all"></div>
+                <div class="train-node-wrapper" id="bikes-container-1"></div>
+                <div class="section-header">
+                    <h2>BlueBikes <span class="section-header-direction">Open docks</span></h2>
+                </div>
+                <div class="train-node-wrapper" id="bikes-container-2"></div>
             </div>
         </div>
         <div class="column">
@@ -289,10 +279,10 @@
         // Bike
         function LoadBikes() {
             $.getJSON('https://gbfs.lyft.com/gbfs/1.1/bos/en/station_status.json', function(data) {
-                stations = [96, 221, 515, 89, 176, 115, 76, 68, 75];
-                names = ['B\'way @ CPL', 'Ware St.', 'MA @ UPS', 'MA @ HLS', "MA @ Lesley", "MA @ Porter", "MA @ Cantab", "MA @ PF", "MA @ Jaho"];
+                stations = [96, 221, 515];
+                names = ['B\'way @ CPL', 'Ware St.', 'MA @ UPS'];
 
-                document.getElementById("bikes-all").innerHTML = "";
+                document.getElementById("bikes-container-1").innerHTML = "";
 
                 for (var i = 0; i < stations.length; i++) {
                     const available = data.data.stations.filter(d => parseInt(d.legacy_id) === stations[i])[0].num_bikes_available;
@@ -316,7 +306,30 @@
                         ebikes_ind = "*";
                     }
 
-                    document.getElementById("bikes-all").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + available + ebikes_ind + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
+                    document.getElementById("bikes-container-1").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + available + ebikes_ind + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
+                }
+
+                stations = [89, 176, 115, 76, 68, 75];
+                names = ['MA @ HLS', "MA @ Lesley", "MA @ Porter", "MA @ Cantab", "MA @ PF", "MA @ Jaho"];
+
+                document.getElementById("bikes-container-2").innerHTML = "";
+
+                for (var i = 0; i < stations.length; i++) {
+                    const available = data.data.stations.filter(d => parseInt(d.legacy_id) === stations[i])[0].num_bikes_available;
+                    const free = data.data.stations.filter(d => parseInt(d.legacy_id) === stations[i])[0].num_docks_available;
+
+                    const total = available + free;
+
+                    className = "bike-available";
+
+                    if (free == 0) {
+                        className = "bike-none"
+                    }
+                    else if (free <= 2) {
+                        className = "bike-low"
+                    }
+
+                    document.getElementById("bikes-container-2").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + free + ebikes_ind + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
                 }
             });
         }
