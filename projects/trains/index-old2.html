@@ -5,56 +5,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
+
         body {
             font-family: 'Overpass';
-            background-color: #000;
+            background-color: #EEEEEE;
             margin: 24px;
-            color: #fff;
+        }
+
+        .intro-text {
+            text-align: right;
+            font-size: 300%;
         }
 
         h1 {
             margin-left: 24px;
-            margin-bottom: -12px;
+            font-size: 450%;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: -1px;
-        }
-
-        .current-time {
-            color: #16b9ff;
-            font-size: 325%;
-            font-weight: 800;
-            margin-right: 12px;
-        }
-
-        .current-date {
-            color: #fff;
-            font-size: 175%;
+            font-weight: 600;
         }
 
         h2 {
-            font-size: 200%;
+            font-size: 225%;
         }
-        
+
         .column {
             float: left;
             width: 50%;
         }
 
         .transit-unit {
-            background-color: rgb(31, 31, 31);
-            margin: 8px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            padding: 12px 18px;
+            background-color: white;
+            margin: 12px;
+            border-radius: 4px;
+            padding: 16px;
         }
 
         .section-header {
             border-bottom: 1px dotted gray;
-            margin-bottom: 6px;
-            margin-top: 6px;
-            padding-bottom: 6px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
         }
 
         .section-header * {
@@ -73,23 +66,12 @@
             margin: 0 2px;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 75%;
-        }
-
-        .section-header-times img {
-            margin-bottom: 4px;
-        }
-
-        .section-header-direction {
-            font-weight: 200;
-            /* text-transform: uppercase; */
-            /* font-size: 60%; */
         }
 
         h4 {
-            font-size: 150%;
+            font-size: 175%;
             text-transform: uppercase;
-            margin: 12px 0 6px 0;
+            margin: 6px 0;
         }
 
         /* Clear floats after the columns */
@@ -130,15 +112,15 @@
         }
 
         .bike-none {
-            background-color: rgb(85, 83, 80);
+            background-color: rgb(63, 59, 54);
             color: white;
         }
 
         .train-node.line-empty {
-            height: 108px;
-            background-color: rgb(61, 61, 61);
+            height: 84px;
+            background-color: white;
             color: darkgray;
-            /* border: 1px solid #626262; */
+            border: 1px solid #eee;
         }
 
         .train-node {
@@ -146,7 +128,7 @@
             padding: 16px 20px;
             margin: 8px;
             border-radius: 8px;
-            height: 108px;
+            height: 120px;
             width: calc(33.3% - 54px);
         }
 
@@ -159,7 +141,7 @@
         }
 
         .train-node-wrapper {
-            margin: 0;
+            margin: 8px 0 16px 0;
         }
 
         .train-node-wrapper:last-child {
@@ -167,25 +149,23 @@
         }
 
         .train-node-time {
-            font-size: 525%;
+            font-size: 550%;
             font-weight: bold;
             line-height: 100%;
         }
 
         .train-node-label {
             text-transform: uppercase;
-            font-size: 150%;
+            font-size: 175%;
         }
 
         .train-node-dest {
-            font-size: 175%;
-            letter-spacing: -1px;
+            font-size: 200%;
             display: block;
-            margin-top: -4px;
         }
 
         .bus-node {
-            background-color: rgb(82, 91, 99);
+            background-color: #ededed;
         }
 
         .info-panel-time {
@@ -206,13 +186,13 @@
             }
 
             .train-node, .train-node.line-empty {
-                height: 120px;
+                height: 144px;
             }
         }
 
-        @media screen and (max-width: 1200px) {
-            .column {
-                width: 100% !important;
+        @media screen and (max-width: 1400px) {
+            .transit-unit {
+                width: calc(100% - 56px) !important;
             }
         }
 
@@ -224,20 +204,15 @@
         <div class="column">
             <div class="transit-unit" id="container-metrorail">
                 <div class="section-header">
-                    <h2>Dupont Circle <span class="section-header-direction">Glenmont</span></h2>
+                    <h2>Farragut North</h2>
                     <span class="section-header-times">
-                        <img src="pedestrian.png">
+                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>9 min</span>
                     </span>  
                 </div>
+                <h4>→ East to Glenmont</h4>
                 <div class="train-node-wrapper" id="dupont-eastbound"></div>
-                <div class="section-header">
-                    <h2>Dupont Circle <span class="section-header-direction">Shady Grove</span></h2>
-                    <span class="section-header-times">
-                        <img src="pedestrian.png">
-                        <span>9 min</span>
-                    </span>  
-                </div>
+                <h4>← West to Shady Grove</h4>
                 <div class="train-node-wrapper" id="dupont-westbound"></div>
             </div>
             <div class="transit-unit">
@@ -250,30 +225,33 @@
         <div class="column">
             <div class="transit-unit">
                 <div class="section-header">
-                    <h2>Conn. Av & Leroy Pl NW <span class="section-header-direction">South</span></h2>
+                    <h2>Conn. Av & Leroy Pl NW</h2>
                     <span class="section-header-times">
-                        <img src="pedestrian.png">
+                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>3 min</span>
                     </span>
                 </div>
+                <h4>→ South</h4>
                 <div class="train-node-wrapper" id="conn-southbound">
                 </div>
                 <div class="section-header">
-                    <h2>Conn. Av & Fla. Av NW <span class="section-header-direction">North</span></h2>
+                    <h2>Conn. Av & Fla. Av NW</h2>
                     <span class="section-header-times">
-                        <img src="pedestrian.png">
+                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>4 min</span>
                     </span>
                 </div>
+                <h4>← North</h4>
                 <div class="train-node-wrapper" id="conn-northbound">
                 </div>
                 <div class="section-header">
-                    <h2>18th & Calif. Av NW <span class="section-header-direction">East</span></h2>
+                    <h2>18th & Calif. Ave NW</h2>
                     <span class="section-header-times">
-                        <img src="pedestrian.png">
+                        <!-- <img src="https://cdn-icons-png.flaticon.com/512/499/499693.png"> -->
                         <span>11 min</span>
                     </span>
                 </div>
+                <h4>→ East</h4>
                 <div class="train-node-wrapper" id="florida-eastbound">
                 </div>
             </div>
@@ -286,12 +264,8 @@
 
         // Header
         function LoadBasics() {
-            d = new Date();
-
-            var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
-            var curDate = d.toLocaleDateString("en-US", {weekday: "long", day: "numeric", month: "long"});
-
-            document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate;
+            var curDate = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            document.getElementById("current-time-header").innerHTML = "It's <span style=\"color: #009CDE;\">" + curDate + "</span> and you're probably running late.";
         }
 
         // Farragut North

@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Overpass';
+            font-family: 'Public Sans';
             background-color: #000;
             margin: 24px;
             color: #fff;
@@ -17,19 +17,19 @@
         h1 {
             margin-left: 24px;
             margin-bottom: -12px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            /* text-transform: uppercase; */
         }
 
         .current-time {
-            color: #16b9ff;
+            color: #77c4e4;
             font-size: 325%;
-            font-weight: 800;
+            font-weight: 700;
             margin-right: 12px;
         }
 
         .current-date {
             color: #fff;
+            font-weight: 700;
             font-size: 175%;
         }
 
@@ -62,33 +62,15 @@
             vertical-align: middle;
         }
 
-        .section-header-times {
-            float: right;
-            margin-top: 6px;
-            font-size: 175%;
-        }
-
-        .section-header-times * {
-            height: 18px;
-            margin: 0 2px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 75%;
-        }
-
-        .section-header-times img {
-            margin-bottom: 4px;
-        }
-
         .section-header-direction {
-            font-weight: 200;
+            font-weight: 400;
             /* text-transform: uppercase; */
             /* font-size: 60%; */
         }
 
         h4 {
             font-size: 150%;
-            text-transform: uppercase;
+            /* text-transform: uppercase; */
             margin: 12px 0 6px 0;
         }
 
@@ -99,23 +81,8 @@
             clear: both;
         }
 
-        .line-OR {
-            background-color: #ED8B00;
-            color: white;
-        }
-
-        .line-BL {
-            background-color: #009CDE;
-            color: white;
-        }
-
-        .line-SV {
-            background-color: #919D9D;
-            color: white;
-        }
-
-        .line-RD {
-            background-color: #BF0D3E;
+        .line-red {
+            background-color: #DA291C;
             color: white;
         }
 
@@ -178,8 +145,7 @@
         }
 
         .train-node-dest {
-            font-size: 175%;
-            letter-spacing: -1px;
+            font-size: 160%;
             display: block;
             margin-top: -4px;
         }
@@ -222,66 +188,29 @@
     <h1 id="current-time-header">Get moving, you're probably late!</h1>
     <div class="row">
         <div class="column">
-            <div class="transit-unit" id="container-metrorail">
-                <div class="section-header">
-                    <h2>Dupont Circle <span class="section-header-direction">Glenmont</span></h2>
-                    <span class="section-header-times">
-                        <img src="pedestrian.png">
-                        <span>9 min</span>
-                    </span>  
-                </div>
-                <div class="train-node-wrapper" id="dupont-eastbound"></div>
-                <div class="section-header">
-                    <h2>Dupont Circle <span class="section-header-direction">Shady Grove</span></h2>
-                    <span class="section-header-times">
-                        <img src="pedestrian.png">
-                        <span>9 min</span>
-                    </span>  
-                </div>
-                <div class="train-node-wrapper" id="dupont-westbound"></div>
-            </div>
             <div class="transit-unit">
                 <div class="section-header">
-                    <h2>Capital Bikeshare</h2>
+                    <h2>BlueBikes</h2>
                 </div>
-                <div class="train-node-wrapper" id="cabi-all"></div>
+                <div class="train-node-wrapper" id="bikes-all"></div>
             </div>
         </div>
         <div class="column">
-            <div class="transit-unit">
+            <div class="transit-unit" id="container-metrorail">
                 <div class="section-header">
-                    <h2>Conn. Av & Leroy Pl NW <span class="section-header-direction">South</span></h2>
-                    <span class="section-header-times">
-                        <img src="pedestrian.png">
-                        <span>3 min</span>
-                    </span>
+                    <h2>Central <span class="section-header-direction">Braintree/Ashmont</span></h2>
                 </div>
-                <div class="train-node-wrapper" id="conn-southbound">
-                </div>
+                <div class="train-node-wrapper" id="trains-container-1"></div>
                 <div class="section-header">
-                    <h2>Conn. Av & Fla. Av NW <span class="section-header-direction">North</span></h2>
-                    <span class="section-header-times">
-                        <img src="pedestrian.png">
-                        <span>4 min</span>
-                    </span>
+                    <h2>Harvard <span class="section-header-direction">Alewife</span></h2>
                 </div>
-                <div class="train-node-wrapper" id="conn-northbound">
-                </div>
-                <div class="section-header">
-                    <h2>18th & Calif. Av NW <span class="section-header-direction">East</span></h2>
-                    <span class="section-header-times">
-                        <img src="pedestrian.png">
-                        <span>11 min</span>
-                    </span>
-                </div>
-                <div class="train-node-wrapper" id="florida-eastbound">
-                </div>
+                <div class="train-node-wrapper" id="trains-container-2"></div>
             </div>
         </div>
     </div>
     
     <script type="text/javascript">
-        const wmata_api = 'c95cc07e054c4a0aa4410440992b0bbd';
+        const mbta_api = '5f06342877504bcca1663226472114d0';
         const refresh_rate = 30000; // 30 seconds
 
         // Header
@@ -289,201 +218,93 @@
             d = new Date();
 
             var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
-            var curDate = d.toLocaleDateString("en-US", {weekday: "long", day: "numeric", month: "long"});
+            var curDate = d.toLocaleDateString("en-US", {weekday: "short", day: "numeric", month: "short", year: "numeric"});
 
             document.getElementById("current-time-header").innerHTML = "<span class=\"current-time\">" + curTime + "</span> <span class=\"current-date\">" + curDate;
         }
 
-        // Farragut North
-        function LoadDupont() {
+        function LoadTrains() {
             $(function() {
                 var params = {
-                    "api_key": wmata_api,
+                    "api_key": mbta_api,
                 };
+
+                // central - inbound
             
                 $.ajax({
-                    url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/A03?" + $.param(params),
+                    url: "https://api-v3.mbta.com/predictions?filter[stop]=70069&" + $.param(params),
                     type: "GET",
                 })
                 .done(function(data) {
-                    var trains = data.Trains;
+                    var trains = data.data;
+                    max_trains = 6;
 
-                    document.getElementById("dupont-eastbound").innerHTML = "";
-                    document.getElementById("dupont-westbound").innerHTML = "";
+                    document.getElementById("trains-container-1").innerHTML = "";
 
-                    for (let i = 0; i < trains.length; i++) {
-                        var container;
+                    for (let i = 0; i < Math.min(trains.length, max_trains); i++) {
+                        var container = document.getElementById("trains-container-1");
+                        var arrival = new Date(trains[i].attributes.arrival_time);
+                        var now = new Date();
+                        var diff = Math.floor((arrival - now) / 1000 / 60);
+                        if (diff < 0) diff = 0;
 
-                        if (trains[i].Group === '1')
-                            container = document.getElementById("dupont-eastbound");
-                        else
-                            container = document.getElementById("dupont-westbound");
-
-                        var status = trains[i].Min;
-                        var labelText = "min";
-
-                        if (status === "ARR" || status === "BRD")
-                            labelText = "";
-
-                        container.innerHTML += "<div class=\"train-node line-" + trains[i].Line + "\"><span class=\"train-node-time\">" + trains[i].Min + "</span><span class=\"train-node-label\">" + labelText + "</span><span class=\"train-node-dest\">" + trains[i].Destination + "</span></div>"
+                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + "Inbound" + "</span></div>"
                     }
 
-                    if (document.getElementById("dupont-eastbound").innerHTML === "")
-                        document.getElementById("dupont-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
-                
-                    if (document.getElementById("dupont-westbound").innerHTML === "")
-                        document.getElementById("dupont-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
+                    if (document.getElementById("trains-container-1").innerHTML === "")
+                        document.getElementById("trains-container-1").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
                 })
                 .fail(function() {
-                    document.getElementById("dupont-westbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                    document.getElementById("dupont-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("trains-container-1").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
                 });
-            });
-        }
 
-        // Bus
-        function LoadBusConnSouth() {
-            $(function() {
-                var params = {
-                    "api_key": wmata_api,
-                    "StopID": "1001626",
-                };
-            
+                // harvard - outbound
+
                 $.ajax({
-                    url: "https://api.wmata.com/NextBusService.svc/json/jPredictions?" + $.param(params),
+                    url: "https://api-v3.mbta.com/predictions?filter[stop]=70068&" + $.param(params),
                     type: "GET",
                 })
                 .done(function(data) {
-                    var buses = data.Predictions;
+                    var trains = data.data;
+                    max_trains = 6;
 
-                    document.getElementById("conn-southbound").innerHTML = "";
-                    
-                    for (let i = 0; i < buses.length; i++) {
-                        var dest = ""
+                    document.getElementById("trains-container-2").innerHTML = "";
 
-                        if (buses[i].RouteID === '42') {
-                            container = document.getElementById("conn-southbound");
-                            dest = "42 Kenn Ctr";
-                        }
-                        else if (buses[i].RouteID === '42') {
-                            container = document.getElementById("conn-southbound");
-                            dest = "43 Kenn Ctr";
-                        }
-                        else {
-                            container = document.getElementById("conn-southbound");
-                            dest = "L2 Farragut";
-                        }
+                    for (let i = 0; i < Math.min(trains.length, max_trains); i++) {
+                        var container = document.getElementById("trains-container-2");
+                        var arrival = new Date(trains[i].attributes.arrival_time);
+                        var now = new Date();
+                        var diff = Math.floor((arrival - now) / 1000 / 60);
+                        if (diff < 0) diff = 0;
 
-                        container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
+                        container.innerHTML += "<div class=\"train-node line-red\"><span class=\"train-node-time\">" + diff + "</span><span class=\"train-node-label\">" + "min" + "</span><span class=\"train-node-dest\">" + "Inbound" + "</span></div>"
                     }
 
-                    if (document.getElementById("conn-southbound").innerHTML === "")
-                        document.getElementById("conn-southbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
+                    if (document.getElementById("trains-container-2").innerHTML === "")
+                        document.getElementById("trains-container-2").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No train</span></div>";
                 })
                 .fail(function() {
-                    document.getElementById("conn-southbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                });
-            });
-        }
-        function LoadBusConnNorth() {
-            $(function() {
-                var params = {
-                    "api_key": wmata_api,
-                    "StopID": "1001618",
-                };
-            
-                $.ajax({
-                    url: "https://api.wmata.com/NextBusService.svc/json/jPredictions?" + $.param(params),
-                    type: "GET",
-                })
-                .done(function(data) {
-                    var buses = data.Predictions;
-
-                    document.getElementById("conn-northbound").innerHTML = "";
-                    
-                    for (let i = 0; i < buses.length; i++) {
-                        var dest = ""
-
-                        if (buses[i].RouteID === '42') {
-                            container = document.getElementById("conn-northbound");
-                            dest = "42 Mt Plsnt";
-                        }
-                        else if (buses[i].RouteID === '42') {
-                            container = document.getElementById("conn-northbound");
-                            dest = "43 Mt Plsnt";
-                        }
-                        else {
-                            container = document.getElementById("conn-northbound");
-                            dest = "L2 Chvy Chs";
-                        }
-
-                        container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
-                    }
-
-                    if (document.getElementById("conn-northbound").innerHTML === "")
-                        document.getElementById("conn-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
-                })
-                .fail(function() {
-                    document.getElementById("conn-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                });
-            });
-        }
-        function LoadBus18th() {
-            $(function() {
-                var params = {
-                    "api_key": wmata_api,
-                    "StopID": "1001708",
-                };
-            
-                $.ajax({
-                    url: "https://api.wmata.com/NextBusService.svc/json/jPredictions?" + $.param(params),
-                    type: "GET",
-                })
-                .done(function(data) {
-                    var buses = data.Predictions;
-
-                    document.getElementById("florida-eastbound").innerHTML = "";
-                    
-                    for (let i = 0; i < buses.length; i++) {
-                        var container = document.getElementById("florida-eastbound");
-                        var dest = "";
-
-                        if (buses[i].RouteID === '90') {
-                            dest = "90 Anacost";
-                        }
-                        else if (buses[i].RouteID === '96') {
-                            dest = "96 Cong Hts";
-                        }
-                        else {
-                            continue;
-                        }
-
-                        container.innerHTML += "<div class=\"train-node bus-node\"><span class=\"train-node-time\">" + buses[i].Minutes + "</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">" + dest + "</span></div>"
-                    }
-
-                    if (document.getElementById("florida-eastbound").innerHTML === "")
-                        document.getElementById("florida-eastbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">No bus</span></div>";
-                })
-                .fail(function() {
-                    document.getElementById("conn-southbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
-                    document.getElementById("conn-northbound").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
+                    document.getElementById("trains-container-2").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">∞</span><span class=\"train-node-label\">min</span><span class=\"train-node-dest\">API error</span></div>";
                 });
             });
         }
         
         // Bike
-        function LoadCaBi() {
-            $.getJSON('https://api.citybik.es/capital-bikeshare.json', function(data) {
-                stations = [425, 421, 482];
-                names = ['Conn. & R St', '20th & Fla. Av', '20th & Col. Rd'];
-                className = "bike-available";
+        function LoadBikes() {
+            $.getJSON('https://gbfs.lyft.com/gbfs/1.1/bos/en/station_status.json', function(data) {
+                stations = [96, 221, 515, 89, 176, 115, 76, 68, 75];
+                names = ['B\'way @ CPL', 'Ware St.', 'MA @ UPS', 'MA @ HLS', "MA @ Lesley", "MA @ Porter", "MA @ Cantab", "MA @ PF", "MA @ Jaho"];
 
-                document.getElementById("cabi-all").innerHTML = "";
+                document.getElementById("bikes-all").innerHTML = "";
 
                 for (var i = 0; i < stations.length; i++) {
-                    const available = data.filter(d => d.id === stations[i])[0].bikes;
-                    const freeDocks = data.filter(d => d.id === stations[i])[0].free;
-                    const total = available + freeDocks;
+                    const available = data.data.stations.filter(d => parseInt(d.legacy_id) === stations[i])[0].num_bikes_available;
+                    const ebikes = data.data.stations.filter(d => parseInt(d.legacy_id) === stations[i])[0].num_ebikes_available;
+                    const free = data.data.stations.filter(d => parseInt(d.legacy_id) === stations[i])[0].num_docks_available;
+
+                    const total = available + free;
+
+                    className = "bike-available";
 
                     if (available == 0) {
                         className = "bike-none"
@@ -492,18 +313,21 @@
                         className = "bike-low"
                     }
 
-                    document.getElementById("cabi-all").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + available + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
+                    ebikes_ind = "";
+
+                    if (ebikes == available && available > 0) {
+                        ebikes_ind = "*";
+                    }
+
+                    document.getElementById("bikes-all").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + available + ebikes_ind + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
                 }
             });
         }
     
         // Load everything
         function LoadAll() {
-            LoadDupont();
-            LoadBusConnSouth();
-            LoadBusConnNorth();
-            LoadBus18th();
-            LoadCaBi();
+            LoadTrains();
+            LoadBikes();
         }
         
         LoadAll();
