@@ -53,7 +53,8 @@
         .transit-unit {
             background-color: rgb(31, 31, 31);
             border-radius: 8px;
-            padding: clamp(13px, 1.65vw, 20px);
+            /* Padding: top/bottom, then left/right. */
+            padding: clamp(6px, 0.8vw, 10px) clamp(13px, 1.65vw, 20px);
         }
 
         .section-header {
@@ -162,7 +163,7 @@
             }
 
             .transit-unit {
-                padding: 8px;
+                padding: 4px 8px;
             }
 
             .train-node-wrapper {
@@ -171,7 +172,7 @@
             }
 
             .train-node {
-                padding: 8px 6px;
+                padding: 8px 10px;
                 white-space: nowrap;
             }
 
