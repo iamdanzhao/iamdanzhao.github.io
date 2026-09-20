@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>TransitScreen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,44 +11,49 @@
         body {
             font-family: 'Public Sans';
             background-color: #000;
-            margin: 24px;
+            /* clamp(minimum, flexible size, maximum) keeps spacing readable. */
+            margin: clamp(8px, 2vw, 24px);
             color: #fff;
         }
 
         h1 {
-            margin-left: 24px;
-            margin-bottom: -12px;
-            /* text-transform: uppercase; */
+            margin: 0 0 16px;
         }
 
         .current-time {
             color: #77c4e4;
-            font-size: 325%;
+            font-size: clamp(48px, 7vw, 104px);
             font-weight: 700;
             margin-right: 12px;
+            display: inline-block;
         }
 
         .current-date {
             color: #fff;
             font-weight: 700;
-            font-size: 175%;
+            font-size: clamp(24px, 4vw, 56px);
+            display: inline-block;
         }
 
         h2 {
-            font-size: 225%;
+            font-size: clamp(24px, 2.5vw, 36px);
         }
-        
+
+        /* Each section needs about 512px; otherwise the columns stack. */
+        .row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 512px), 1fr));
+            gap: 16px;
+        }
+
         .column {
-            float: left;
-            width: 50%;
+            min-width: 0;
         }
 
         .transit-unit {
             background-color: rgb(31, 31, 31);
-            margin: 8px;
-            margin-bottom: 12px;
             border-radius: 8px;
-            padding: 12px 18px;
+            padding: clamp(12px, 1.5vw, 18px);
         }
 
         .section-header {
@@ -68,13 +74,6 @@
         h4 {
             font-size: 150%;
             margin: 12px 0 6px 0;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
         }
 
         .line-red {
@@ -98,53 +97,46 @@
         }
 
         .train-node.line-empty {
-            min-height: 96px;
             background-color: rgb(61, 61, 61);
             color: darkgray;
             /* border: 1px solid #626262; */
         }
 
         .train-node {
-            display: inline-block;
-            padding: 16px 20px;
-            margin: 8px;
+            padding: clamp(10px, 1.4vw, 20px);
             border-radius: 8px;
-            min-height: 96px;
-            width: calc(33.3% - 54px);
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
-        .train-node:nth-child(3n+1) {
-            margin-left: 0;
-        }
-
-        .train-node:nth-child(3n+3) {
-            margin-right: 0;
-        }
-
+        /* Three tiles per row, with fewer columns on small screens below. */
         .train-node-wrapper {
-            margin: 0;
-        }
-
-        .train-node-wrapper:last-child {
-            margin-bottom: 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(8px, 1vw, 16px);
+            margin: 12px 0;
         }
 
         .train-node-time {
-            font-size: 450%;
+            font-size: clamp(44px, 5vw, 72px);
             font-weight: bold;
             line-height: 100%;
         }
 
         .train-node-label {
             text-transform: uppercase;
-            font-size: 150%;
+            font-size: clamp(18px, 1.7vw, 24px);
         }
 
         .train-node-dest {
-            font-size: 185%;
+            font-size: clamp(20px, 2vw, 30px);
             font-weight: 600;
             display: block;
-            margin-top: -4px;
+            margin-top: 4px;
+            /* Keep names on one line; show ... if a name is too long. */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .bus-node {
@@ -159,9 +151,15 @@
             display: block;
         }
 
-        @media screen and (max-width: 1200px) {
-            .column {
-                width: 100% !important;
+        @media screen and (max-width: 600px) {
+            .train-node-wrapper {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            .train-node-wrapper {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -329,8 +327,11 @@
                         className = "bike-low"
                     }
 
-                    document.getElementById("bikes-container-2").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + free + ebikes_ind + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
+                    document.getElementById("bikes-container-2").innerHTML += "<div class=\"train-node " + className + "\"><span class=\"train-node-time\">" + free + "</span><span class=\"train-node-label\">/" + total + "</span><span class=\"train-node-dest\">" + names[i] + "</span></div>"
                 }
+            }).fail(function() {
+                document.getElementById("bikes-container-1").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">?</span><span class=\"train-node-dest\">API error</span></div>";
+                document.getElementById("bikes-container-2").innerHTML = "<div class=\"train-node line-empty\"><span class=\"train-node-time\">?</span><span class=\"train-node-dest\">API error</span></div>";
             });
         }
     
