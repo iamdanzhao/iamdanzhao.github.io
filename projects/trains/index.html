@@ -16,11 +16,15 @@
             color: #fff;
         }
 
+        body.night {
+            filter: brightness(50%);
+        }
+
         h1 {
             margin: 0 0 6px;
             padding-left: 8px;
             /* Clock size; AM/PM and the date use 32% of this. */
-            font-size: clamp(74px, 9.8vw, 148px);
+            font-size: clamp(80px, 10.5vw, 148px);
             display: flex;
             align-items: baseline;
             gap: 0.15em;
@@ -257,6 +261,10 @@
         // Header
         function LoadBasics() {
             d = new Date();
+
+            // Dim from 11pm to 5am using the tablet's local time.
+            var hour = d.getHours();
+            document.body.classList.toggle("night", hour >= 23 || hour < 5);
 
             var curTime = d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit' });
             // Wrap AM/PM so it can be smaller than the clock numbers.
